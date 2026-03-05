@@ -56,7 +56,13 @@ def parse_args():
 
     ########
     parser.add_argument('--t', type=float, default=0.35)
-
+    #新增denoise相关参数
+    parser.add_argument('--noise_type', type=str, default='symmetric', choices=['symmetric', 'asymmetric'], help='Type of label noise')
+    parser.add_argument('--noise_max', type=float, default=0.30, help='Max noise rate for clients')
+    parser.add_argument('--alpha', type=float, default=0.5, help='Weight of local loss in denoise scoring')
+    parser.add_argument('--drop_rate', type=float, default=0.15, help='Fixed ratio of samples to drop per batch')
+    parser.add_argument('--denoise_strategy', type=str, default='least_sim', choices=['most_sim', 'least_sim', 'random', 'median', 'mix'], help='Strategy to select scoring models')
+    #新增
     torch.set_num_threads(4)
     add_management_args(parser)
     args = parser.parse_args()
