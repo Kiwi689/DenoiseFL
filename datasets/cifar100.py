@@ -2,6 +2,7 @@ from torchvision.datasets import CIFAR100
 import torchvision.transforms as transforms
 
 from backbone.ResNet import resnet50
+from backbone.SimpleCNN import SimpleCNN
 from backbone.resnet_fedalign import resnet50_fedalign
 from utils.conf import data_path
 from PIL import Image
@@ -43,13 +44,13 @@ class FedLeaCIFAR100(FederatedDataset):
         if not train_transform:
             train_transform = self.Nor_TRANSFORM
         train_dataset = CIFAR100(root=data_path(), train=True,
-                                 download=False, transform=train_transform)
+                                 download=True, transform=train_transform)
 
         test_transform = transforms.Compose(
             [transforms.ToTensor(), self.get_normalization_transform()])
 
         test_dataset = CIFAR100(data_path(), train=False,
-                                download=False, transform=test_transform)
+                                download=True, transform=test_transform)
 
         traindls, testdl, net_cls_counts = partition_label_skew_loaders(train_dataset, test_dataset, self)
         return traindls, testdl, net_cls_counts
@@ -71,7 +72,7 @@ class FedLeaCIFAR100(FederatedDataset):
                 nets_list.append(resnet50_fedalign(class_num=FedLeaCIFAR100.N_CLASS, name='resnet50'))
         else:
             for j in range(parti_num):
-                nets_list.append(resnet50(num_classes=FedLeaCIFAR100.N_CLASS, name='resnet50'))
+                nets_list.append(SimpleCNN(FedLeaCIFAR100.N_CLASS))
         return nets_list
 
     @staticmethod

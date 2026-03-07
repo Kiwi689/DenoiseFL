@@ -67,12 +67,24 @@ def parse_args():
     add_management_args(parser)
     args = parser.parse_args()
 
-    best = best_args[args.dataset][args.model]
-    if args.beta in best:
-        best = best[args.beta]
+    # 1. 检查模型是否存在于配置中
+    if args.model in best_args[args.dataset]:
+        best = best_args[args.dataset][args.model]
     else:
-        best = best[0.5]
+        best = {} # 如果找不到，初始化为空字典
 
+    # 2. 安全地提取 beta 相关的子字典
+    if best: # 只有当 best 不为空时才尝试访问键值
+        if args.beta in best:
+            best = best[args.beta]
+        elif 0.5 in best:
+            best = best[0.5]
+        else:
+            # 如果字典里既没有指定的 beta 也没有 0.5，则置为空
+            best = {}
+    
+    # 3. 将参数设置到 args 中
+    # 如果 best 是空字典，这个循环将安全地跳过，不会报错
     for key, value in best.items():
         setattr(args, key, value)
 

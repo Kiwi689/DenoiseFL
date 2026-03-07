@@ -135,7 +135,23 @@ class FedDenoise(FederatedModel):
                         loss_far2 = criterion(far_net2(images), labels)
 
                     # 融合打分 (Score 越高越像噪声)
-                    score = self.alpha * loss_local + (1 - self.alpha) * (loss_far1 + loss_far2) / 2.0
+                    #score = self.alpha * loss_local + (1 - self.alpha) * (loss_far1 + loss_far2) / 2.0
+                    # === 引入 Noise-FL 的分歧惩罚 (Disagreement Penalty) ===
+                    # 1. 将远端评委的 loss 堆叠起来，形状变为 [2, batch_size]
+                    stacked_remote = torch.stack([loss_far1, loss_far2], dim=0)
+
+                    # 2. 计算评委的平均判断
+                    mu_remote = torch.mean(stacked_remote, dim=0)
+
+                    # 3. 计算评委间的分歧度 (标准差)。加上 1e-6 是为了防止数值计算中出现全 0 导致 nan
+                    std_remote = torch.std(stacked_remote, dim=0, unbiased=False) + 1e-6
+
+                    # 4. 设定分歧惩罚权重 beta (可以作为一个超参数，Noise-FL 中通常设为 0.5 或 1.0)
+                    beta_penalty = 1.0
+
+                    # 5. 最终打分：包含本地loss、远端均值，以及远端分歧惩罚。
+                    # 注意加上 .detach()，打分逻辑不需要参与梯度反传，节省显存并防止计算图报错
+                    score = self.alpha * loss_local.detach() + (1 - self.alpha) * (mu_remote.detach() + beta_penalty * std_remote.detach())
 
                     batch_size = images.size(0)
                     drop_count = int(batch_size * self.drop_rate)

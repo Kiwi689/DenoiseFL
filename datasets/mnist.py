@@ -59,12 +59,12 @@ class FedMNIST(FederatedDataset):
             train_transform = self.Singel_Channel_Nor_TRANSFORM
 
         train_dataset = MyMNIST(root=data_path(), train=True,
-                                download=False, transform=train_transform)
+                                download=True, transform=train_transform)
         test_transform = transforms.Compose(
             [transforms.Resize((32, 32)), transforms.ToTensor(),
              transforms.Lambda(lambda x: x.repeat(3, 1, 1)), self.get_normalization_transform()])
         test_dataset = MyMNIST(data_path(), train=False,
-                               download=False, transform=test_transform)
+                               download=True, transform=test_transform)
         traindls, testdl, net_cls_counts = partition_label_skew_loaders(train_dataset, test_dataset, self)
         return traindls, testdl, net_cls_counts
 
