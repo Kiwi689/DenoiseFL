@@ -33,7 +33,7 @@ class FedDenoise(FederatedModel):
         self.client_pure_ratio = {}
 
     def ini(self):
-        print("Backbone:", self.nets_list[0].__class__.__name__)
+        print("Backbone:", self.nets_list[0].__class__.__name__, getattr(self.nets_list[0], 'name', 'NA'))
         self.global_net = copy.deepcopy(self.nets_list[0])
         global_w = self.nets_list[0].state_dict()
         for _, net in enumerate(self.nets_list):

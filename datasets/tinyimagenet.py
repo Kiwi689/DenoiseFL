@@ -7,6 +7,8 @@ from torch.utils.data import Dataset
 
 from backbone.NoiseFLCNN import NoiseFLCNN
 from backbone.SimpleCNN import SimpleCNN
+from backbone.ResNet import resnet18
+
 from datasets.utils.federated_dataset import FederatedDataset, partition_label_skew_loaders
 from utils.conf import data_path
 
@@ -27,7 +29,7 @@ class MyTinyImageNet(Dataset):
         self.root = root
         self.split = split
         self.transform = transform
-
+        
         self.samples = []
         self.targets = []
 
@@ -160,7 +162,9 @@ class FedLeaTinyImageNet(FederatedDataset):
 
         if model_name == 'feddenoise':
             for _ in range(parti_num):
-                nets_list.append(NoiseFLCNN(input_channel=3, n_outputs=FedLeaTinyImageNet.N_CLASS))
+                nets_list.append(
+                    resnet18(num_classes=FedLeaTinyImageNet.N_CLASS, name='resnet18')
+                )
         else:
             for _ in range(parti_num):
                 nets_list.append(SimpleCNN(FedLeaTinyImageNet.N_CLASS))
