@@ -240,7 +240,7 @@ def main():
     parser.add_argument('--noise_type', type=str, default=None)
     parser.add_argument('--denoise', type=str, default=None)
     parser.add_argument('--metric', type=str, default='acc', choices=['acc', 'pure'])
-    parser.add_argument('--mode', type=str, default='plot', choices=['plot', 'mean', 'summary'])
+    parser.add_argument('--mode', type=str, default='plot', choices=['plot', 'mean', 'summary', 'split'])
     parser.add_argument('--out', type=str, default=None, help='Output image or csv path')
     args = parser.parse_args()
 
