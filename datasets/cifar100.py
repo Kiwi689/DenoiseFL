@@ -4,9 +4,6 @@ import torchvision.transforms as transforms
 from PIL import Image
 from torchvision.datasets import CIFAR100
 
-from backbone.ResNet import resnet50
-from backbone.SimpleCNN import SimpleCNN
-from backbone.resnet_fedalign import resnet50_fedalign
 from backbone.NoiseFLCNN import NoiseFLCNN
 from datasets.transforms.denormalization import DeNormalize
 from datasets.utils.federated_dataset import FederatedDataset, partition_label_skew_loaders
@@ -75,18 +72,10 @@ class FedLeaCIFAR100(FederatedDataset):
     @staticmethod
     def get_backbone(parti_num, names_list, model_name=''):
         nets_list = []
-        if model_name == 'moon':
-            for _ in range(parti_num):
-                nets_list.append(resnet50(num_classes=FedLeaCIFAR100.N_CLASS, name='resnet50'))
-        elif model_name == 'fedalign':
-            for _ in range(parti_num):
-                nets_list.append(resnet50_fedalign(class_num=FedLeaCIFAR100.N_CLASS, name='resnet50'))
-        elif model_name == 'feddenoise':
-            for _ in range(parti_num):
-                nets_list.append(NoiseFLCNN(input_channel=3, n_outputs=FedLeaCIFAR100.N_CLASS))
-        else:
-            for _ in range(parti_num):
-                nets_list.append(SimpleCNN(FedLeaCIFAR100.N_CLASS))
+        for _ in range(parti_num):
+            nets_list.append(
+                NoiseFLCNN(input_channel=3, n_outputs=FedLeaCIFAR100.N_CLASS)
+            )
         return nets_list
 
     @staticmethod

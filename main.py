@@ -32,6 +32,7 @@ def parse_args():
     parser.add_argument('--communication_epoch', type=int, default=100, help='The Communication Epoch in Federated Learning')
     parser.add_argument('--local_epoch', type=int, default=10, help='The Local Epoch for each Participant')
     parser.add_argument('--local_batch_size', type=int, default=64)
+    parser.add_argument('--mu', type=float, default=0.01, help='Proximal coefficient for FedProx')
     parser.add_argument('--parti_num', type=int, default=10, help='The Number for Participants')
 
     parser.add_argument('--seed', type=int, default=0, help='The random seed.')
@@ -50,7 +51,10 @@ def parse_args():
         choices=DATASET_NAMES
     )
     parser.add_argument('--pri_aug', type=str, default='weak', help='Private data augmentation')
-    parser.add_argument('--beta', type=float, default=0.01, help='The beta for label skew')
+
+    # 兼容旧 best_args 逻辑，暂时保留
+    parser.add_argument('--beta', type=float, default=0.01, help='Legacy beta argument for compatibility')
+
     parser.add_argument('--online_ratio', type=float, default=1, help='The ratio for online clients')
 
     parser.add_argument('--optimizer', type=str, default='sgd', help='adam or sgd')
@@ -61,10 +65,41 @@ def parse_args():
     parser.add_argument('--averaing', type=str, default='weight', help='Averaging strategy')
 
     parser.add_argument('--test_time', action='store_true')
-
     parser.add_argument('--t', type=float, default=0.35)
 
-    # denoise 相关参数
+    # -----------------------------
+    # partition / noise protocol 参数
+    # -----------------------------
+    parser.add_argument(
+        '--partition_mode',
+        type=str,
+        default='dirichlet',
+        choices=['iid', 'dirichlet'],
+        help='Client data partition mode'
+    )
+    parser.add_argument(
+        '--dir_alpha',
+        type=float,
+        default=0.3,
+        help='Dirichlet concentration for label distribution skew'
+    )
+    parser.add_argument(
+        '--noise_mode',
+        type=str,
+        default='uniform',
+        choices=['uniform', 'heterogeneous'],
+        help='Noise mode across clients'
+    )
+    parser.add_argument(
+        '--noise_rate',
+        type=float,
+        default=0.3,
+        help='Uniform noise rate used when noise_mode=uniform'
+    )
+
+    # -----------------------------
+    # denoise / noise 参数
+    # -----------------------------
     parser.add_argument(
         '--noise_type',
         type=str,
@@ -72,7 +107,7 @@ def parse_args():
         choices=['symmetric', 'asymmetric', 'pairflip'],
         help='Type of label noise'
     )
-    parser.add_argument('--noise_max', type=float, default=0.30, help='Max noise rate for clients')
+    parser.add_argument('--noise_max', type=float, default=0.30, help='Max noise rate for clients (used in heterogeneous mode)')
     parser.add_argument('--alpha', type=float, default=0.5, help='Weight of local loss in denoise scoring')
     parser.add_argument('--drop_rate', type=float, default=0.15, help='Fixed ratio of samples to drop per batch')
     parser.add_argument(
@@ -89,7 +124,7 @@ def parse_args():
 
     # ------------------------------------------------------------------
     # 安全读取 best_args
-    # best_args 可能没有新数据集（如 fl_svhn / fl_tinyimagenet）的配置
+    # best_args 可能没有新数据集（如 fl_svhn / fl_mnist）的配置
     # ------------------------------------------------------------------
     dataset_best_args = best_args.get(args.dataset, {})
 
@@ -98,7 +133,7 @@ def parse_args():
     else:
         best = {}
 
-    # 安全读取 beta 对应配置
+    # 安全读取 beta 对应配置（兼容旧结构）
     if best:
         if args.beta in best:
             best = best[args.beta]
@@ -121,13 +156,15 @@ def parse_args():
         args.local_lr = 0.1
     elif args.dataset == 'fl_svhn':
         args.local_lr = 0.01
+    elif args.dataset == 'fl_mnist':
+        args.local_lr = 0.01
     elif args.dataset == 'fl_tinyimagenet':
         args.local_lr = 0.01
     else:
         args.local_lr = 0.01
 
     # 数据集对应通信轮数
-    if args.dataset in ['fl_cifar10', 'fl_cifar100', 'fl_svhn']:
+    if args.dataset in ['fl_cifar10', 'fl_cifar100', 'fl_svhn', 'fl_mnist']:
         args.communication_epoch = 100
     elif args.dataset == 'fl_tinyimagenet':
         args.communication_epoch = 100
@@ -151,11 +188,16 @@ def main(args=None):
     model = get_model(backbones_list, args, priv_dataset.get_transform())
     args.arch = model.nets_list[0].name
 
-    print('{}_{}_{}_{}_{}_{}_{}'.format(
+    noise_value = args.noise_rate if args.noise_mode == 'uniform' else args.noise_max
+
+    print('{}_{}_{}_pm-{}_alpha-{}_nm-{}_nr-{}_{}_{}_{}'.format(
         args.model,
         args.parti_num,
         args.dataset,
-        args.beta,
+        args.partition_mode,
+        args.dir_alpha,
+        args.noise_mode,
+        noise_value,
         args.online_ratio,
         args.communication_epoch,
         args.local_epoch
@@ -164,13 +206,13 @@ def main(args=None):
     if args.test_time:
         setproctitle.setproctitle('test speed')
     else:
-        setproctitle.setproctitle('{}_{}_{}_{}_{}_{}'.format(
+        setproctitle.setproctitle('{}_{}_pm-{}_alpha-{}_nm-{}_nr-{}'.format(
             args.model,
             args.dataset,
-            args.beta,
-            args.online_ratio,
-            args.communication_epoch,
-            args.local_epoch
+            args.partition_mode,
+            args.dir_alpha,
+            args.noise_mode,
+            noise_value
         ))
 
     train(model, priv_dataset, args)

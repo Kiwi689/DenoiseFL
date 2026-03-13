@@ -51,7 +51,7 @@ class FederatedModel(nn.Module):
             net.to(self.device)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        return self.net(x)
+        return self.global_net(x)
 
     def get_scheduler(self):
         return

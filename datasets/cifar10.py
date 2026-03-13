@@ -91,17 +91,8 @@ class FedLeaCIFAR10(FederatedDataset):
     @staticmethod
     def get_backbone(parti_num, names_list, model_name=''):
         nets_list = []
-
-        if model_name == 'fedalign':
-            for _ in range(parti_num):
-                nets_list.append(SimpleCNNAilgn(FedLeaCIFAR10.N_CLASS))
-        elif model_name == 'feddenoise':
-            for _ in range(parti_num):
-                nets_list.append(NoiseFLCNN(input_channel=3, n_outputs=FedLeaCIFAR10.N_CLASS))
-        else:
-            for _ in range(parti_num):
-                nets_list.append(SimpleCNN(FedLeaCIFAR10.N_CLASS))
-
+        for _ in range(parti_num):
+            nets_list.append(NoiseFLCNN(input_channel=3, n_outputs=FedLeaCIFAR10.N_CLASS))
         return nets_list
 
     @staticmethod
