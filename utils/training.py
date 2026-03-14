@@ -4,7 +4,6 @@ import time
 
 import torch
 from argparse import Namespace
-from typing import Tuple
 from torch.utils.data import DataLoader
 
 from models.utils.federated_model import FederatedModel
@@ -38,20 +37,38 @@ def build_result_dir_and_files(args: Namespace, model: FederatedModel):
         f"model={model_name}"
         f"_dataset={dataset_name}"
         f"_structure={safe_str(getattr(args, 'structure', 'NA'))}"
-        f"_parti={safe_str(getattr(args, 'parti_num', 'NA'))}"
-        f"_onlineRatio={safe_str(getattr(args, 'online_ratio', 'NA'))}"
-        f"_commE={safe_str(getattr(args, 'communication_epoch', 'NA'))}"
-        f"_localE={safe_str(getattr(args, 'local_epoch', 'NA'))}"
         f"_bs={safe_str(getattr(args, 'local_batch_size', 'NA'))}"
         f"_lr={safe_str(getattr(args, 'local_lr', 'NA'))}"
-        f"_alpha={safe_str(getattr(args, 'alpha', 'NA'))}"
-        f"_drop={safe_str(getattr(args, 'drop_rate', 'NA'))}"
-        f"_denoise={safe_str(getattr(args, 'denoise_strategy', 'NA'))}"
+        f"_dirAlpha={safe_str(getattr(args, 'dir_alpha', 'NA'))}"
+        f"_noiseRate={safe_str(getattr(args, 'noise_rate', 'NA'))}"
         f"_noiseType={safe_str(getattr(args, 'noise_type', 'NA'))}"
         f"_noiseMax={safe_str(getattr(args, 'noise_max', 'NA'))}"
         f"_avg={safe_str(getattr(args, 'averaing', 'NA'))}"
-        f"_seed={safe_str(getattr(args, 'seed', 'NA'))}"
     )
+
+    # 仅当是 feddenoise 时，再额外加方法相关参数
+    if getattr(args, 'model', '') == 'feddenoise':
+        file_stem += (
+            f"_scoreAlpha={safe_str(getattr(args, 'alpha', 'NA'))}"
+            f"_drop={safe_str(getattr(args, 'drop_rate', 'NA'))}"
+            f"_denoise={safe_str(getattr(args, 'denoise_strategy', 'NA'))}"
+        )
+
+    # FedProx 额外参数
+    if getattr(args, 'model', '') == 'fedprox':
+        file_stem += f"_mu={safe_str(getattr(args, 'mu', 'NA'))}"
+
+    # FedRDN 额外参数
+    if getattr(args, 'model', '') == 'fedrdn':
+        file_stem += f"_rdnStd={safe_str(getattr(args, 'rdn_std', 'NA'))}"
+
+    # FedCDA 额外参数
+    if getattr(args, 'model', '') == 'fedcda':
+        file_stem += f"_hist={safe_str(getattr(args, 'cda_history_size', 'NA'))}"
+
+    # FedGLoSS 额外参数
+    if getattr(args, 'model', '') == 'fedgloss':
+        file_stem += f"_beta={safe_str(getattr(args, 'beta', 'NA'))}"
 
     timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
     txt_path = os.path.join(result_dir, f"{file_stem}_{timestamp}.txt")
@@ -78,11 +95,23 @@ def global_evaluate(model: FederatedModel, test_dl: DataLoader, setting: str, na
     for _, batch in enumerate(dl):
         with torch.no_grad():
             if len(batch) == 3:
-                images, labels, _ = batch
+                images, labels, client_id = batch
             else:
                 images, labels = batch
+                client_id = None
 
             images, labels = images.to(model.device), labels.to(model.device)
+
+            # 只对 FedRDN 做测试时的 client-specific normalization
+            if getattr(model, 'NAME', '').lower() == 'fedrdn':
+                if hasattr(model, 'normalize_test_images') and client_id is not None:
+                    if torch.is_tensor(client_id):
+                        # 默认一个 batch 来自同一个 client
+                        cid = int(client_id[0].item())
+                    else:
+                        cid = int(client_id)
+                    images = model.normalize_test_images(cid, images)
+
             outputs = net(images)
             _, max5 = torch.topk(outputs, 5, dim=-1)
             labels = labels.view(-1, 1)
@@ -137,11 +166,24 @@ def train(model: FederatedModel, private_dataset: FederatedDataset,
     write_log(log_path, f"Local epoch: {getattr(args, 'local_epoch', 'NA')}")
     write_log(log_path, f"Local batch size: {getattr(args, 'local_batch_size', 'NA')}")
     write_log(log_path, f"Local lr: {getattr(args, 'local_lr', 'NA')}")
-    write_log(log_path, f"Alpha: {getattr(args, 'alpha', 'NA')}")
-    write_log(log_path, f"Drop rate: {getattr(args, 'drop_rate', 'NA')}")
-    write_log(log_path, f"Denoise strategy: {getattr(args, 'denoise_strategy', 'NA')}")
+
+    # 新实验协议的关键参数
+    write_log(log_path, f"Partition mode: {getattr(args, 'partition_mode', 'NA')}")
+    write_log(log_path, f"Dirichlet alpha: {getattr(args, 'dir_alpha', 'NA')}")
+    write_log(log_path, f"Noise mode: {getattr(args, 'noise_mode', 'NA')}")
+    write_log(log_path, f"Noise rate: {getattr(args, 'noise_rate', 'NA')}")
     write_log(log_path, f"Noise type: {getattr(args, 'noise_type', 'NA')}")
     write_log(log_path, f"Noise max: {getattr(args, 'noise_max', 'NA')}")
+
+    # 方法相关参数
+    write_log(log_path, f"Denoise score alpha: {getattr(args, 'alpha', 'NA')}")
+    write_log(log_path, f"Drop rate: {getattr(args, 'drop_rate', 'NA')}")
+    write_log(log_path, f"Denoise strategy: {getattr(args, 'denoise_strategy', 'NA')}")
+    write_log(log_path, f"FedProx mu: {getattr(args, 'mu', 'NA')}")
+    write_log(log_path, f"FedRDN std: {getattr(args, 'rdn_std', 'NA')}")
+    write_log(log_path, f"FedCDA history size: {getattr(args, 'cda_history_size', 'NA')}")
+    write_log(log_path, f"FedGLoSS beta: {getattr(args, 'beta', 'NA')}")
+
     write_log(log_path, f"Averaging: {getattr(args, 'averaing', 'NA')}")
     write_log(log_path, f"Seed: {getattr(args, 'seed', 'NA')}")
     write_log(log_path, "=" * 100)

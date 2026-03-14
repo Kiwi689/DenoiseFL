@@ -40,7 +40,8 @@ class MySVHN(SVHN):
         self.clean_targets = self.targets.copy()
 
     def __getitem__(self, index: int) -> Tuple[type(Image), int]:
-        img, target = self.data[index], self.targets[index]
+        img = self.data[index]
+        target = self.targets[index]
 
         # SVHN 原始格式是 CHW，要转成 HWC 再转 PIL
         img = img.transpose(1, 2, 0)
@@ -66,7 +67,6 @@ class FedLeaSVHN(FederatedDataset):
     ])
 
     def get_data_loaders(self, train_transform=None):
-        # 当前先与 noise-fl / 你现有 CIFAR 风格对齐，使用最简单的 ToTensor
         train_transform = transforms.ToTensor()
         test_transform = transforms.ToTensor()
 
@@ -96,14 +96,10 @@ class FedLeaSVHN(FederatedDataset):
     @staticmethod
     def get_backbone(parti_num, names_list, model_name=''):
         nets_list = []
-
-        if model_name == 'feddenoise':
-            for _ in range(parti_num):
-                nets_list.append(NoiseFLCNN(input_channel=3, n_outputs=FedLeaSVHN.N_CLASS))
-        else:
-            for _ in range(parti_num):
-                nets_list.append(SimpleCNN(FedLeaSVHN.N_CLASS))
-
+        for _ in range(parti_num):
+            nets_list.append(
+                NoiseFLCNN(input_channel=3, n_outputs=FedLeaSVHN.N_CLASS)
+            )
         return nets_list
 
     @staticmethod
@@ -115,5 +111,4 @@ class FedLeaSVHN(FederatedDataset):
 
     @staticmethod
     def get_denormalization_transform():
-        # 目前你这套流程里基本不会用到，先给一个空操作
         return transforms.Compose([])
