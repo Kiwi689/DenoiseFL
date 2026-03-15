@@ -1,0 +1,34 @@
+====================================================================================================
+Training started at: 2026-03-14 09:46:13
+Result directory: results/fl_cifar10/fedgloss/pm-dir_a-0.5_nm-uni_nr-0.3
+Result txt file : results/fl_cifar10/fedgloss/pm-dir_a-0.5_nm-uni_nr-0.3/fedgloss_fl_cifar10_20260314-094613.txt
+Result log file : results/fl_cifar10/fedgloss/pm-dir_a-0.5_nm-uni_nr-0.3/fedgloss_fl_cifar10_20260314-094613.log
+----------------------------------------------------------------------------------------------------
+Model: fedgloss
+Dataset: fl_cifar10
+Structure: homogeneity
+Participants: 100
+Online ratio: 0.1
+Communication epochs: 100
+Local epoch: 10
+Local batch size: 64
+Local lr: 0.01
+Partition mode: dirichlet
+Dirichlet alpha: 0.5
+Noise mode: uniform
+Noise rate: 0.3
+Noise type: symmetric
+Noise max: 0.3
+Denoise score alpha: 0.5
+Drop rate: 0.15
+Denoise strategy: least_sim
+FedProx mu: 0.01
+FedRDN std: 0.01
+FedCDA history size: NA
+FedGLoSS beta: 1.0
+Averaging: weight
+Seed: 0
+====================================================================================================
+[Round 001/100] Acc=10.070 | RoundTime=58.13s | TotalTime=58.13s | Method=fedgloss
+[Round 002/100] Acc=19.520 | RoundTime=54.51s | TotalTime=112.64s | Method=fedgloss
+[Round 003/100] Acc=36.370 | RoundTime=53.92s | TotalTime=166.56s | Method=fedgloss

@@ -34,7 +34,7 @@ def parse_args():
     parser.add_argument('--local_batch_size', type=int, default=64)
     parser.add_argument('--mu', type=float, default=0.01, help='Proximal coefficient for FedProx')
     parser.add_argument('--parti_num', type=int, default=10, help='The Number for Participants')
-
+    parser.add_argument('--rdn_std', type=float, default=0.01, help='Gradient noise std for FedRDN')
     parser.add_argument('--seed', type=int, default=0, help='The random seed.')
     parser.add_argument(
         '--model',

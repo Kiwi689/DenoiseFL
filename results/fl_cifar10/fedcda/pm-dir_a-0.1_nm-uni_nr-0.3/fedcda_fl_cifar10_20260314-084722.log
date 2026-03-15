@@ -1,0 +1,65 @@
+====================================================================================================
+Training started at: 2026-03-14 08:47:22
+Result directory: results/fl_cifar10/fedcda/pm-dir_a-0.1_nm-uni_nr-0.3
+Result txt file : results/fl_cifar10/fedcda/pm-dir_a-0.1_nm-uni_nr-0.3/fedcda_fl_cifar10_20260314-084722.txt
+Result log file : results/fl_cifar10/fedcda/pm-dir_a-0.1_nm-uni_nr-0.3/fedcda_fl_cifar10_20260314-084722.log
+----------------------------------------------------------------------------------------------------
+Model: fedcda
+Dataset: fl_cifar10
+Structure: homogeneity
+Participants: 100
+Online ratio: 0.1
+Communication epochs: 100
+Local epoch: 10
+Local batch size: 64
+Local lr: 0.01
+Partition mode: dirichlet
+Dirichlet alpha: 0.1
+Noise mode: uniform
+Noise rate: 0.3
+Noise type: symmetric
+Noise max: 0.3
+Denoise score alpha: 0.5
+Drop rate: 0.15
+Denoise strategy: least_sim
+FedProx mu: 0.01
+FedRDN std: 0.01
+FedCDA history size: NA
+FedGLoSS beta: 0.01
+Averaging: weight
+Seed: 0
+====================================================================================================
+[Round 001/100] Acc=10.000 | RoundTime=41.85s | TotalTime=41.85s | Method=fedcda
+[Round 002/100] Acc=12.520 | RoundTime=43.07s | TotalTime=84.91s | Method=fedcda
+[Round 003/100] Acc=14.830 | RoundTime=41.44s | TotalTime=126.35s | Method=fedcda
+[Round 004/100] Acc=15.620 | RoundTime=42.04s | TotalTime=168.39s | Method=fedcda
+[Round 005/100] Acc=20.050 | RoundTime=40.96s | TotalTime=209.35s | Method=fedcda
+[Round 006/100] Acc=15.270 | RoundTime=41.15s | TotalTime=250.49s | Method=fedcda
+[Round 007/100] Acc=15.300 | RoundTime=41.98s | TotalTime=292.47s | Method=fedcda
+[Round 008/100] Acc=15.160 | RoundTime=43.97s | TotalTime=336.44s | Method=fedcda
+[Round 009/100] Acc=15.770 | RoundTime=43.35s | TotalTime=379.79s | Method=fedcda
+[Round 010/100] Acc=16.680 | RoundTime=45.07s | TotalTime=424.86s | Method=fedcda
+[Round 011/100] Acc=20.990 | RoundTime=45.46s | TotalTime=470.32s | Method=fedcda
+[Round 012/100] Acc=20.550 | RoundTime=43.99s | TotalTime=514.31s | Method=fedcda
+[Round 013/100] Acc=23.030 | RoundTime=45.10s | TotalTime=559.42s | Method=fedcda
+[Round 014/100] Acc=20.720 | RoundTime=44.38s | TotalTime=603.80s | Method=fedcda
+[Round 015/100] Acc=24.690 | RoundTime=43.97s | TotalTime=647.77s | Method=fedcda
+[Round 016/100] Acc=21.280 | RoundTime=45.34s | TotalTime=693.11s | Method=fedcda
+[Round 017/100] Acc=23.520 | RoundTime=42.51s | TotalTime=735.62s | Method=fedcda
+[Round 018/100] Acc=14.440 | RoundTime=44.32s | TotalTime=779.94s | Method=fedcda
+[Round 019/100] Acc=24.910 | RoundTime=46.15s | TotalTime=826.09s | Method=fedcda
+[Round 020/100] Acc=22.450 | RoundTime=44.29s | TotalTime=870.38s | Method=fedcda
+[Round 021/100] Acc=16.700 | RoundTime=44.60s | TotalTime=914.98s | Method=fedcda
+[Round 022/100] Acc=13.400 | RoundTime=44.17s | TotalTime=959.15s | Method=fedcda
+[Round 023/100] Acc=22.320 | RoundTime=46.30s | TotalTime=1005.45s | Method=fedcda
+[Round 024/100] Acc=27.150 | RoundTime=44.48s | TotalTime=1049.93s | Method=fedcda
+[Round 025/100] Acc=18.140 | RoundTime=43.77s | TotalTime=1093.70s | Method=fedcda
+[Round 026/100] Acc=29.100 | RoundTime=44.10s | TotalTime=1137.80s | Method=fedcda
+[Round 027/100] Acc=21.960 | RoundTime=44.37s | TotalTime=1182.17s | Method=fedcda
+[Round 028/100] Acc=26.640 | RoundTime=44.65s | TotalTime=1226.82s | Method=fedcda
+[Round 029/100] Acc=19.410 | RoundTime=44.20s | TotalTime=1271.02s | Method=fedcda
+[Round 030/100] Acc=26.880 | RoundTime=44.09s | TotalTime=1315.10s | Method=fedcda
+[Round 031/100] Acc=20.370 | RoundTime=44.83s | TotalTime=1359.93s | Method=fedcda
+[Round 032/100] Acc=20.710 | RoundTime=43.97s | TotalTime=1403.90s | Method=fedcda
+[Round 033/100] Acc=24.760 | RoundTime=44.51s | TotalTime=1448.42s | Method=fedcda
+[Round 034/100] Acc=26.980 | RoundTime=43.85s | TotalTime=1492.26s | Method=fedcda

@@ -30,47 +30,24 @@ def build_result_dir_and_files(args: Namespace, model: FederatedModel):
     dataset_name = safe_str(args.dataset)
     model_name = safe_str(args.model if hasattr(args, 'model') else model.NAME)
 
-    result_dir = os.path.join(root_dir, dataset_name, model_name)
+    # 1. 提取核心参数并使用你在 main.py 中的缩写习惯来控制长度
+    parti_mode = "dir" if getattr(args, 'partition_mode', '') == 'dirichlet' else "iid"
+    noise_mode = "uni" if getattr(args, 'noise_mode', '') == 'uniform' else "het"
+    dir_alpha = safe_str(getattr(args, 'dir_alpha', 'NA'))
+    noise_rate = safe_str(getattr(args, 'noise_rate', getattr(args, 'noise_max', 'NA')))
+    
+    # 构建一个短标签，例如: pm-dir_a-0.3_nm-uni_nr-0.3
+    short_tag = f"pm-{parti_mode}_a-{dir_alpha}_nm-{noise_mode}_nr-{noise_rate}"
+    
+    # 2. 将短标签作为【子文件夹】来分类实验，而不是拼在文件名上
+    # 最终目录层级：results/fl_cifar10/fedavg/pm-dir_a-0.3_nm-uni_nr-0.3/
+    result_dir = os.path.join(root_dir, dataset_name, model_name, short_tag)
     ensure_dir(result_dir)
 
-    file_stem = (
-        f"model={model_name}"
-        f"_dataset={dataset_name}"
-        f"_structure={safe_str(getattr(args, 'structure', 'NA'))}"
-        f"_bs={safe_str(getattr(args, 'local_batch_size', 'NA'))}"
-        f"_lr={safe_str(getattr(args, 'local_lr', 'NA'))}"
-        f"_dirAlpha={safe_str(getattr(args, 'dir_alpha', 'NA'))}"
-        f"_noiseRate={safe_str(getattr(args, 'noise_rate', 'NA'))}"
-        f"_noiseType={safe_str(getattr(args, 'noise_type', 'NA'))}"
-        f"_noiseMax={safe_str(getattr(args, 'noise_max', 'NA'))}"
-        f"_avg={safe_str(getattr(args, 'averaing', 'NA'))}"
-    )
-
-    # 仅当是 feddenoise 时，再额外加方法相关参数
-    if getattr(args, 'model', '') == 'feddenoise':
-        file_stem += (
-            f"_scoreAlpha={safe_str(getattr(args, 'alpha', 'NA'))}"
-            f"_drop={safe_str(getattr(args, 'drop_rate', 'NA'))}"
-            f"_denoise={safe_str(getattr(args, 'denoise_strategy', 'NA'))}"
-        )
-
-    # FedProx 额外参数
-    if getattr(args, 'model', '') == 'fedprox':
-        file_stem += f"_mu={safe_str(getattr(args, 'mu', 'NA'))}"
-
-    # FedRDN 额外参数
-    if getattr(args, 'model', '') == 'fedrdn':
-        file_stem += f"_rdnStd={safe_str(getattr(args, 'rdn_std', 'NA'))}"
-
-    # FedCDA 额外参数
-    if getattr(args, 'model', '') == 'fedcda':
-        file_stem += f"_hist={safe_str(getattr(args, 'cda_history_size', 'NA'))}"
-
-    # FedGLoSS 额外参数
-    if getattr(args, 'model', '') == 'fedgloss':
-        file_stem += f"_beta={safe_str(getattr(args, 'beta', 'NA'))}"
-
+    # 3. 文件名极致精简：仅包含模型、数据集和精确到秒的时间戳
+    file_stem = f"{model_name}_{dataset_name}"
     timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+    
     txt_path = os.path.join(result_dir, f"{file_stem}_{timestamp}.txt")
     log_path = os.path.join(result_dir, f"{file_stem}_{timestamp}.log")
 
