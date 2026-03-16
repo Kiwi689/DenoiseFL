@@ -108,14 +108,20 @@ def parse_args():
         help='Type of label noise'
     )
     parser.add_argument('--noise_max', type=float, default=0.30, help='Max noise rate for clients (used in heterogeneous mode)')
-    parser.add_argument('--alpha', type=float, default=0.5, help='Weight of local loss in denoise scoring')
     parser.add_argument('--drop_rate', type=float, default=0.15, help='Fixed ratio of samples to drop per batch')
+    parser.add_argument(
+        '--alpha',
+        type=float,
+        default=0.5,
+        help='Legacy FedDenoise argument, kept only for compatibility'
+    )
+
     parser.add_argument(
         '--denoise_strategy',
         type=str,
         default='least_sim',
-        choices=['most_sim', 'least_sim', 'random', 'median', 'mix'],
-        help='Strategy to select scoring models'
+        choices=['most_sim', 'least_sim', 'random', 'global'],
+        help='Strategy to select evaluator models for FedDenoise'
     )
 
     torch.set_num_threads(4)
