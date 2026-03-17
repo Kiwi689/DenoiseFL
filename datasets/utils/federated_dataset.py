@@ -226,7 +226,7 @@ def _inject_client_noise(y_train_np, net_dataidx_map, n_class, args):
                 # 通用 pairflip：label -> (label + 1) % n_class
                 y_train_noisy[idx] = (orig_label + 1) % n_class
 
-            else:
+            else: 
                 raise ValueError(f"Unsupported noise_type: {args.noise_type}")
 
     return y_train_noisy, noise_or_not, client_noise_rates

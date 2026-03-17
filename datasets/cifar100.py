@@ -40,13 +40,26 @@ class FedLeaCIFAR100(FederatedDataset):
     N_SAMPLES_PER_Class = None
     N_CLASS = 100
 
+    CIFAR100_MEAN = (0.5070751592371323, 0.48654887331495095, 0.4409178433670343)
+    CIFAR100_STD = (0.2673342858792401, 0.2564384629170883, 0.27615047132568404)
+
     Nor_TRANSFORM = transforms.Compose([
-        transforms.ToTensor()
+        transforms.ToTensor(),
+        transforms.Normalize(CIFAR100_MEAN, CIFAR100_STD)
     ])
 
     def get_data_loaders(self, train_transform=None):
-        train_transform = transforms.ToTensor()
-        test_transform = transforms.ToTensor()
+        train_transform = transforms.Compose([
+            transforms.RandomCrop(32, padding=4),
+            transforms.RandomHorizontalFlip(),
+            transforms.ToTensor(),
+            transforms.Normalize(self.CIFAR100_MEAN, self.CIFAR100_STD)
+        ])
+
+        test_transform = transforms.Compose([
+            transforms.ToTensor(),
+            transforms.Normalize(self.CIFAR100_MEAN, self.CIFAR100_STD)
+        ])
 
         train_dataset = MyCifar100(
             root=data_path(),
@@ -62,12 +75,20 @@ class FedLeaCIFAR100(FederatedDataset):
             transform=test_transform
         )
 
-        traindls, testdl, net_cls_counts = partition_label_skew_loaders(train_dataset, test_dataset, self)
+        traindls, testdl, net_cls_counts = partition_label_skew_loaders(
+            train_dataset, test_dataset, self
+        )
         return traindls, testdl, net_cls_counts
 
     @staticmethod
     def get_transform():
-        return transforms.Compose([transforms.ToTensor()])
+        return transforms.Compose([
+            transforms.ToTensor(),
+            transforms.Normalize(
+                FedLeaCIFAR100.CIFAR100_MEAN,
+                FedLeaCIFAR100.CIFAR100_STD
+            )
+        ])
 
     @staticmethod
     def get_backbone(parti_num, names_list, model_name=''):
@@ -81,13 +102,13 @@ class FedLeaCIFAR100(FederatedDataset):
     @staticmethod
     def get_normalization_transform():
         return transforms.Normalize(
-            (0.5070751592371323, 0.48654887331495095, 0.4409178433670343),
-            (0.2673342858792401, 0.2564384629170883, 0.27615047132568404)
+            FedLeaCIFAR100.CIFAR100_MEAN,
+            FedLeaCIFAR100.CIFAR100_STD
         )
 
     @staticmethod
     def get_denormalization_transform():
         return DeNormalize(
-            (0.5070751592371323, 0.48654887331495095, 0.4409178433670343),
-            (0.2673342858792401, 0.2564384629170883, 0.27615047132568404)
+            FedLeaCIFAR100.CIFAR100_MEAN,
+            FedLeaCIFAR100.CIFAR100_STD
         )
