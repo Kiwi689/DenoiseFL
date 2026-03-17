@@ -30,26 +30,34 @@ def build_result_dir_and_files(args: Namespace, model: FederatedModel):
     dataset_name = safe_str(args.dataset)
     model_name = safe_str(args.model if hasattr(args, 'model') else model.NAME)
 
-    # 1. 提取核心参数并使用你在 main.py 中的缩写习惯来控制长度
+    # 核心实验标签
     parti_mode = "dir" if getattr(args, 'partition_mode', '') == 'dirichlet' else "iid"
     noise_mode = "uni" if getattr(args, 'noise_mode', '') == 'uniform' else "het"
     dir_alpha = safe_str(getattr(args, 'dir_alpha', 'NA'))
     noise_rate = safe_str(getattr(args, 'noise_rate', getattr(args, 'noise_max', 'NA')))
-    
-    # 构建一个短标签，例如: pm-dir_a-0.3_nm-uni_nr-0.3
-    short_tag = f"pm-{parti_mode}_a-{dir_alpha}_nm-{noise_mode}_nr-{noise_rate}"
-    
-    # 2. 将短标签作为【子文件夹】来分类实验，而不是拼在文件名上
-    # 最终目录层级：results/fl_cifar10/fedavg/pm-dir_a-0.3_nm-uni_nr-0.3/
+    noise_type = safe_str(getattr(args, 'noise_type', 'NA'))
+    strategy = safe_str(getattr(args, 'denoise_strategy', 'NA'))
+    drop_rate = safe_str(getattr(args, 'drop_rate', 'NA'))
+
+    # 目录层级里也纳入关键方法参数，避免不同实验混到一起
+    short_tag = (
+        f"pm-{parti_mode}_a-{dir_alpha}"
+        f"_nm-{noise_mode}_nr-{noise_rate}"
+        f"_nt-{noise_type}"
+        f"_st-{strategy}"
+        f"_dr-{drop_rate}"
+    )
+
     result_dir = os.path.join(root_dir, dataset_name, model_name, short_tag)
     ensure_dir(result_dir)
 
-    # 3. 文件名极致精简：仅包含模型、数据集和精确到秒的时间戳
+    # 文件名继续保持简洁，但加入更细粒度时间戳和 pid，避免同秒撞车
     file_stem = f"{model_name}_{dataset_name}"
-    timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-    
-    txt_path = os.path.join(result_dir, f"{file_stem}_{timestamp}.txt")
-    log_path = os.path.join(result_dir, f"{file_stem}_{timestamp}.log")
+    timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S-%f")
+    pid = os.getpid()
+
+    txt_path = os.path.join(result_dir, f"{file_stem}_{timestamp}_pid{pid}.txt")
+    log_path = os.path.join(result_dir, f"{file_stem}_{timestamp}_pid{pid}.log")
 
     return result_dir, txt_path, log_path
 

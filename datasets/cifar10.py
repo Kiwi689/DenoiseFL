@@ -5,8 +5,6 @@ import torchvision.transforms as transforms
 from PIL import Image
 from torchvision.datasets import CIFAR10
 
-from backbone.SimpleCNN import SimpleCNN
-from backbone.SimpleCNNAlign import SimpleCNNAilgn
 from backbone.NoiseFLCNN import NoiseFLCNN
 from datasets.transforms.denormalization import DeNormalize
 from datasets.utils.federated_dataset import FederatedDataset, partition_label_skew_loaders
@@ -46,26 +44,41 @@ class FedLeaCIFAR10(FederatedDataset):
     N_SAMPLES_PER_Class = None
     N_CLASS = 10
 
-    torchvision_normalization = T.Normalize((0.4914, 0.4822, 0.4465),
-                                            (0.2470, 0.2435, 0.2615))
-    torchvision_denormalization = DeNormalize((0.4914, 0.4822, 0.4465),
-                                              (0.2470, 0.2435, 0.2615))
+    CIFAR10_MEAN = (0.4914, 0.4822, 0.4465)
+    CIFAR10_STD = (0.2470, 0.2435, 0.2615)
+
+    torchvision_normalization = T.Normalize(CIFAR10_MEAN, CIFAR10_STD)
+    torchvision_denormalization = DeNormalize(CIFAR10_MEAN, CIFAR10_STD)
 
     Nor_TRANSFORM = transforms.Compose([
-        transforms.ToTensor()
+        transforms.ToTensor(),
+        transforms.Normalize(CIFAR10_MEAN, CIFAR10_STD)
     ])
 
     CON_TRANSFORMS = transforms.Compose([
-        transforms.ToTensor()
+        transforms.ToTensor(),
+        transforms.Normalize(CIFAR10_MEAN, CIFAR10_STD)
     ])
 
     transform_train = transforms.Compose([
-        transforms.ToTensor()
+        transforms.RandomCrop(32, padding=4),
+        transforms.RandomHorizontalFlip(),
+        transforms.ToTensor(),
+        transforms.Normalize(CIFAR10_MEAN, CIFAR10_STD)
     ])
 
     def get_data_loaders(self, train_transform=None):
-        train_transform = transforms.ToTensor()
-        test_transform = transforms.ToTensor()
+        train_transform = transforms.Compose([
+            transforms.RandomCrop(32, padding=4),
+            transforms.RandomHorizontalFlip(),
+            transforms.ToTensor(),
+            transforms.Normalize(self.CIFAR10_MEAN, self.CIFAR10_STD)
+        ])
+
+        test_transform = transforms.Compose([
+            transforms.ToTensor(),
+            transforms.Normalize(self.CIFAR10_MEAN, self.CIFAR10_STD)
+        ])
 
         train_dataset = MyCIFAR10(
             root=data_path(),
@@ -86,7 +99,13 @@ class FedLeaCIFAR10(FederatedDataset):
 
     @staticmethod
     def get_transform():
-        return transforms.Compose([transforms.ToTensor()])
+        return transforms.Compose([
+            transforms.ToTensor(),
+            transforms.Normalize(
+                FedLeaCIFAR10.CIFAR10_MEAN,
+                FedLeaCIFAR10.CIFAR10_STD
+            )
+        ])
 
     @staticmethod
     def get_backbone(parti_num, names_list, model_name=''):
