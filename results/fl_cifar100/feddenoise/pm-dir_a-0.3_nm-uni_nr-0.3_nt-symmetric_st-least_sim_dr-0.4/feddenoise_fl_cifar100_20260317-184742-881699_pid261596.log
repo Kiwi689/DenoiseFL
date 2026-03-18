@@ -1,0 +1,38 @@
+====================================================================================================
+Training started at: 2026-03-17 18:47:42
+Result directory: results/fl_cifar100/feddenoise/pm-dir_a-0.3_nm-uni_nr-0.3_nt-symmetric_st-least_sim_dr-0.4
+Result txt file : results/fl_cifar100/feddenoise/pm-dir_a-0.3_nm-uni_nr-0.3_nt-symmetric_st-least_sim_dr-0.4/feddenoise_fl_cifar100_20260317-184742-881699_pid261596.txt
+Result log file : results/fl_cifar100/feddenoise/pm-dir_a-0.3_nm-uni_nr-0.3_nt-symmetric_st-least_sim_dr-0.4/feddenoise_fl_cifar100_20260317-184742-881699_pid261596.log
+----------------------------------------------------------------------------------------------------
+Model: feddenoise
+Dataset: fl_cifar100
+Structure: homogeneity
+Participants: 100
+Online ratio: 0.1
+Communication epochs: 100
+Local epoch: 10
+Local batch size: 60
+Local lr: 0.1
+Partition mode: dirichlet
+Dirichlet alpha: 0.3
+Noise mode: uniform
+Noise rate: 0.3
+Noise type: symmetric
+Noise max: 0.3
+Denoise score alpha: 0.5
+Drop rate: 0.4
+Denoise strategy: least_sim
+FedProx mu: 0.01
+FedRDN std: 0.01
+FedCDA history size: NA
+FedGLoSS beta: 0.01
+Averaging: weight
+Seed: 0
+====================================================================================================
+[Round 001/100] Acc=1.000 | Pure=70.081 | RoundTime=45.46s | TotalTime=45.47s | Method=feddenoise
+[Round 002/100] Acc=1.100 | Pure=70.089 | RoundTime=44.15s | TotalTime=89.61s | Method=feddenoise
+[Round 003/100] Acc=3.650 | Pure=70.078 | RoundTime=44.44s | TotalTime=134.05s | Method=feddenoise
+[Round 004/100] Acc=7.130 | Pure=70.033 | RoundTime=44.90s | TotalTime=178.95s | Method=feddenoise
+[Round 005/100] Acc=8.890 | Pure=70.167 | RoundTime=45.28s | TotalTime=224.23s | Method=feddenoise
+[Round 006/100] Acc=9.480 | Pure=70.030 | RoundTime=44.31s | TotalTime=268.54s | Method=feddenoise
+[Round 007/100] Acc=10.700 | Pure=70.063 | RoundTime=45.39s | TotalTime=313.94s | Method=feddenoise
