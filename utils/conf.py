@@ -1,5 +1,6 @@
 import random
 import torch
+import os
 import numpy as np
 
 def get_device(device_id) -> torch.device:
@@ -7,8 +8,9 @@ def get_device(device_id) -> torch.device:
 
 
 def data_path() -> str:
-    return '/data0/data_wk/' # 156,140
-    # return '/data/FL_data/' # 129
+    path = '/home/hdf/kiwi/data'
+    os.makedirs(path, exist_ok=True)
+    return path
 
 
 
