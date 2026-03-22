@@ -1,0 +1,139 @@
+====================================================================================================
+Training started at: 2026-03-22 05:12:27
+Result directory: results/fl_cifar100/feddenoise/pm-dir_a-0.5_nm-uni_nr-0.3_nt-symmetric_st-global_dr-0.15
+Result txt file : results/fl_cifar100/feddenoise/pm-dir_a-0.5_nm-uni_nr-0.3_nt-symmetric_st-global_dr-0.15/feddenoise_fl_cifar100_20260322-051227-255441_pid1595970.txt
+Result log file : results/fl_cifar100/feddenoise/pm-dir_a-0.5_nm-uni_nr-0.3_nt-symmetric_st-global_dr-0.15/feddenoise_fl_cifar100_20260322-051227-255441_pid1595970.log
+----------------------------------------------------------------------------------------------------
+Model: feddenoise
+Dataset: fl_cifar100
+Structure: homogeneity
+Participants: 100
+Online ratio: 0.1
+Communication epochs: 100
+Local epoch: 10
+Local batch size: 64
+Local lr: 0.1
+Partition mode: dirichlet
+Dirichlet alpha: 0.5
+Noise mode: uniform
+Noise rate: 0.3
+Noise type: symmetric
+Noise max: 0.3
+Denoise score alpha: 0.5
+Drop rate: 0.15
+Denoise strategy: global
+FedProx mu: 0.01
+FedRDN std: 0.01
+FedCDA history size: NA
+FedGLoSS beta: 0.01
+Averaging: weight
+Seed: 0
+====================================================================================================
+[Round 001/100] Acc=1.000 | Pure=70.004 | RoundTime=30.99s | TotalTime=30.99s | Method=feddenoise
+[Round 002/100] Acc=1.130 | Pure=69.998 | RoundTime=30.09s | TotalTime=61.08s | Method=feddenoise
+[Round 003/100] Acc=5.200 | Pure=70.015 | RoundTime=31.20s | TotalTime=92.29s | Method=feddenoise
+[Round 004/100] Acc=8.450 | Pure=70.005 | RoundTime=30.03s | TotalTime=122.32s | Method=feddenoise
+[Round 005/100] Acc=10.810 | Pure=69.988 | RoundTime=30.63s | TotalTime=152.95s | Method=feddenoise
+[Round 006/100] Acc=13.520 | Pure=70.006 | RoundTime=41.94s | TotalTime=194.89s | Method=feddenoise
+[Round 007/100] Acc=13.960 | Pure=70.005 | RoundTime=30.16s | TotalTime=225.05s | Method=feddenoise
+[Round 008/100] Acc=14.580 | Pure=69.999 | RoundTime=29.81s | TotalTime=254.86s | Method=feddenoise
+[Round 009/100] Acc=15.930 | Pure=70.012 | RoundTime=31.66s | TotalTime=286.52s | Method=feddenoise
+[Round 010/100] Acc=16.900 | Pure=70.005 | RoundTime=30.66s | TotalTime=317.18s | Method=feddenoise
+[Round 011/100] Acc=17.680 | Pure=76.943 | RoundTime=35.39s | TotalTime=352.57s | Method=feddenoise
+[Round 012/100] Acc=19.220 | Pure=77.090 | RoundTime=35.47s | TotalTime=388.04s | Method=feddenoise
+[Round 013/100] Acc=19.600 | Pure=76.803 | RoundTime=34.95s | TotalTime=422.99s | Method=feddenoise
+[Round 014/100] Acc=20.210 | Pure=77.140 | RoundTime=35.51s | TotalTime=458.50s | Method=feddenoise
+[Round 015/100] Acc=19.840 | Pure=77.343 | RoundTime=37.79s | TotalTime=496.29s | Method=feddenoise
+[Round 016/100] Acc=20.680 | Pure=76.792 | RoundTime=39.25s | TotalTime=535.54s | Method=feddenoise
+[Round 017/100] Acc=22.010 | Pure=76.879 | RoundTime=38.31s | TotalTime=573.85s | Method=feddenoise
+[Round 018/100] Acc=23.080 | Pure=77.233 | RoundTime=38.73s | TotalTime=612.58s | Method=feddenoise
+[Round 019/100] Acc=22.120 | Pure=76.960 | RoundTime=38.25s | TotalTime=650.82s | Method=feddenoise
+[Round 020/100] Acc=22.310 | Pure=76.992 | RoundTime=38.04s | TotalTime=688.87s | Method=feddenoise
+[Round 021/100] Acc=22.610 | Pure=78.039 | RoundTime=38.52s | TotalTime=727.39s | Method=feddenoise
+[Round 022/100] Acc=23.980 | Pure=77.536 | RoundTime=38.09s | TotalTime=765.47s | Method=feddenoise
+[Round 023/100] Acc=22.940 | Pure=78.074 | RoundTime=38.55s | TotalTime=804.02s | Method=feddenoise
+[Round 024/100] Acc=23.070 | Pure=78.180 | RoundTime=38.63s | TotalTime=842.65s | Method=feddenoise
+[Round 025/100] Acc=23.830 | Pure=78.133 | RoundTime=38.26s | TotalTime=880.91s | Method=feddenoise
+[Round 026/100] Acc=24.050 | Pure=77.737 | RoundTime=37.75s | TotalTime=918.67s | Method=feddenoise
+[Round 027/100] Acc=24.450 | Pure=77.956 | RoundTime=37.63s | TotalTime=956.30s | Method=feddenoise
+[Round 028/100] Acc=24.810 | Pure=77.435 | RoundTime=38.03s | TotalTime=994.33s | Method=feddenoise
+[Round 029/100] Acc=24.570 | Pure=77.573 | RoundTime=36.32s | TotalTime=1030.65s | Method=feddenoise
+[Round 030/100] Acc=24.810 | Pure=77.601 | RoundTime=35.96s | TotalTime=1066.61s | Method=feddenoise
+[Round 031/100] Acc=25.680 | Pure=78.013 | RoundTime=35.35s | TotalTime=1101.96s | Method=feddenoise
+[Round 032/100] Acc=26.150 | Pure=78.020 | RoundTime=36.08s | TotalTime=1138.03s | Method=feddenoise
+[Round 033/100] Acc=25.130 | Pure=77.765 | RoundTime=35.84s | TotalTime=1173.88s | Method=feddenoise
+[Round 034/100] Acc=26.630 | Pure=77.742 | RoundTime=35.20s | TotalTime=1209.08s | Method=feddenoise
+[Round 035/100] Acc=26.080 | Pure=78.123 | RoundTime=34.94s | TotalTime=1244.02s | Method=feddenoise
+[Round 036/100] Acc=26.660 | Pure=77.712 | RoundTime=35.65s | TotalTime=1279.67s | Method=feddenoise
+[Round 037/100] Acc=26.340 | Pure=77.824 | RoundTime=36.00s | TotalTime=1315.67s | Method=feddenoise
+[Round 038/100] Acc=26.940 | Pure=78.096 | RoundTime=35.02s | TotalTime=1350.68s | Method=feddenoise
+[Round 039/100] Acc=27.180 | Pure=77.689 | RoundTime=34.72s | TotalTime=1385.40s | Method=feddenoise
+[Round 040/100] Acc=27.070 | Pure=78.080 | RoundTime=35.94s | TotalTime=1421.34s | Method=feddenoise
+[Round 041/100] Acc=27.260 | Pure=78.382 | RoundTime=36.14s | TotalTime=1457.48s | Method=feddenoise
+[Round 042/100] Acc=27.270 | Pure=77.858 | RoundTime=35.16s | TotalTime=1492.64s | Method=feddenoise
+[Round 043/100] Acc=27.710 | Pure=77.975 | RoundTime=38.51s | TotalTime=1531.15s | Method=feddenoise
+[Round 044/100] Acc=27.870 | Pure=77.986 | RoundTime=38.31s | TotalTime=1569.46s | Method=feddenoise
+[Round 045/100] Acc=27.670 | Pure=78.346 | RoundTime=38.19s | TotalTime=1607.66s | Method=feddenoise
+[Round 046/100] Acc=28.150 | Pure=78.168 | RoundTime=38.10s | TotalTime=1645.75s | Method=feddenoise
+[Round 047/100] Acc=28.070 | Pure=78.039 | RoundTime=37.37s | TotalTime=1683.13s | Method=feddenoise
+[Round 048/100] Acc=28.280 | Pure=78.262 | RoundTime=39.09s | TotalTime=1722.21s | Method=feddenoise
+[Round 049/100] Acc=28.490 | Pure=78.216 | RoundTime=38.29s | TotalTime=1760.51s | Method=feddenoise
+[Round 050/100] Acc=28.190 | Pure=78.028 | RoundTime=38.69s | TotalTime=1799.19s | Method=feddenoise
+[Round 051/100] Acc=28.880 | Pure=78.347 | RoundTime=38.25s | TotalTime=1837.44s | Method=feddenoise
+[Round 052/100] Acc=28.560 | Pure=78.256 | RoundTime=38.68s | TotalTime=1876.12s | Method=feddenoise
+[Round 053/100] Acc=28.240 | Pure=78.172 | RoundTime=37.80s | TotalTime=1913.92s | Method=feddenoise
+[Round 054/100] Acc=27.970 | Pure=78.246 | RoundTime=38.14s | TotalTime=1952.06s | Method=feddenoise
+[Round 055/100] Acc=29.540 | Pure=78.323 | RoundTime=38.16s | TotalTime=1990.23s | Method=feddenoise
+[Round 056/100] Acc=29.080 | Pure=78.129 | RoundTime=38.25s | TotalTime=2028.47s | Method=feddenoise
+[Round 057/100] Acc=29.200 | Pure=78.291 | RoundTime=38.75s | TotalTime=2067.22s | Method=feddenoise
+[Round 058/100] Acc=29.130 | Pure=78.233 | RoundTime=38.45s | TotalTime=2105.67s | Method=feddenoise
+[Round 059/100] Acc=28.140 | Pure=78.158 | RoundTime=38.64s | TotalTime=2144.30s | Method=feddenoise
+[Round 060/100] Acc=28.680 | Pure=78.276 | RoundTime=38.38s | TotalTime=2182.69s | Method=feddenoise
+[Round 061/100] Acc=29.600 | Pure=78.012 | RoundTime=38.57s | TotalTime=2221.26s | Method=feddenoise
+[Round 062/100] Acc=29.740 | Pure=77.959 | RoundTime=38.16s | TotalTime=2259.42s | Method=feddenoise
+[Round 063/100] Acc=29.270 | Pure=78.201 | RoundTime=38.78s | TotalTime=2298.20s | Method=feddenoise
+[Round 064/100] Acc=29.410 | Pure=78.360 | RoundTime=38.27s | TotalTime=2336.47s | Method=feddenoise
+[Round 065/100] Acc=29.390 | Pure=78.402 | RoundTime=38.96s | TotalTime=2375.44s | Method=feddenoise
+[Round 066/100] Acc=29.870 | Pure=78.190 | RoundTime=38.77s | TotalTime=2414.21s | Method=feddenoise
+[Round 067/100] Acc=30.520 | Pure=77.839 | RoundTime=38.63s | TotalTime=2452.84s | Method=feddenoise
+[Round 068/100] Acc=29.520 | Pure=78.307 | RoundTime=38.41s | TotalTime=2491.25s | Method=feddenoise
+[Round 069/100] Acc=30.610 | Pure=78.195 | RoundTime=38.04s | TotalTime=2529.29s | Method=feddenoise
+[Round 070/100] Acc=30.680 | Pure=77.888 | RoundTime=38.37s | TotalTime=2567.66s | Method=feddenoise
+[Round 071/100] Acc=29.830 | Pure=78.370 | RoundTime=38.15s | TotalTime=2605.81s | Method=feddenoise
+[Round 072/100] Acc=29.790 | Pure=78.314 | RoundTime=37.99s | TotalTime=2643.80s | Method=feddenoise
+[Round 073/100] Acc=30.450 | Pure=78.304 | RoundTime=38.19s | TotalTime=2681.99s | Method=feddenoise
+[Round 074/100] Acc=31.220 | Pure=78.390 | RoundTime=38.50s | TotalTime=2720.49s | Method=feddenoise
+[Round 075/100] Acc=29.470 | Pure=78.228 | RoundTime=38.14s | TotalTime=2758.63s | Method=feddenoise
+[Round 076/100] Acc=29.960 | Pure=78.056 | RoundTime=37.90s | TotalTime=2796.54s | Method=feddenoise
+[Round 077/100] Acc=30.340 | Pure=78.189 | RoundTime=38.33s | TotalTime=2834.86s | Method=feddenoise
+[Round 078/100] Acc=30.050 | Pure=78.508 | RoundTime=38.62s | TotalTime=2873.49s | Method=feddenoise
+[Round 079/100] Acc=30.270 | Pure=78.099 | RoundTime=38.72s | TotalTime=2912.21s | Method=feddenoise
+[Round 080/100] Acc=30.870 | Pure=78.126 | RoundTime=37.83s | TotalTime=2950.04s | Method=feddenoise
+[Round 081/100] Acc=30.730 | Pure=78.017 | RoundTime=38.43s | TotalTime=2988.47s | Method=feddenoise
+[Round 082/100] Acc=31.050 | Pure=78.457 | RoundTime=37.86s | TotalTime=3026.33s | Method=feddenoise
+[Round 083/100] Acc=30.580 | Pure=78.288 | RoundTime=37.79s | TotalTime=3064.12s | Method=feddenoise
+[Round 084/100] Acc=31.180 | Pure=78.238 | RoundTime=38.50s | TotalTime=3102.62s | Method=feddenoise
+[Round 085/100] Acc=31.420 | Pure=78.492 | RoundTime=38.44s | TotalTime=3141.06s | Method=feddenoise
+[Round 086/100] Acc=31.640 | Pure=78.122 | RoundTime=38.37s | TotalTime=3179.43s | Method=feddenoise
+[Round 087/100] Acc=30.620 | Pure=78.153 | RoundTime=38.45s | TotalTime=3217.89s | Method=feddenoise
+[Round 088/100] Acc=30.680 | Pure=78.009 | RoundTime=38.34s | TotalTime=3256.23s | Method=feddenoise
+[Round 089/100] Acc=31.390 | Pure=78.074 | RoundTime=37.49s | TotalTime=3293.72s | Method=feddenoise
+[Round 090/100] Acc=31.010 | Pure=78.210 | RoundTime=39.20s | TotalTime=3332.92s | Method=feddenoise
+[Round 091/100] Acc=31.400 | Pure=78.172 | RoundTime=38.43s | TotalTime=3371.35s | Method=feddenoise
+[Round 092/100] Acc=31.520 | Pure=78.034 | RoundTime=38.75s | TotalTime=3410.10s | Method=feddenoise
+[Round 093/100] Acc=32.560 | Pure=78.489 | RoundTime=38.58s | TotalTime=3448.68s | Method=feddenoise
+[Round 094/100] Acc=31.150 | Pure=78.186 | RoundTime=38.52s | TotalTime=3487.20s | Method=feddenoise
+[Round 095/100] Acc=32.360 | Pure=78.294 | RoundTime=37.85s | TotalTime=3525.05s | Method=feddenoise
+[Round 096/100] Acc=32.340 | Pure=78.352 | RoundTime=35.06s | TotalTime=3560.12s | Method=feddenoise
+[Round 097/100] Acc=32.150 | Pure=78.471 | RoundTime=32.32s | TotalTime=3592.44s | Method=feddenoise
+[Round 098/100] Acc=32.160 | Pure=78.093 | RoundTime=32.17s | TotalTime=3624.61s | Method=feddenoise
+[Round 099/100] Acc=32.500 | Pure=78.270 | RoundTime=31.88s | TotalTime=3656.49s | Method=feddenoise
+[Round 100/100] Acc=30.940 | Pure=78.328 | RoundTime=32.29s | TotalTime=3688.77s | Method=feddenoise
+====================================================================================================
+Training finished at: 2026-03-22 06:13:56
+Total elapsed time: 3688.77s
+Final Acc: 30.940
+Best Acc : 32.560
+Final Pure: 78.328
+Best Pure : 78.508
+====================================================================================================

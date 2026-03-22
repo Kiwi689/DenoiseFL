@@ -1,0 +1,17 @@
+feddenoise_100_fl_svhn_pm-dirichlet_alpha-0.1_nm-uniform_nr-0.3_0.1_100_10
+Traceback (most recent call last):
+  File "/home/hdf/kiwi/DenoiseFL/main.py", line 228, in <module>
+    main()
+  File "/home/hdf/kiwi/DenoiseFL/main.py", line 224, in main
+    train(model, priv_dataset, args)
+  File "/home/hdf/kiwi/DenoiseFL/utils/training.py", line 120, in train
+    pri_train_loaders, test_loaders, net_cls_counts = private_dataset.get_data_loaders()
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hdf/kiwi/DenoiseFL/datasets/svhn.py", line 73, in get_data_loaders
+    train_dataset = MySVHN(
+                    ^^^^^^^
+  File "/home/hdf/kiwi/DenoiseFL/datasets/svhn.py", line 23, in __init__
+    super(MySVHN, self).__init__(
+  File "/home/hdf/miniconda3/lib/python3.12/site-packages/torchvision/datasets/svhn.py", line 76, in __init__
+    import scipy.io as sio
+ModuleNotFoundError: No module named 'scipy'
