@@ -1,0 +1,43 @@
+====================================================================================================
+Training started at: 2026-03-31 10:17:17
+Result directory: results/fl_cifar10/fedcda/pm-dir_a-0.5_nm-uni_nr-0.2_nt-symmetric_st-least_sim_dr-0.45
+Result txt file : results/fl_cifar10/fedcda/pm-dir_a-0.5_nm-uni_nr-0.2_nt-symmetric_st-least_sim_dr-0.45/fedcda_fl_cifar10_20260331-101717-952064_pid697435.txt
+Result log file : results/fl_cifar10/fedcda/pm-dir_a-0.5_nm-uni_nr-0.2_nt-symmetric_st-least_sim_dr-0.45/fedcda_fl_cifar10_20260331-101717-952064_pid697435.log
+----------------------------------------------------------------------------------------------------
+Model: fedcda
+Dataset: fl_cifar10
+Structure: homogeneity
+Participants: 100
+Online ratio: 0.1
+Communication epochs: 100
+Local epoch: 10
+Local batch size: 40
+Local lr: 0.01
+Partition mode: dirichlet
+Dirichlet alpha: 0.5
+Noise mode: uniform
+Noise rate: 0.2
+Noise type: symmetric
+Noise max: 0.3
+Denoise score alpha: 0.5
+Drop rate: 0.45
+Denoise strategy: least_sim
+FedProx mu: 0.01
+FedRDN std: 0.01
+FedCDA history size: NA
+FedGLoSS beta: 0.01
+Averaging: weight
+Seed: 0
+====================================================================================================
+[Round 001/100] Acc=10.000 | RoundTime=27.01s | TotalTime=27.01s | Method=fedcda
+[Round 002/100] Acc=13.230 | RoundTime=25.39s | TotalTime=52.40s | Method=fedcda
+[Round 003/100] Acc=19.630 | RoundTime=26.07s | TotalTime=78.47s | Method=fedcda
+[Round 004/100] Acc=37.170 | RoundTime=25.95s | TotalTime=104.43s | Method=fedcda
+[Round 005/100] Acc=39.570 | RoundTime=26.77s | TotalTime=131.20s | Method=fedcda
+[Round 006/100] Acc=36.070 | RoundTime=26.11s | TotalTime=157.32s | Method=fedcda
+[Round 007/100] Acc=31.960 | RoundTime=26.54s | TotalTime=183.86s | Method=fedcda
+[Round 008/100] Acc=41.220 | RoundTime=26.25s | TotalTime=210.11s | Method=fedcda
+[Round 009/100] Acc=43.080 | RoundTime=26.18s | TotalTime=236.29s | Method=fedcda
+[Round 010/100] Acc=45.380 | RoundTime=26.97s | TotalTime=263.26s | Method=fedcda
+[Round 011/100] Acc=44.950 | RoundTime=28.12s | TotalTime=291.38s | Method=fedcda
+[Round 012/100] Acc=40.330 | RoundTime=27.37s | TotalTime=318.75s | Method=fedcda
