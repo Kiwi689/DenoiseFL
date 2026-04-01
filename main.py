@@ -124,6 +124,29 @@ def parse_args():
         help='Strategy to select evaluator models for FedDenoise'
     )
 
+    # -----------------------------
+    # FedDenoise V2 参数
+    # -----------------------------
+    parser.add_argument(
+        '--refresh_gap',
+        type=int,
+        default=10,
+        help='Rounds between evaluator refreshes'
+    )
+    parser.add_argument(
+        '--evaluator_schedule',
+        type=str,
+        default='8,6,4,2',
+        help='Comma-separated evaluator counts per refresh stage, e.g. 8,6,4,2 or 8,6,5,3'
+    )
+    parser.add_argument(
+        '--score_agg',
+        type=str,
+        default='weighted_mean',
+        choices=['weighted_mean', 'mean'],
+        help='How to aggregate per-evaluator per-sample losses'
+    )
+
     torch.set_num_threads(4)
     add_management_args(parser)
     args = parser.parse_args()
