@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export CUDA_VISIBLE_DEVICES=2
+export CUDA_VISIBLE_DEVICES=7
 mkdir -p logs/feddenoise_v2/mnist
 
 MAX_JOBS=2

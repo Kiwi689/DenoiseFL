@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export CUDA_VISIBLE_DEVICES=5
+export CUDA_VISIBLE_DEVICES=3
 mkdir -p logs/feddenoise_v2/cifar10_noise_scan
 
 MAX_JOBS=3

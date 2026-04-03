@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export CUDA_VISIBLE_DEVICES=1
+export CUDA_VISIBLE_DEVICES=6
 mkdir -p logs/feddenoise_v2/cifar100
 
 MAX_JOBS=2
