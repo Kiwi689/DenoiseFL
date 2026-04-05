@@ -46,7 +46,7 @@ submit_job () {
 
 echo "===== GPU5 CIFAR10 NOISE-SCAN START $(date) ====="
 
-for nr in 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45 0.5; do
+for nr in 0.1; do
   dr=$(python -c "nr=float('${nr}'); print(f'{nr + 0.05:.2f}'.rstrip('0').rstrip('.'))")
   submit_job \
     fl_cifar10 \
