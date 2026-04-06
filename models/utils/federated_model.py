@@ -12,11 +12,9 @@ import os
 
 class FederatedModel(nn.Module):
     """
-    Federated learning model.
+    Federated learning base model.
     """
     NAME = None
-
-    # N_CLASS = 10  # 这里是记录数据集中的类别数量，在training中的train函数开始时会根据具体的dataset的N_Class来设置的
 
     def __init__(self, nets_list: list,
                  args: Namespace, transform: torchvision.transforms) -> None:
@@ -25,8 +23,8 @@ class FederatedModel(nn.Module):
         self.args = args
         self.transform = transform
 
-        # For Online
-        self.random_state = np.random.RandomState()
+        # online clients
+        self.random_state = np.random.RandomState(self.args.seed)
         self.online_num = np.ceil(self.args.parti_num * self.args.online_ratio).item()
         self.online_num = int(self.online_num)
 
@@ -40,12 +38,15 @@ class FederatedModel(nn.Module):
         self.testlodaers = None
         self.net_cls_counts = None
 
-        self.epoch_index = 0  # Save the Communication Index
+        self.epoch_index = 0  # communication round index
 
         self.checkpoint_path = checkpoint_path() + self.args.dataset + '/' + self.args.structure + '/'
         create_if_not_exists(self.checkpoint_path)
         self.net_to_device()
 
+    # =========================================================
+    # basic utilities
+    # =========================================================
     def net_to_device(self):
         for net in self.nets_list:
             net.to(self.device)
@@ -65,6 +66,138 @@ class FederatedModel(nn.Module):
     def loc_update(self, priloader_list):
         pass
 
+    # =========================================================
+    # model state key helpers
+    # =========================================================
+    def _reference_state_dict(self):
+        if self.global_net is not None:
+            return self.global_net.state_dict()
+        return self.nets_list[0].state_dict()
+
+    def _is_head_key(self, key: str) -> bool:
+        """
+        Heuristic classifier-head key matcher.
+        Current main experiments are based on NoiseFLCNN, whose head is mainly:
+        - l_c1.*
+        - bn_c1.*
+        Also keep a few common prefixes for compatibility.
+        """
+        head_prefixes = (
+            'l_c1',
+            'bn_c1',
+            'fc',
+            'classifier',
+            'linear',
+            'head'
+        )
+        return key.startswith(head_prefixes)
+
+    def get_all_state_keys(self):
+        return list(self._reference_state_dict().keys())
+
+    def get_head_keys(self):
+        return [k for k in self.get_all_state_keys() if self._is_head_key(k)]
+
+    def get_backbone_keys(self):
+        return [k for k in self.get_all_state_keys() if not self._is_head_key(k)]
+
+    # =========================================================
+    # dataloader / aggregation helpers
+    # =========================================================
+    def _get_loader_len(self, dl):
+        if hasattr(dl, 'sampler') and hasattr(dl.sampler, 'indices'):
+            return len(dl.sampler.indices)
+        if hasattr(dl, 'dataset'):
+            return len(dl.dataset)
+        return 0
+
+    def _get_online_client_freq(self, online_clients):
+        if len(online_clients) == 0:
+            raise RuntimeError('online_clients is empty.')
+
+        if self.args.averaing == 'weight':
+            if self.trainloaders is None:
+                return [1.0 / len(online_clients) for _ in online_clients]
+
+            online_clients_dl = [self.trainloaders[idx] for idx in online_clients]
+            online_clients_len = [self._get_loader_len(dl) for dl in online_clients_dl]
+            total_len = float(np.sum(online_clients_len))
+
+            if total_len > 0:
+                return [float(x / total_len) for x in online_clients_len]
+            else:
+                return [1.0 / len(online_clients) for _ in online_clients]
+        else:
+            return [1.0 / len(online_clients) for _ in online_clients]
+
+    # =========================================================
+    # selective aggregation / broadcast
+    # =========================================================
+    def aggregate_nets_by_keys(self, keys, freq=None):
+        """
+        Aggregate only the specified state_dict keys from online clients into global_net.
+        Does NOT broadcast automatically.
+        """
+        if self.global_net is None:
+            raise RuntimeError('global_net is None. Please call ini() before aggregation.')
+
+        online_clients = self.online_clients
+        if len(online_clients) == 0:
+            raise RuntimeError('No online clients available for aggregation.')
+
+        if freq is None:
+            freq = self._get_online_client_freq(online_clients)
+
+        global_w = self.global_net.state_dict()
+
+        for key in keys:
+            ref_tensor = self.nets_list[online_clients[0]].state_dict()[key]
+
+            if torch.is_floating_point(ref_tensor):
+                agg_tensor = None
+                for idx, client_id in enumerate(online_clients):
+                    local_tensor = self.nets_list[client_id].state_dict()[key].detach().clone()
+                    weighted_tensor = local_tensor * freq[idx]
+                    if agg_tensor is None:
+                        agg_tensor = weighted_tensor
+                    else:
+                        agg_tensor += weighted_tensor
+                global_w[key] = agg_tensor
+            else:
+                # For integer buffers such as num_batches_tracked, just copy from the first client.
+                global_w[key] = ref_tensor.detach().clone()
+
+        self.global_net.load_state_dict(global_w)
+
+    def broadcast_global_by_keys(self, keys):
+        """
+        Broadcast only the specified keys from global_net to all local client models.
+        """
+        if self.global_net is None:
+            raise RuntimeError('global_net is None. Please call ini() before broadcast.')
+
+        global_w = self.global_net.state_dict()
+        for net in self.nets_list:
+            local_w = net.state_dict()
+            for key in keys:
+                local_w[key] = global_w[key].detach().clone()
+            net.load_state_dict(local_w)
+
+    # =========================================================
+    # default full-model aggregation
+    # =========================================================
+    def aggregate_nets(self, freq=None):
+        """
+        Default behavior: aggregate the full model, then broadcast the full model.
+        This keeps backward compatibility for existing methods like FedAvg / old FedDenoise.
+        """
+        all_keys = self.get_all_state_keys()
+        self.aggregate_nets_by_keys(all_keys, freq=freq)
+        self.broadcast_global_by_keys(all_keys)
+
+    # =========================================================
+    # optional pretrained helpers
+    # =========================================================
     def load_pretrained_nets(self):
         if self.load:
             for j in range(self.args.parti_num):
@@ -81,38 +214,3 @@ class FederatedModel(nn.Module):
             net_para = net.state_dict()
             prev_net = prev_nets_list[net_id]
             prev_net.load_state_dict(net_para)
-
-    def aggregate_nets(self, freq=None):
-        global_net = self.global_net
-        nets_list = self.nets_list
-
-        online_clients = self.online_clients
-        global_w = self.global_net.state_dict()
-
-        if self.args.averaing == 'weight':
-            online_clients_dl = [self.trainloaders[online_clients_index] for online_clients_index in online_clients]
-            online_clients_len = [len(dl.sampler.indices) for dl in online_clients_dl]
-            online_clients_all = np.sum(online_clients_len)
-            freq = online_clients_len / online_clients_all
-        else:
-            # if freq == None:
-            parti_num = len(online_clients)
-            freq = [1 / parti_num for _ in range(parti_num)]
-
-        first = True
-        for index, net_id in enumerate(online_clients):
-            net = nets_list[net_id]
-            net_para = net.state_dict()
-            # if net_id == 0:
-            if first:
-                first = False
-                for key in net_para:
-                    global_w[key] = net_para[key] * freq[index]
-            else:
-                for key in net_para:
-                    global_w[key] += net_para[key] * freq[index]
-
-        global_net.load_state_dict(global_w)
-
-        for _, net in enumerate(nets_list):
-            net.load_state_dict(global_net.state_dict())

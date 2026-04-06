@@ -1,0 +1,54 @@
+========================================================================================================================
+Training started at: 2026-04-06 18:42:35
+Result directory: results/fl_cifar10/feddenoise_v3/pm-dir_a-0.3_nm-uni_nr-0.3_nt-symmetric_st-least_sim_dr-0.15_wr-2_sr-2_ts-2,1_tss-least_sim_tsim-backbone_cosine_wm-backbone_only_drs-None
+Result txt file : results/fl_cifar10/feddenoise_v3/pm-dir_a-0.3_nm-uni_nr-0.3_nt-symmetric_st-least_sim_dr-0.15_wr-2_sr-2_ts-2,1_tss-least_sim_tsim-backbone_cosine_wm-backbone_only_drs-None/feddenoise_v3_fl_cifar10_20260406-184235-722990_pid2440947.txt
+Result log file : results/fl_cifar10/feddenoise_v3/pm-dir_a-0.3_nm-uni_nr-0.3_nt-symmetric_st-least_sim_dr-0.15_wr-2_sr-2_ts-2,1_tss-least_sim_tsim-backbone_cosine_wm-backbone_only_drs-None/feddenoise_v3_fl_cifar10_20260406-184235-722990_pid2440947.log
+------------------------------------------------------------------------------------------------------------------------
+Model: feddenoise_v3
+Dataset: fl_cifar10
+Structure: homogeneity
+Participants: 10
+Online ratio: 1.0
+Communication epochs: 6
+Local epoch: 1
+Local batch size: 64
+Local lr: 0.01
+Partition mode: dirichlet
+Dirichlet alpha: 0.3
+Noise mode: uniform
+Noise rate: 0.3
+Noise type: symmetric
+Noise max: 0.3
+Denoise score alpha: 0.5
+Drop rate: 0.15
+Drop rate schedule: None
+Denoise strategy: least_sim
+FedProx mu: 0.01
+FedRDN std: 0.01
+FedCDA history size: NA
+FedGLoSS beta: 0.01
+Warmup round: 2
+Stage round: 2
+Teacher schedule: 2,1
+Teacher select strategy: least_sim
+Teacher similarity: backbone_cosine
+Teacher score mode: teacher_mean
+Warmup mode: backbone_only
+Exclude self teacher: True
+Averaging: weight
+Seed: 0
+========================================================================================================================
+[Round 001/006] Phase=warmup | Stage=-1 | Acc=10.000 | RoundTime=13.44s | TotalTime=13.45s | Method=feddenoise_v3
+[Round 002/006] Phase=warmup | Stage=-1 | Acc=15.850 | RoundTime=25.95s | TotalTime=39.41s | Method=feddenoise_v3
+[Round 003/006] Phase=stage_1 | Stage=0 | Acc=26.660 | Pure=72.106 | CPrec=72.106 | CRec=87.557 | NPrec=41.933 | NRec=20.967 | Keep=85.000 | TSim=0.927 | RoundTime=13.22s | TotalTime=52.65s | Method=feddenoise_v3
+[Round 004/006] Phase=stage_1 | Stage=0 | Acc=31.140 | Pure=72.106 | CPrec=72.106 | CRec=87.557 | NPrec=41.933 | NRec=20.967 | Keep=85.000 | TSim=0.927 | RoundTime=25.08s | TotalTime=77.73s | Method=feddenoise_v3
+[Round 005/006] Phase=stage_2 | Stage=1 | Acc=33.520 | Pure=70.984 | CPrec=70.984 | CRec=86.194 | NPrec=35.573 | NRec=17.787 | Keep=85.000 | TSim=0.953 | RoundTime=14.03s | TotalTime=91.77s | Method=feddenoise_v3
+[Round 006/006] Phase=stage_2 | Stage=1 | Acc=33.470 | Pure=70.984 | CPrec=70.984 | CRec=86.194 | NPrec=35.573 | NRec=17.787 | Keep=85.000 | TSim=0.953 | RoundTime=14.38s | TotalTime=106.16s | Method=feddenoise_v3
+========================================================================================================================
+Training finished at: 2026-04-06 18:44:22
+Total elapsed time: 106.17s
+Final Acc: 33.470
+Best Acc : 33.520
+Final Pure: 70.984
+Best Pure : 72.106
+========================================================================================================================

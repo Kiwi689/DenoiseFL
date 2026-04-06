@@ -5,9 +5,9 @@ from PIL import Image
 from torchvision.datasets import SVHN
 
 from backbone.NoiseFLCNN import NoiseFLCNN
-from backbone.SimpleCNN import SimpleCNN
 from datasets.utils.federated_dataset import FederatedDataset, partition_label_skew_loaders
 from utils.conf import data_path
+from datasets.transforms.denormalization import DeNormalize
 
 
 class MySVHN(SVHN):
@@ -62,13 +62,24 @@ class FedLeaSVHN(FederatedDataset):
     N_SAMPLES_PER_Class = None
     N_CLASS = 10
 
+    SVHN_MEAN = (0.4377, 0.4438, 0.4728)
+    SVHN_STD = (0.1980, 0.2010, 0.1970)
+
     Nor_TRANSFORM = transforms.Compose([
-        transforms.ToTensor()
+        transforms.ToTensor(),
+        transforms.Normalize(SVHN_MEAN, SVHN_STD)
     ])
 
     def get_data_loaders(self, train_transform=None):
-        train_transform = transforms.ToTensor()
-        test_transform = transforms.ToTensor()
+        train_transform = transforms.Compose([
+            transforms.ToTensor(),
+            transforms.Normalize(self.SVHN_MEAN, self.SVHN_STD)
+        ])
+
+        test_transform = transforms.Compose([
+            transforms.ToTensor(),
+            transforms.Normalize(self.SVHN_MEAN, self.SVHN_STD)
+        ])
 
         train_dataset = MySVHN(
             root=data_path(),
@@ -91,7 +102,10 @@ class FedLeaSVHN(FederatedDataset):
 
     @staticmethod
     def get_transform():
-        return transforms.Compose([transforms.ToTensor()])
+        return transforms.Compose([
+            transforms.ToTensor(),
+            transforms.Normalize(FedLeaSVHN.SVHN_MEAN, FedLeaSVHN.SVHN_STD)
+        ])
 
     @staticmethod
     def get_backbone(parti_num, names_list, model_name=''):
@@ -105,10 +119,13 @@ class FedLeaSVHN(FederatedDataset):
     @staticmethod
     def get_normalization_transform():
         return transforms.Normalize(
-            (0.4377, 0.4438, 0.4728),
-            (0.1980, 0.2010, 0.1970)
+            FedLeaSVHN.SVHN_MEAN,
+            FedLeaSVHN.SVHN_STD
         )
 
     @staticmethod
     def get_denormalization_transform():
-        return transforms.Compose([])
+        return DeNormalize(
+            FedLeaSVHN.SVHN_MEAN,
+            FedLeaSVHN.SVHN_STD
+        )
