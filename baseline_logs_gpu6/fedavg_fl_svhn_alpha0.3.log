@@ -1,0 +1,46 @@
+[Launch] model=fedavg | dataset=fl_svhn | clients=10 | rounds=210 | local_epoch=1 | batch_size=64 | noise_mode=uniform | noise_value=0.3
+Using downloaded and verified file: /mnt/workspace/shiyl/CodeScout/test/kiwi/DenoiseFL/data/train_32x32.mat
+Using downloaded and verified file: /mnt/workspace/shiyl/CodeScout/test/kiwi/DenoiseFL/data/test_32x32.mat
+mean: 7325.7
+std: 0.45825756949558405
+Data statistics: {0: {0: 298, 1: 2000, 2: 1049, 3: 664, 4: 2063, 5: 245, 6: 271, 7: 248, 8: 227, 9: 261}, 1: {0: 243, 1: 247, 2: 381, 3: 3135, 4: 243, 5: 1023, 6: 396, 7: 776, 8: 637, 9: 245}, 2: {0: 246, 1: 235, 2: 239, 3: 276, 4: 242, 5: 3462, 6: 247, 7: 287, 8: 1843, 9: 249}, 3: {0: 256, 1: 664, 2: 246, 3: 244, 4: 300, 5: 510, 6: 631, 7: 348, 8: 813, 9: 3314}, 4: {0: 3069, 1: 256, 2: 873, 3: 1697, 4: 241, 5: 230, 6: 250, 7: 212, 8: 242, 9: 256}, 5: {0: 230, 1: 516, 2: 314, 3: 254, 4: 2646, 5: 277, 6: 2340, 7: 240, 8: 252, 9: 257}, 6: {0: 254, 1: 2745, 2: 266, 3: 695, 4: 531, 5: 252, 6: 592, 7: 618, 8: 1153, 9: 220}, 7: {0: 248, 1: 4458, 2: 884, 3: 247, 4: 243, 5: 256, 6: 228, 7: 259, 8: 267, 9: 235}, 8: {0: 656, 1: 222, 2: 2744, 3: 219, 4: 604, 5: 260, 6: 1078, 7: 1035, 8: 237, 9: 270}, 9: {0: 231, 1: 299, 2: 2513, 3: 641, 4: 265, 5: 545, 6: 218, 7: 2106, 8: 267, 9: 240}}
+========================================================================================================================
+Training started at: 2026-04-07 01:46:23
+Result directory: results/fl_svhn/fedavg/pm-dir_a-0.3_nm-uni_nr-0.3_nt-symmetric
+Result txt file : results/fl_svhn/fedavg/pm-dir_a-0.3_nm-uni_nr-0.3_nt-symmetric/fedavg_fl_svhn_20260407-014623-395424_pid3609404.txt
+Result log file : results/fl_svhn/fedavg/pm-dir_a-0.3_nm-uni_nr-0.3_nt-symmetric/fedavg_fl_svhn_20260407-014623-395424_pid3609404.log
+------------------------------------------------------------------------------------------------------------------------
+Model: fedavg
+Dataset: fl_svhn
+Structure: homogeneity
+Participants: 10
+Online ratio: 1.0
+Communication epochs: 210
+Local epoch: 1
+Local batch size: 64
+Local lr: 0.01
+Partition mode: dirichlet
+Dirichlet alpha: 0.3
+Noise mode: uniform
+Noise rate: 0.3
+Noise type: symmetric
+Noise max: 0.3
+Averaging: weight
+Seed: 0
+========================================================================================================================
+[Round 001/210] Phase=standard | Stage=warmup | Acc=17.450 | RoundTime=47.48s | TotalTime=47.48s | Method=fedavg
+[Round 002/210] Phase=standard | Stage=warmup | Acc=39.220 | RoundTime=45.96s | TotalTime=93.45s | Method=fedavg
+[Round 003/210] Phase=standard | Stage=warmup | Acc=65.610 | RoundTime=45.93s | TotalTime=139.39s | Method=fedavg
+[Round 004/210] Phase=standard | Stage=warmup | Acc=73.670 | RoundTime=46.69s | TotalTime=186.09s | Method=fedavg
+[Round 005/210] Phase=standard | Stage=warmup | Acc=77.790 | RoundTime=45.95s | TotalTime=232.04s | Method=fedavg
+[Round 006/210] Phase=standard | Stage=warmup | Acc=78.990 | RoundTime=47.66s | TotalTime=279.71s | Method=fedavg
+[Round 007/210] Phase=standard | Stage=warmup | Acc=81.000 | RoundTime=46.78s | TotalTime=326.50s | Method=fedavg
+[Round 008/210] Phase=standard | Stage=warmup | Acc=82.100 | RoundTime=46.25s | TotalTime=372.75s | Method=fedavg
+[Round 009/210] Phase=standard | Stage=warmup | Acc=82.200 | RoundTime=46.15s | TotalTime=418.91s | Method=fedavg
+[Round 010/210] Phase=standard | Stage=warmup | Acc=82.710 | RoundTime=46.37s | TotalTime=465.29s | Method=fedavg
+[Round 011/210] Phase=standard | Stage=warmup | Acc=83.600 | RoundTime=45.41s | TotalTime=510.71s | Method=fedavg
+[Round 012/210] Phase=standard | Stage=warmup | Acc=83.890 | RoundTime=46.42s | TotalTime=557.14s | Method=fedavg
+[Round 013/210] Phase=standard | Stage=warmup | Acc=84.440 | RoundTime=46.47s | TotalTime=603.62s | Method=fedavg
+[Round 014/210] Phase=standard | Stage=warmup | Acc=84.910 | RoundTime=45.64s | TotalTime=649.26s | Method=fedavg
+[Round 015/210] Phase=standard | Stage=warmup | Acc=85.130 | RoundTime=46.15s | TotalTime=695.42s | Method=fedavg
+已终止

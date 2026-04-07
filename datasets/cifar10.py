@@ -83,14 +83,14 @@ class FedLeaCIFAR10(FederatedDataset):
         train_dataset = MyCIFAR10(
             root=data_path(),
             train=True,
-            download=False,
+            download=True,
             transform=train_transform
         )
 
         test_dataset = MyCIFAR10(
             root=data_path(),
             train=False,
-            download=False,
+            download=True,
             transform=test_transform
         )
 

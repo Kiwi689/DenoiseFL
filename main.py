@@ -29,7 +29,7 @@ def parse_args():
     parser = ArgumentParser(description='Federated Learning with Label Skew', allow_abbrev=False)
 
     parser.add_argument('--device_id', type=int, default=0, help='The Device Id for Experiment')
-    parser.add_argument('--communication_epoch', type=int, default=100, help='The Communication Epoch in Federated Learning')
+    parser.add_argument('--communication_epoch', type=int, default=None, help='The Communication Epoch in Federated Learning')
     parser.add_argument('--local_epoch', type=int, default=10, help='The Local Epoch for each Participant')
     parser.add_argument('--local_batch_size', type=int, default=64)
     parser.add_argument('--mu', type=float, default=0.01, help='Proximal coefficient for FedProx')
@@ -300,12 +300,13 @@ def parse_args():
             args.warmup_round + args.stage_round * len(args.teacher_schedule_list)
         )
     else:
-        if args.dataset in ['fl_cifar10', 'fl_cifar100', 'fl_svhn', 'fl_mnist']:
-            args.communication_epoch = 100
-        elif args.dataset == 'fl_tinyimagenet':
-            args.communication_epoch = 100
-        else:
-            args.communication_epoch = 50
+        if args.communication_epoch is None:
+            if args.dataset in ['fl_cifar10', 'fl_cifar100', 'fl_svhn', 'fl_mnist']:
+                args.communication_epoch = 100
+            elif args.dataset == 'fl_tinyimagenet':
+                args.communication_epoch = 100
+            else:
+                args.communication_epoch = 50
 
     # -----------------------------
     # v3 safety checks
