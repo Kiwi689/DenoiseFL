@@ -1,0 +1,30 @@
+========================================================================================================================
+Training started at: 2026-04-09 01:37:29
+Result directory: results/fl_cifar10/fedrdn/pm-dir_a-0.1_nm-uni_nr-0.5_nt-symmetric_std-0.01_eps-1e-06
+Result txt file : results/fl_cifar10/fedrdn/pm-dir_a-0.1_nm-uni_nr-0.5_nt-symmetric_std-0.01_eps-1e-06/fedrdn_fl_cifar10_20260409-013729-216938_pid4193303.txt
+Result log file : results/fl_cifar10/fedrdn/pm-dir_a-0.1_nm-uni_nr-0.5_nt-symmetric_std-0.01_eps-1e-06/fedrdn_fl_cifar10_20260409-013729-216938_pid4193303.log
+------------------------------------------------------------------------------------------------------------------------
+Model: fedrdn
+Dataset: fl_cifar10
+Structure: homogeneity
+Participants: 10
+Online ratio: 1.0
+Communication epochs: 100
+Local epoch: 5
+Local batch size: 64
+Local lr: 0.01
+Partition mode: dirichlet
+Dirichlet alpha: 0.1
+Noise mode: uniform
+Noise rate: 0.5
+Noise type: symmetric
+Noise max: 0.3
+Averaging: weight
+Seed: 0
+FedRDN std: 0.01
+FedRDN eps: 1e-06
+========================================================================================================================
+[Round 001/100] Phase=standard | Stage=warmup | Acc=17.020 | RoundTime=164.29s | TotalTime=164.30s | Method=fedrdn
+[Round 002/100] Phase=standard | Stage=warmup | Acc=12.950 | RoundTime=144.31s | TotalTime=308.62s | Method=fedrdn
+[Round 003/100] Phase=standard | Stage=warmup | Acc=21.280 | RoundTime=145.60s | TotalTime=454.23s | Method=fedrdn
+[Round 004/100] Phase=standard | Stage=warmup | Acc=32.420 | RoundTime=146.04s | TotalTime=600.28s | Method=fedrdn
