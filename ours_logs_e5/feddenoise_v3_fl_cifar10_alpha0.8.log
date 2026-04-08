@@ -1,0 +1,197 @@
+[Launch] model=feddenoise_v3 | dataset=fl_cifar10 | clients=10 | rounds=96 | local_epoch=5 | batch_size=64 | noise_mode=uniform | noise_value=0.3
+Files already downloaded and verified
+Files already downloaded and verified
+mean: 5000.0
+std: 0.0
+Data statistics: {0: {0: 761, 1: 772, 2: 384, 3: 604, 4: 567, 5: 287, 6: 758, 7: 182, 8: 523, 9: 162}, 1: {0: 206, 1: 538, 2: 337, 3: 276, 4: 341, 5: 463, 6: 185, 7: 175, 8: 208, 9: 2271}, 2: {0: 177, 1: 752, 2: 1000, 3: 564, 4: 231, 5: 254, 6: 324, 7: 1212, 8: 313, 9: 173}, 3: {0: 455, 1: 258, 2: 703, 3: 725, 4: 263, 5: 504, 6: 1388, 7: 359, 8: 176, 9: 169}, 4: {0: 519, 1: 197, 2: 474, 3: 299, 4: 772, 5: 845, 6: 198, 7: 526, 8: 992, 9: 178}, 5: {0: 917, 1: 1113, 2: 187, 3: 578, 4: 590, 5: 529, 6: 170, 7: 573, 8: 177, 9: 166}, 6: {0: 187, 1: 217, 2: 229, 3: 313, 4: 304, 5: 318, 6: 550, 7: 832, 8: 700, 9: 1350}, 7: {0: 380, 1: 219, 2: 1301, 3: 232, 4: 480, 5: 202, 6: 1024, 7: 222, 8: 770, 9: 170}, 8: {0: 643, 1: 579, 2: 196, 3: 995, 4: 1101, 5: 244, 6: 170, 7: 760, 8: 155, 9: 157}, 9: {0: 758, 1: 335, 2: 180, 3: 375, 4: 355, 5: 1395, 6: 233, 7: 188, 8: 931, 9: 250}}
+========================================================================================================================
+Training started at: 2026-04-08 04:52:11
+Result directory: results/fl_cifar10/feddenoise_v3/pm-dir_a-0.8_nm-uni_nr-0.3_nt-symmetric_wr-8_sr-22_ts-4,3,2,1_tss-least_sim_tsim-backbone_cosine_wm-backbone_only_dr-0.4_drs-None
+Result txt file : results/fl_cifar10/feddenoise_v3/pm-dir_a-0.8_nm-uni_nr-0.3_nt-symmetric_wr-8_sr-22_ts-4,3,2,1_tss-least_sim_tsim-backbone_cosine_wm-backbone_only_dr-0.4_drs-None/feddenoise_v3_fl_cifar10_20260408-045211-467646_pid1376599.txt
+Result log file : results/fl_cifar10/feddenoise_v3/pm-dir_a-0.8_nm-uni_nr-0.3_nt-symmetric_wr-8_sr-22_ts-4,3,2,1_tss-least_sim_tsim-backbone_cosine_wm-backbone_only_dr-0.4_drs-None/feddenoise_v3_fl_cifar10_20260408-045211-467646_pid1376599.log
+------------------------------------------------------------------------------------------------------------------------
+Model: feddenoise_v3
+Dataset: fl_cifar10
+Structure: homogeneity
+Participants: 10
+Online ratio: 1.0
+Communication epochs: 96
+Local epoch: 5
+Local batch size: 64
+Local lr: 0.01
+Partition mode: dirichlet
+Dirichlet alpha: 0.8
+Noise mode: uniform
+Noise rate: 0.3
+Noise type: symmetric
+Noise max: 0.3
+Averaging: weight
+Seed: 0
+Warmup round: 8
+Stage round: 22
+Teacher schedule: 4,3,2,1
+Teacher select strategy: least_sim
+Teacher similarity: backbone_cosine
+Teacher score mode: teacher_mean
+Warmup mode: backbone_only
+Drop rate: 0.4
+Drop rate schedule: None
+Exclude self teacher: True
+========================================================================================================================
+Backbone: NoiseFLCNN NoiseFLCNN
+[Round 001/096] Phase=warmup | Stage=warmup | Acc=12.940 | RoundTime=141.54s | TotalTime=141.55s | Method=feddenoise_v3
+[Round 002/096] Phase=warmup | Stage=warmup | Acc=25.920 | RoundTime=155.80s | TotalTime=297.36s | Method=feddenoise_v3
+[Round 003/096] Phase=warmup | Stage=warmup | Acc=44.770 | RoundTime=153.83s | TotalTime=451.20s | Method=feddenoise_v3
+[Round 004/096] Phase=warmup | Stage=warmup | Acc=53.150 | RoundTime=149.33s | TotalTime=600.53s | Method=feddenoise_v3
+[Round 005/096] Phase=warmup | Stage=warmup | Acc=56.710 | RoundTime=153.29s | TotalTime=753.83s | Method=feddenoise_v3
+[Round 006/096] Phase=warmup | Stage=warmup | Acc=59.770 | RoundTime=158.91s | TotalTime=912.75s | Method=feddenoise_v3
+[Round 007/096] Phase=warmup | Stage=warmup | Acc=62.810 | RoundTime=139.98s | TotalTime=1052.74s | Method=feddenoise_v3
+
+[Teacher Selection] Building clean subsets for stage 1 ...
+[Stage 1] Client 0: teachers=[1, 3, 6, 2], avg_teacher_sim=0.9779, selected=3000
+[Stage 1] Client 1: teachers=[3, 7, 9, 2], avg_teacher_sim=0.9745, selected=3000
+[Stage 1] Client 2: teachers=[1, 9, 3, 4], avg_teacher_sim=0.9768, selected=3000
+[Stage 1] Client 3: teachers=[1, 9, 6, 5], avg_teacher_sim=0.9748, selected=3000
+[Stage 1] Client 4: teachers=[1, 3, 2, 6], avg_teacher_sim=0.9774, selected=3000
+[Stage 1] Client 5: teachers=[7, 3, 1, 9], avg_teacher_sim=0.9775, selected=3000
+[Stage 1] Client 6: teachers=[3, 7, 9, 2], avg_teacher_sim=0.9772, selected=3000
+[Stage 1] Client 7: teachers=[1, 5, 6, 9], avg_teacher_sim=0.9761, selected=3000
+[Stage 1] Client 8: teachers=[1, 3, 7, 9], avg_teacher_sim=0.9777, selected=3000
+[Stage 1] Client 9: teachers=[3, 1, 2, 7], avg_teacher_sim=0.9753, selected=3000
+[Stage 1] Selection summary | clean_precision=90.60 | clean_recall=77.65 | noisy_precision=60.89 | noisy_recall=81.19 | keep_ratio=60.00 | avg_teacher_similarity=0.9765
+[Round 008/096] Phase=warmup | Stage=warmup | Acc=64.860 | RoundTime=201.70s | TotalTime=1254.44s | Method=feddenoise_v3
+[Round 009/096] Phase=stage_1 | Stage=0 | Acc=61.870 | StagePure=90.597 | CPrec=90.597 | CRec=77.654 | NPrec=60.895 | NRec=81.193 | Keep=60.000 | TSim=0.977 | RoundTime=114.13s | TotalTime=1368.59s | Method=feddenoise_v3
+[Round 010/096] Phase=stage_1 | Stage=0 | Acc=64.800 | StagePure=90.597 | CPrec=90.597 | CRec=77.654 | NPrec=60.895 | NRec=81.193 | Keep=60.000 | TSim=0.977 | RoundTime=110.55s | TotalTime=1479.15s | Method=feddenoise_v3
+[Round 011/096] Phase=stage_1 | Stage=0 | Acc=67.050 | StagePure=90.597 | CPrec=90.597 | CRec=77.654 | NPrec=60.895 | NRec=81.193 | Keep=60.000 | TSim=0.977 | RoundTime=114.95s | TotalTime=1594.11s | Method=feddenoise_v3
+[Round 012/096] Phase=stage_1 | Stage=0 | Acc=68.760 | StagePure=90.597 | CPrec=90.597 | CRec=77.654 | NPrec=60.895 | NRec=81.193 | Keep=60.000 | TSim=0.977 | RoundTime=117.33s | TotalTime=1711.45s | Method=feddenoise_v3
+[Round 013/096] Phase=stage_1 | Stage=0 | Acc=70.350 | StagePure=90.597 | CPrec=90.597 | CRec=77.654 | NPrec=60.895 | NRec=81.193 | Keep=60.000 | TSim=0.977 | RoundTime=110.19s | TotalTime=1821.65s | Method=feddenoise_v3
+[Round 014/096] Phase=stage_1 | Stage=0 | Acc=71.180 | StagePure=90.597 | CPrec=90.597 | CRec=77.654 | NPrec=60.895 | NRec=81.193 | Keep=60.000 | TSim=0.977 | RoundTime=113.91s | TotalTime=1935.57s | Method=feddenoise_v3
+[Round 015/096] Phase=stage_1 | Stage=0 | Acc=71.620 | StagePure=90.597 | CPrec=90.597 | CRec=77.654 | NPrec=60.895 | NRec=81.193 | Keep=60.000 | TSim=0.977 | RoundTime=118.17s | TotalTime=2053.74s | Method=feddenoise_v3
+[Round 016/096] Phase=stage_1 | Stage=0 | Acc=72.300 | StagePure=90.597 | CPrec=90.597 | CRec=77.654 | NPrec=60.895 | NRec=81.193 | Keep=60.000 | TSim=0.977 | RoundTime=112.31s | TotalTime=2166.06s | Method=feddenoise_v3
+[Round 017/096] Phase=stage_1 | Stage=0 | Acc=73.280 | StagePure=90.597 | CPrec=90.597 | CRec=77.654 | NPrec=60.895 | NRec=81.193 | Keep=60.000 | TSim=0.977 | RoundTime=120.71s | TotalTime=2286.78s | Method=feddenoise_v3
+[Round 018/096] Phase=stage_1 | Stage=0 | Acc=73.310 | StagePure=90.597 | CPrec=90.597 | CRec=77.654 | NPrec=60.895 | NRec=81.193 | Keep=60.000 | TSim=0.977 | RoundTime=112.68s | TotalTime=2399.47s | Method=feddenoise_v3
+[Round 019/096] Phase=stage_1 | Stage=0 | Acc=73.200 | StagePure=90.597 | CPrec=90.597 | CRec=77.654 | NPrec=60.895 | NRec=81.193 | Keep=60.000 | TSim=0.977 | RoundTime=109.38s | TotalTime=2508.86s | Method=feddenoise_v3
+[Round 020/096] Phase=stage_1 | Stage=0 | Acc=74.590 | StagePure=90.597 | CPrec=90.597 | CRec=77.654 | NPrec=60.895 | NRec=81.193 | Keep=60.000 | TSim=0.977 | RoundTime=117.95s | TotalTime=2626.83s | Method=feddenoise_v3
+[Round 021/096] Phase=stage_1 | Stage=0 | Acc=74.790 | StagePure=90.597 | CPrec=90.597 | CRec=77.654 | NPrec=60.895 | NRec=81.193 | Keep=60.000 | TSim=0.977 | RoundTime=110.58s | TotalTime=2737.42s | Method=feddenoise_v3
+[Round 022/096] Phase=stage_1 | Stage=0 | Acc=75.200 | StagePure=90.597 | CPrec=90.597 | CRec=77.654 | NPrec=60.895 | NRec=81.193 | Keep=60.000 | TSim=0.977 | RoundTime=113.62s | TotalTime=2851.05s | Method=feddenoise_v3
+[Round 023/096] Phase=stage_1 | Stage=0 | Acc=74.860 | StagePure=90.597 | CPrec=90.597 | CRec=77.654 | NPrec=60.895 | NRec=81.193 | Keep=60.000 | TSim=0.977 | RoundTime=116.80s | TotalTime=2967.86s | Method=feddenoise_v3
+[Round 024/096] Phase=stage_1 | Stage=0 | Acc=75.640 | StagePure=90.597 | CPrec=90.597 | CRec=77.654 | NPrec=60.895 | NRec=81.193 | Keep=60.000 | TSim=0.977 | RoundTime=108.89s | TotalTime=3076.76s | Method=feddenoise_v3
+[Round 025/096] Phase=stage_1 | Stage=0 | Acc=76.260 | StagePure=90.597 | CPrec=90.597 | CRec=77.654 | NPrec=60.895 | NRec=81.193 | Keep=60.000 | TSim=0.977 | RoundTime=115.37s | TotalTime=3192.15s | Method=feddenoise_v3
+[Round 026/096] Phase=stage_1 | Stage=0 | Acc=76.520 | StagePure=90.597 | CPrec=90.597 | CRec=77.654 | NPrec=60.895 | NRec=81.193 | Keep=60.000 | TSim=0.977 | RoundTime=118.77s | TotalTime=3310.93s | Method=feddenoise_v3
+[Round 027/096] Phase=stage_1 | Stage=0 | Acc=76.110 | StagePure=90.597 | CPrec=90.597 | CRec=77.654 | NPrec=60.895 | NRec=81.193 | Keep=60.000 | TSim=0.977 | RoundTime=115.61s | TotalTime=3426.55s | Method=feddenoise_v3
+[Round 028/096] Phase=stage_1 | Stage=0 | Acc=76.270 | StagePure=90.597 | CPrec=90.597 | CRec=77.654 | NPrec=60.895 | NRec=81.193 | Keep=60.000 | TSim=0.977 | RoundTime=115.13s | TotalTime=3541.69s | Method=feddenoise_v3
+[Round 029/096] Phase=stage_1 | Stage=0 | Acc=76.630 | StagePure=90.597 | CPrec=90.597 | CRec=77.654 | NPrec=60.895 | NRec=81.193 | Keep=60.000 | TSim=0.977 | RoundTime=116.03s | TotalTime=3657.73s | Method=feddenoise_v3
+
+[Teacher Selection] Building clean subsets for stage 2 ...
+[Stage 2] Client 0: teachers=[1, 6, 9], avg_teacher_sim=0.9784, selected=3000
+[Stage 2] Client 1: teachers=[7, 3, 0], avg_teacher_sim=0.9759, selected=3000
+[Stage 2] Client 2: teachers=[1, 3, 7], avg_teacher_sim=0.9791, selected=3000
+[Stage 2] Client 3: teachers=[1, 6, 2], avg_teacher_sim=0.9777, selected=3000
+[Stage 2] Client 4: teachers=[1, 0, 3], avg_teacher_sim=0.9804, selected=3000
+[Stage 2] Client 5: teachers=[1, 7, 6], avg_teacher_sim=0.9795, selected=3000
+[Stage 2] Client 6: teachers=[7, 0, 3], avg_teacher_sim=0.9781, selected=3000
+[Stage 2] Client 7: teachers=[1, 6, 2], avg_teacher_sim=0.9777, selected=3000
+[Stage 2] Client 8: teachers=[1, 7, 6], avg_teacher_sim=0.9793, selected=3000
+[Stage 2] Client 9: teachers=[1, 7, 3], avg_teacher_sim=0.9795, selected=3000
+[Stage 2] Selection summary | clean_precision=95.99 | clean_recall=82.27 | noisy_precision=68.98 | noisy_recall=91.97 | keep_ratio=60.00 | avg_teacher_similarity=0.9786
+[Round 030/096] Phase=stage_1 | Stage=0 | Acc=77.270 | StagePure=90.597 | CPrec=90.597 | CRec=77.654 | NPrec=60.895 | NRec=81.193 | Keep=60.000 | TSim=0.977 | RoundTime=150.05s | TotalTime=3807.79s | Method=feddenoise_v3
+[Round 031/096] Phase=stage_2 | Stage=1 | Acc=78.130 | StagePure=95.987 | CPrec=95.987 | CRec=82.274 | NPrec=68.980 | NRec=91.973 | Keep=60.000 | TSim=0.979 | RoundTime=107.17s | TotalTime=3914.98s | Method=feddenoise_v3
+[Round 032/096] Phase=stage_2 | Stage=1 | Acc=78.670 | StagePure=95.987 | CPrec=95.987 | CRec=82.274 | NPrec=68.980 | NRec=91.973 | Keep=60.000 | TSim=0.979 | RoundTime=112.86s | TotalTime=4027.85s | Method=feddenoise_v3
+[Round 033/096] Phase=stage_2 | Stage=1 | Acc=79.180 | StagePure=95.987 | CPrec=95.987 | CRec=82.274 | NPrec=68.980 | NRec=91.973 | Keep=60.000 | TSim=0.979 | RoundTime=118.10s | TotalTime=4145.96s | Method=feddenoise_v3
+[Round 034/096] Phase=stage_2 | Stage=1 | Acc=79.540 | StagePure=95.987 | CPrec=95.987 | CRec=82.274 | NPrec=68.980 | NRec=91.973 | Keep=60.000 | TSim=0.979 | RoundTime=112.24s | TotalTime=4258.22s | Method=feddenoise_v3
+[Round 035/096] Phase=stage_2 | Stage=1 | Acc=79.900 | StagePure=95.987 | CPrec=95.987 | CRec=82.274 | NPrec=68.980 | NRec=91.973 | Keep=60.000 | TSim=0.979 | RoundTime=120.21s | TotalTime=4378.43s | Method=feddenoise_v3
+[Round 036/096] Phase=stage_2 | Stage=1 | Acc=79.770 | StagePure=95.987 | CPrec=95.987 | CRec=82.274 | NPrec=68.980 | NRec=91.973 | Keep=60.000 | TSim=0.979 | RoundTime=116.62s | TotalTime=4495.07s | Method=feddenoise_v3
+[Round 037/096] Phase=stage_2 | Stage=1 | Acc=79.880 | StagePure=95.987 | CPrec=95.987 | CRec=82.274 | NPrec=68.980 | NRec=91.973 | Keep=60.000 | TSim=0.979 | RoundTime=114.11s | TotalTime=4609.19s | Method=feddenoise_v3
+[Round 038/096] Phase=stage_2 | Stage=1 | Acc=80.120 | StagePure=95.987 | CPrec=95.987 | CRec=82.274 | NPrec=68.980 | NRec=91.973 | Keep=60.000 | TSim=0.979 | RoundTime=115.03s | TotalTime=4724.23s | Method=feddenoise_v3
+[Round 039/096] Phase=stage_2 | Stage=1 | Acc=80.250 | StagePure=95.987 | CPrec=95.987 | CRec=82.274 | NPrec=68.980 | NRec=91.973 | Keep=60.000 | TSim=0.979 | RoundTime=131.07s | TotalTime=4855.31s | Method=feddenoise_v3
+[Round 040/096] Phase=stage_2 | Stage=1 | Acc=80.150 | StagePure=95.987 | CPrec=95.987 | CRec=82.274 | NPrec=68.980 | NRec=91.973 | Keep=60.000 | TSim=0.979 | RoundTime=135.56s | TotalTime=4990.88s | Method=feddenoise_v3
+[Round 041/096] Phase=stage_2 | Stage=1 | Acc=80.580 | StagePure=95.987 | CPrec=95.987 | CRec=82.274 | NPrec=68.980 | NRec=91.973 | Keep=60.000 | TSim=0.979 | RoundTime=135.16s | TotalTime=5126.05s | Method=feddenoise_v3
+[Round 042/096] Phase=stage_2 | Stage=1 | Acc=80.630 | StagePure=95.987 | CPrec=95.987 | CRec=82.274 | NPrec=68.980 | NRec=91.973 | Keep=60.000 | TSim=0.979 | RoundTime=134.14s | TotalTime=5260.21s | Method=feddenoise_v3
+[Round 043/096] Phase=stage_2 | Stage=1 | Acc=81.190 | StagePure=95.987 | CPrec=95.987 | CRec=82.274 | NPrec=68.980 | NRec=91.973 | Keep=60.000 | TSim=0.979 | RoundTime=138.52s | TotalTime=5398.73s | Method=feddenoise_v3
+[Round 044/096] Phase=stage_2 | Stage=1 | Acc=81.010 | StagePure=95.987 | CPrec=95.987 | CRec=82.274 | NPrec=68.980 | NRec=91.973 | Keep=60.000 | TSim=0.979 | RoundTime=135.00s | TotalTime=5533.75s | Method=feddenoise_v3
+[Round 045/096] Phase=stage_2 | Stage=1 | Acc=80.430 | StagePure=95.987 | CPrec=95.987 | CRec=82.274 | NPrec=68.980 | NRec=91.973 | Keep=60.000 | TSim=0.979 | RoundTime=133.98s | TotalTime=5667.74s | Method=feddenoise_v3
+[Round 046/096] Phase=stage_2 | Stage=1 | Acc=80.910 | StagePure=95.987 | CPrec=95.987 | CRec=82.274 | NPrec=68.980 | NRec=91.973 | Keep=60.000 | TSim=0.979 | RoundTime=133.08s | TotalTime=5800.83s | Method=feddenoise_v3
+[Round 047/096] Phase=stage_2 | Stage=1 | Acc=81.230 | StagePure=95.987 | CPrec=95.987 | CRec=82.274 | NPrec=68.980 | NRec=91.973 | Keep=60.000 | TSim=0.979 | RoundTime=133.63s | TotalTime=5934.47s | Method=feddenoise_v3
+[Round 048/096] Phase=stage_2 | Stage=1 | Acc=81.030 | StagePure=95.987 | CPrec=95.987 | CRec=82.274 | NPrec=68.980 | NRec=91.973 | Keep=60.000 | TSim=0.979 | RoundTime=137.14s | TotalTime=6071.62s | Method=feddenoise_v3
+[Round 049/096] Phase=stage_2 | Stage=1 | Acc=81.640 | StagePure=95.987 | CPrec=95.987 | CRec=82.274 | NPrec=68.980 | NRec=91.973 | Keep=60.000 | TSim=0.979 | RoundTime=138.75s | TotalTime=6210.38s | Method=feddenoise_v3
+[Round 050/096] Phase=stage_2 | Stage=1 | Acc=81.150 | StagePure=95.987 | CPrec=95.987 | CRec=82.274 | NPrec=68.980 | NRec=91.973 | Keep=60.000 | TSim=0.979 | RoundTime=135.78s | TotalTime=6346.17s | Method=feddenoise_v3
+[Round 051/096] Phase=stage_2 | Stage=1 | Acc=80.910 | StagePure=95.987 | CPrec=95.987 | CRec=82.274 | NPrec=68.980 | NRec=91.973 | Keep=60.000 | TSim=0.979 | RoundTime=133.42s | TotalTime=6479.61s | Method=feddenoise_v3
+
+[Teacher Selection] Building clean subsets for stage 3 ...
+[Stage 3] Client 0: teachers=[9, 1], avg_teacher_sim=0.9822, selected=3000
+[Stage 3] Client 1: teachers=[9, 3], avg_teacher_sim=0.9807, selected=3000
+[Stage 3] Client 2: teachers=[9, 1], avg_teacher_sim=0.9834, selected=3000
+[Stage 3] Client 3: teachers=[1, 9], avg_teacher_sim=0.9817, selected=3000
+[Stage 3] Client 4: teachers=[1, 6], avg_teacher_sim=0.9842, selected=3000
+[Stage 3] Client 5: teachers=[3, 9], avg_teacher_sim=0.9842, selected=3000
+[Stage 3] Client 6: teachers=[9, 0], avg_teacher_sim=0.9821, selected=3000
+[Stage 3] Client 7: teachers=[1, 9], avg_teacher_sim=0.9823, selected=3000
+[Stage 3] Client 8: teachers=[9, 1], avg_teacher_sim=0.9821, selected=3000
+[Stage 3] Client 9: teachers=[1, 6], avg_teacher_sim=0.9807, selected=3000
+[Stage 3] Selection summary | clean_precision=96.18 | clean_recall=82.44 | noisy_precision=69.27 | noisy_recall=92.36 | keep_ratio=60.00 | avg_teacher_similarity=0.9824
+[Round 052/096] Phase=stage_2 | Stage=1 | Acc=81.310 | StagePure=95.987 | CPrec=95.987 | CRec=82.274 | NPrec=68.980 | NRec=91.973 | Keep=60.000 | TSim=0.979 | RoundTime=143.34s | TotalTime=6622.96s | Method=feddenoise_v3
+[Round 053/096] Phase=stage_3 | Stage=2 | Acc=81.660 | StagePure=96.180 | CPrec=96.180 | CRec=82.440 | NPrec=69.270 | NRec=92.360 | Keep=60.000 | TSim=0.982 | RoundTime=115.73s | TotalTime=6738.70s | Method=feddenoise_v3
+[Round 054/096] Phase=stage_3 | Stage=2 | Acc=82.050 | StagePure=96.180 | CPrec=96.180 | CRec=82.440 | NPrec=69.270 | NRec=92.360 | Keep=60.000 | TSim=0.982 | RoundTime=118.32s | TotalTime=6857.04s | Method=feddenoise_v3
+[Round 055/096] Phase=stage_3 | Stage=2 | Acc=81.690 | StagePure=96.180 | CPrec=96.180 | CRec=82.440 | NPrec=69.270 | NRec=92.360 | Keep=60.000 | TSim=0.982 | RoundTime=111.71s | TotalTime=6968.76s | Method=feddenoise_v3
+[Round 056/096] Phase=stage_3 | Stage=2 | Acc=82.260 | StagePure=96.180 | CPrec=96.180 | CRec=82.440 | NPrec=69.270 | NRec=92.360 | Keep=60.000 | TSim=0.982 | RoundTime=116.59s | TotalTime=7085.36s | Method=feddenoise_v3
+[Round 057/096] Phase=stage_3 | Stage=2 | Acc=81.990 | StagePure=96.180 | CPrec=96.180 | CRec=82.440 | NPrec=69.270 | NRec=92.360 | Keep=60.000 | TSim=0.982 | RoundTime=122.15s | TotalTime=7207.53s | Method=feddenoise_v3
+[Round 058/096] Phase=stage_3 | Stage=2 | Acc=82.040 | StagePure=96.180 | CPrec=96.180 | CRec=82.440 | NPrec=69.270 | NRec=92.360 | Keep=60.000 | TSim=0.982 | RoundTime=117.93s | TotalTime=7325.48s | Method=feddenoise_v3
+[Round 059/096] Phase=stage_3 | Stage=2 | Acc=82.290 | StagePure=96.180 | CPrec=96.180 | CRec=82.440 | NPrec=69.270 | NRec=92.360 | Keep=60.000 | TSim=0.982 | RoundTime=110.73s | TotalTime=7436.22s | Method=feddenoise_v3
+[Round 060/096] Phase=stage_3 | Stage=2 | Acc=82.310 | StagePure=96.180 | CPrec=96.180 | CRec=82.440 | NPrec=69.270 | NRec=92.360 | Keep=60.000 | TSim=0.982 | RoundTime=119.98s | TotalTime=7556.21s | Method=feddenoise_v3
+[Round 061/096] Phase=stage_3 | Stage=2 | Acc=82.560 | StagePure=96.180 | CPrec=96.180 | CRec=82.440 | NPrec=69.270 | NRec=92.360 | Keep=60.000 | TSim=0.982 | RoundTime=124.95s | TotalTime=7681.17s | Method=feddenoise_v3
+[Round 062/096] Phase=stage_3 | Stage=2 | Acc=82.380 | StagePure=96.180 | CPrec=96.180 | CRec=82.440 | NPrec=69.270 | NRec=92.360 | Keep=60.000 | TSim=0.982 | RoundTime=127.05s | TotalTime=7808.23s | Method=feddenoise_v3
+[Round 063/096] Phase=stage_3 | Stage=2 | Acc=82.450 | StagePure=96.180 | CPrec=96.180 | CRec=82.440 | NPrec=69.270 | NRec=92.360 | Keep=60.000 | TSim=0.982 | RoundTime=123.12s | TotalTime=7931.37s | Method=feddenoise_v3
+[Round 064/096] Phase=stage_3 | Stage=2 | Acc=82.000 | StagePure=96.180 | CPrec=96.180 | CRec=82.440 | NPrec=69.270 | NRec=92.360 | Keep=60.000 | TSim=0.982 | RoundTime=120.11s | TotalTime=8051.49s | Method=feddenoise_v3
+[Round 065/096] Phase=stage_3 | Stage=2 | Acc=82.190 | StagePure=96.180 | CPrec=96.180 | CRec=82.440 | NPrec=69.270 | NRec=92.360 | Keep=60.000 | TSim=0.982 | RoundTime=124.65s | TotalTime=8176.16s | Method=feddenoise_v3
+[Round 066/096] Phase=stage_3 | Stage=2 | Acc=82.580 | StagePure=96.180 | CPrec=96.180 | CRec=82.440 | NPrec=69.270 | NRec=92.360 | Keep=60.000 | TSim=0.982 | RoundTime=126.01s | TotalTime=8302.18s | Method=feddenoise_v3
+[Round 067/096] Phase=stage_3 | Stage=2 | Acc=82.210 | StagePure=96.180 | CPrec=96.180 | CRec=82.440 | NPrec=69.270 | NRec=92.360 | Keep=60.000 | TSim=0.982 | RoundTime=134.95s | TotalTime=8437.14s | Method=feddenoise_v3
+[Round 068/096] Phase=stage_3 | Stage=2 | Acc=82.170 | StagePure=96.180 | CPrec=96.180 | CRec=82.440 | NPrec=69.270 | NRec=92.360 | Keep=60.000 | TSim=0.982 | RoundTime=127.56s | TotalTime=8564.71s | Method=feddenoise_v3
+[Round 069/096] Phase=stage_3 | Stage=2 | Acc=82.770 | StagePure=96.180 | CPrec=96.180 | CRec=82.440 | NPrec=69.270 | NRec=92.360 | Keep=60.000 | TSim=0.982 | RoundTime=126.10s | TotalTime=8690.98s | Method=feddenoise_v3
+[Round 070/096] Phase=stage_3 | Stage=2 | Acc=82.640 | StagePure=96.180 | CPrec=96.180 | CRec=82.440 | NPrec=69.270 | NRec=92.360 | Keep=60.000 | TSim=0.982 | RoundTime=124.06s | TotalTime=8815.05s | Method=feddenoise_v3
+[Round 071/096] Phase=stage_3 | Stage=2 | Acc=82.660 | StagePure=96.180 | CPrec=96.180 | CRec=82.440 | NPrec=69.270 | NRec=92.360 | Keep=60.000 | TSim=0.982 | RoundTime=129.03s | TotalTime=8944.09s | Method=feddenoise_v3
+[Round 072/096] Phase=stage_3 | Stage=2 | Acc=82.850 | StagePure=96.180 | CPrec=96.180 | CRec=82.440 | NPrec=69.270 | NRec=92.360 | Keep=60.000 | TSim=0.982 | RoundTime=127.65s | TotalTime=9071.75s | Method=feddenoise_v3
+[Round 073/096] Phase=stage_3 | Stage=2 | Acc=82.400 | StagePure=96.180 | CPrec=96.180 | CRec=82.440 | NPrec=69.270 | NRec=92.360 | Keep=60.000 | TSim=0.982 | RoundTime=128.24s | TotalTime=9200.00s | Method=feddenoise_v3
+
+[Teacher Selection] Building clean subsets for stage 4 ...
+[Stage 4] Client 0: teachers=[2], avg_teacher_sim=0.9835, selected=3000
+[Stage 4] Client 1: teachers=[2], avg_teacher_sim=0.9822, selected=3000
+[Stage 4] Client 2: teachers=[1], avg_teacher_sim=0.9822, selected=3000
+[Stage 4] Client 3: teachers=[2], avg_teacher_sim=0.9835, selected=3000
+[Stage 4] Client 4: teachers=[2], avg_teacher_sim=0.9836, selected=3000
+[Stage 4] Client 5: teachers=[2], avg_teacher_sim=0.9855, selected=3000
+[Stage 4] Client 6: teachers=[2], avg_teacher_sim=0.9825, selected=3000
+[Stage 4] Client 7: teachers=[2], avg_teacher_sim=0.9832, selected=3000
+[Stage 4] Client 8: teachers=[6], avg_teacher_sim=0.9830, selected=3000
+[Stage 4] Client 9: teachers=[2], avg_teacher_sim=0.9836, selected=3000
+[Stage 4] Selection summary | clean_precision=95.71 | clean_recall=82.04 | noisy_precision=68.57 | noisy_recall=91.43 | keep_ratio=60.00 | avg_teacher_similarity=0.9833
+[Round 074/096] Phase=stage_3 | Stage=2 | Acc=82.400 | StagePure=96.180 | CPrec=96.180 | CRec=82.440 | NPrec=69.270 | NRec=92.360 | Keep=60.000 | TSim=0.982 | RoundTime=130.98s | TotalTime=9331.00s | Method=feddenoise_v3
+[Round 075/096] Phase=stage_4 | Stage=3 | Acc=81.880 | StagePure=95.713 | CPrec=95.713 | CRec=82.040 | NPrec=68.570 | NRec=91.427 | Keep=60.000 | TSim=0.983 | RoundTime=109.56s | TotalTime=9440.56s | Method=feddenoise_v3
+[Round 076/096] Phase=stage_4 | Stage=3 | Acc=81.670 | StagePure=95.713 | CPrec=95.713 | CRec=82.040 | NPrec=68.570 | NRec=91.427 | Keep=60.000 | TSim=0.983 | RoundTime=115.43s | TotalTime=9556.01s | Method=feddenoise_v3
+[Round 077/096] Phase=stage_4 | Stage=3 | Acc=82.190 | StagePure=95.713 | CPrec=95.713 | CRec=82.040 | NPrec=68.570 | NRec=91.427 | Keep=60.000 | TSim=0.983 | RoundTime=117.99s | TotalTime=9674.01s | Method=feddenoise_v3
+[Round 078/096] Phase=stage_4 | Stage=3 | Acc=82.450 | StagePure=95.713 | CPrec=95.713 | CRec=82.040 | NPrec=68.570 | NRec=91.427 | Keep=60.000 | TSim=0.983 | RoundTime=115.69s | TotalTime=9789.72s | Method=feddenoise_v3
+[Round 079/096] Phase=stage_4 | Stage=3 | Acc=82.040 | StagePure=95.713 | CPrec=95.713 | CRec=82.040 | NPrec=68.570 | NRec=91.427 | Keep=60.000 | TSim=0.983 | RoundTime=115.29s | TotalTime=9905.02s | Method=feddenoise_v3
+[Round 080/096] Phase=stage_4 | Stage=3 | Acc=82.560 | StagePure=95.713 | CPrec=95.713 | CRec=82.040 | NPrec=68.570 | NRec=91.427 | Keep=60.000 | TSim=0.983 | RoundTime=123.07s | TotalTime=10028.10s | Method=feddenoise_v3
+[Round 081/096] Phase=stage_4 | Stage=3 | Acc=82.430 | StagePure=95.713 | CPrec=95.713 | CRec=82.040 | NPrec=68.570 | NRec=91.427 | Keep=60.000 | TSim=0.983 | RoundTime=113.50s | TotalTime=10141.61s | Method=feddenoise_v3
+[Round 082/096] Phase=stage_4 | Stage=3 | Acc=82.490 | StagePure=95.713 | CPrec=95.713 | CRec=82.040 | NPrec=68.570 | NRec=91.427 | Keep=60.000 | TSim=0.983 | RoundTime=113.73s | TotalTime=10255.35s | Method=feddenoise_v3
+[Round 083/096] Phase=stage_4 | Stage=3 | Acc=82.520 | StagePure=95.713 | CPrec=95.713 | CRec=82.040 | NPrec=68.570 | NRec=91.427 | Keep=60.000 | TSim=0.983 | RoundTime=111.74s | TotalTime=10367.11s | Method=feddenoise_v3
+[Round 084/096] Phase=stage_4 | Stage=3 | Acc=82.280 | StagePure=95.713 | CPrec=95.713 | CRec=82.040 | NPrec=68.570 | NRec=91.427 | Keep=60.000 | TSim=0.983 | RoundTime=120.86s | TotalTime=10487.99s | Method=feddenoise_v3
+[Round 085/096] Phase=stage_4 | Stage=3 | Acc=82.640 | StagePure=95.713 | CPrec=95.713 | CRec=82.040 | NPrec=68.570 | NRec=91.427 | Keep=60.000 | TSim=0.983 | RoundTime=116.15s | TotalTime=10604.15s | Method=feddenoise_v3
+[Round 086/096] Phase=stage_4 | Stage=3 | Acc=82.990 | StagePure=95.713 | CPrec=95.713 | CRec=82.040 | NPrec=68.570 | NRec=91.427 | Keep=60.000 | TSim=0.983 | RoundTime=112.85s | TotalTime=10717.01s | Method=feddenoise_v3
+[Round 087/096] Phase=stage_4 | Stage=3 | Acc=82.550 | StagePure=95.713 | CPrec=95.713 | CRec=82.040 | NPrec=68.570 | NRec=91.427 | Keep=60.000 | TSim=0.983 | RoundTime=112.68s | TotalTime=10829.80s | Method=feddenoise_v3
+[Round 088/096] Phase=stage_4 | Stage=3 | Acc=82.740 | StagePure=95.713 | CPrec=95.713 | CRec=82.040 | NPrec=68.570 | NRec=91.427 | Keep=60.000 | TSim=0.983 | RoundTime=114.29s | TotalTime=10944.11s | Method=feddenoise_v3
+[Round 089/096] Phase=stage_4 | Stage=3 | Acc=82.660 | StagePure=95.713 | CPrec=95.713 | CRec=82.040 | NPrec=68.570 | NRec=91.427 | Keep=60.000 | TSim=0.983 | RoundTime=122.52s | TotalTime=11066.64s | Method=feddenoise_v3
+[Round 090/096] Phase=stage_4 | Stage=3 | Acc=83.050 | StagePure=95.713 | CPrec=95.713 | CRec=82.040 | NPrec=68.570 | NRec=91.427 | Keep=60.000 | TSim=0.983 | RoundTime=117.25s | TotalTime=11183.90s | Method=feddenoise_v3
+[Round 091/096] Phase=stage_4 | Stage=3 | Acc=83.070 | StagePure=95.713 | CPrec=95.713 | CRec=82.040 | NPrec=68.570 | NRec=91.427 | Keep=60.000 | TSim=0.983 | RoundTime=107.11s | TotalTime=11291.02s | Method=feddenoise_v3
+[Round 092/096] Phase=stage_4 | Stage=3 | Acc=82.820 | StagePure=95.713 | CPrec=95.713 | CRec=82.040 | NPrec=68.570 | NRec=91.427 | Keep=60.000 | TSim=0.983 | RoundTime=109.73s | TotalTime=11400.77s | Method=feddenoise_v3
+[Round 093/096] Phase=stage_4 | Stage=3 | Acc=83.310 | StagePure=95.713 | CPrec=95.713 | CRec=82.040 | NPrec=68.570 | NRec=91.427 | Keep=60.000 | TSim=0.983 | RoundTime=116.39s | TotalTime=11517.17s | Method=feddenoise_v3
+[Round 094/096] Phase=stage_4 | Stage=3 | Acc=82.550 | StagePure=95.713 | CPrec=95.713 | CRec=82.040 | NPrec=68.570 | NRec=91.427 | Keep=60.000 | TSim=0.983 | RoundTime=121.38s | TotalTime=11638.56s | Method=feddenoise_v3
+[Round 095/096] Phase=stage_4 | Stage=3 | Acc=82.650 | StagePure=95.713 | CPrec=95.713 | CRec=82.040 | NPrec=68.570 | NRec=91.427 | Keep=60.000 | TSim=0.983 | RoundTime=109.99s | TotalTime=11748.57s | Method=feddenoise_v3
+[Round 096/096] Phase=stage_4 | Stage=3 | Acc=83.130 | StagePure=95.713 | CPrec=95.713 | CRec=82.040 | NPrec=68.570 | NRec=91.427 | Keep=60.000 | TSim=0.983 | RoundTime=113.32s | TotalTime=11861.90s | Method=feddenoise_v3
+========================================================================================================================
+Training finished at: 2026-04-08 08:09:53
+Total elapsed time: 11861.91s
+Final Acc: 83.130
+Best Acc : 83.310
+Final StagePure: 95.713
+Best StagePure : 96.180
+========================================================================================================================

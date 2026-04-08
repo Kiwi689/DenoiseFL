@@ -1,0 +1,70 @@
+========================================================================================================================
+Training started at: 2026-04-08 01:00:04
+Result directory: results/fl_mnist/feddenoise_v3/pm-dir_a-0.8_nm-uni_nr-0.3_nt-symmetric_wr-10_sr-25_ts-4,3,2,1_tss-least_sim_tsim-backbone_cosine_wm-backbone_only_dr-0.4_drs-None
+Result txt file : results/fl_mnist/feddenoise_v3/pm-dir_a-0.8_nm-uni_nr-0.3_nt-symmetric_wr-10_sr-25_ts-4,3,2,1_tss-least_sim_tsim-backbone_cosine_wm-backbone_only_dr-0.4_drs-None/feddenoise_v3_fl_mnist_20260408-010004-667856_pid456490.txt
+Result log file : results/fl_mnist/feddenoise_v3/pm-dir_a-0.8_nm-uni_nr-0.3_nt-symmetric_wr-10_sr-25_ts-4,3,2,1_tss-least_sim_tsim-backbone_cosine_wm-backbone_only_dr-0.4_drs-None/feddenoise_v3_fl_mnist_20260408-010004-667856_pid456490.log
+------------------------------------------------------------------------------------------------------------------------
+Model: feddenoise_v3
+Dataset: fl_mnist
+Structure: homogeneity
+Participants: 10
+Online ratio: 1.0
+Communication epochs: 110
+Local epoch: 1
+Local batch size: 64
+Local lr: 0.01
+Partition mode: dirichlet
+Dirichlet alpha: 0.8
+Noise mode: uniform
+Noise rate: 0.3
+Noise type: symmetric
+Noise max: 0.3
+Averaging: weight
+Seed: 0
+Warmup round: 10
+Stage round: 25
+Teacher schedule: 4,3,2,1
+Teacher select strategy: least_sim
+Teacher similarity: backbone_cosine
+Teacher score mode: teacher_mean
+Warmup mode: backbone_only
+Drop rate: 0.4
+Drop rate schedule: None
+Exclude self teacher: True
+========================================================================================================================
+[Round 001/110] Phase=warmup | Stage=warmup | Acc=11.350 | RoundTime=65.57s | TotalTime=65.58s | Method=feddenoise_v3
+[Round 002/110] Phase=warmup | Stage=warmup | Acc=58.350 | RoundTime=49.71s | TotalTime=115.29s | Method=feddenoise_v3
+[Round 003/110] Phase=warmup | Stage=warmup | Acc=91.690 | RoundTime=60.40s | TotalTime=175.70s | Method=feddenoise_v3
+[Round 004/110] Phase=warmup | Stage=warmup | Acc=95.430 | RoundTime=54.49s | TotalTime=230.20s | Method=feddenoise_v3
+[Round 005/110] Phase=warmup | Stage=warmup | Acc=96.890 | RoundTime=56.94s | TotalTime=287.14s | Method=feddenoise_v3
+[Round 006/110] Phase=warmup | Stage=warmup | Acc=97.540 | RoundTime=62.76s | TotalTime=349.90s | Method=feddenoise_v3
+[Round 007/110] Phase=warmup | Stage=warmup | Acc=97.950 | RoundTime=55.76s | TotalTime=405.67s | Method=feddenoise_v3
+[Round 008/110] Phase=warmup | Stage=warmup | Acc=97.990 | RoundTime=64.42s | TotalTime=470.09s | Method=feddenoise_v3
+[Round 009/110] Phase=warmup | Stage=warmup | Acc=98.230 | RoundTime=51.69s | TotalTime=521.79s | Method=feddenoise_v3
+[Round 010/110] Phase=warmup | Stage=warmup | Acc=98.410 | RoundTime=132.40s | TotalTime=654.20s | Method=feddenoise_v3
+[Round 011/110] Phase=stage_1 | Stage=0 | Acc=94.220 | StagePure=99.094 | CPrec=99.094 | CRec=84.938 | NPrec=73.642 | NRec=98.189 | Keep=60.000 | TSim=0.989 | RoundTime=51.29s | TotalTime=705.49s | Method=feddenoise_v3
+[Round 012/110] Phase=stage_1 | Stage=0 | Acc=96.850 | StagePure=99.094 | CPrec=99.094 | CRec=84.938 | NPrec=73.642 | NRec=98.189 | Keep=60.000 | TSim=0.989 | RoundTime=46.15s | TotalTime=751.65s | Method=feddenoise_v3
+[Round 013/110] Phase=stage_1 | Stage=0 | Acc=98.070 | StagePure=99.094 | CPrec=99.094 | CRec=84.938 | NPrec=73.642 | NRec=98.189 | Keep=60.000 | TSim=0.989 | RoundTime=45.61s | TotalTime=797.27s | Method=feddenoise_v3
+[Round 014/110] Phase=stage_1 | Stage=0 | Acc=98.110 | StagePure=99.094 | CPrec=99.094 | CRec=84.938 | NPrec=73.642 | NRec=98.189 | Keep=60.000 | TSim=0.989 | RoundTime=54.41s | TotalTime=851.68s | Method=feddenoise_v3
+[Round 015/110] Phase=stage_1 | Stage=0 | Acc=98.380 | StagePure=99.094 | CPrec=99.094 | CRec=84.938 | NPrec=73.642 | NRec=98.189 | Keep=60.000 | TSim=0.989 | RoundTime=46.33s | TotalTime=898.02s | Method=feddenoise_v3
+[Round 016/110] Phase=stage_1 | Stage=0 | Acc=98.480 | StagePure=99.094 | CPrec=99.094 | CRec=84.938 | NPrec=73.642 | NRec=98.189 | Keep=60.000 | TSim=0.989 | RoundTime=48.23s | TotalTime=946.26s | Method=feddenoise_v3
+[Round 017/110] Phase=stage_1 | Stage=0 | Acc=98.450 | StagePure=99.094 | CPrec=99.094 | CRec=84.938 | NPrec=73.642 | NRec=98.189 | Keep=60.000 | TSim=0.989 | RoundTime=53.02s | TotalTime=999.29s | Method=feddenoise_v3
+[Round 018/110] Phase=stage_1 | Stage=0 | Acc=98.380 | StagePure=99.094 | CPrec=99.094 | CRec=84.938 | NPrec=73.642 | NRec=98.189 | Keep=60.000 | TSim=0.989 | RoundTime=43.59s | TotalTime=1042.88s | Method=feddenoise_v3
+[Round 019/110] Phase=stage_1 | Stage=0 | Acc=98.630 | StagePure=99.094 | CPrec=99.094 | CRec=84.938 | NPrec=73.642 | NRec=98.189 | Keep=60.000 | TSim=0.989 | RoundTime=49.97s | TotalTime=1092.86s | Method=feddenoise_v3
+[Round 020/110] Phase=stage_1 | Stage=0 | Acc=98.550 | StagePure=99.094 | CPrec=99.094 | CRec=84.938 | NPrec=73.642 | NRec=98.189 | Keep=60.000 | TSim=0.989 | RoundTime=52.99s | TotalTime=1145.86s | Method=feddenoise_v3
+[Round 021/110] Phase=stage_1 | Stage=0 | Acc=98.600 | StagePure=99.094 | CPrec=99.094 | CRec=84.938 | NPrec=73.642 | NRec=98.189 | Keep=60.000 | TSim=0.989 | RoundTime=44.42s | TotalTime=1190.29s | Method=feddenoise_v3
+[Round 022/110] Phase=stage_1 | Stage=0 | Acc=98.530 | StagePure=99.094 | CPrec=99.094 | CRec=84.938 | NPrec=73.642 | NRec=98.189 | Keep=60.000 | TSim=0.989 | RoundTime=53.50s | TotalTime=1243.80s | Method=feddenoise_v3
+[Round 023/110] Phase=stage_1 | Stage=0 | Acc=98.700 | StagePure=99.094 | CPrec=99.094 | CRec=84.938 | NPrec=73.642 | NRec=98.189 | Keep=60.000 | TSim=0.989 | RoundTime=49.61s | TotalTime=1293.42s | Method=feddenoise_v3
+[Round 024/110] Phase=stage_1 | Stage=0 | Acc=98.670 | StagePure=99.094 | CPrec=99.094 | CRec=84.938 | NPrec=73.642 | NRec=98.189 | Keep=60.000 | TSim=0.989 | RoundTime=44.83s | TotalTime=1338.25s | Method=feddenoise_v3
+[Round 025/110] Phase=stage_1 | Stage=0 | Acc=98.780 | StagePure=99.094 | CPrec=99.094 | CRec=84.938 | NPrec=73.642 | NRec=98.189 | Keep=60.000 | TSim=0.989 | RoundTime=53.87s | TotalTime=1392.12s | Method=feddenoise_v3
+[Round 026/110] Phase=stage_1 | Stage=0 | Acc=98.730 | StagePure=99.094 | CPrec=99.094 | CRec=84.938 | NPrec=73.642 | NRec=98.189 | Keep=60.000 | TSim=0.989 | RoundTime=47.58s | TotalTime=1439.71s | Method=feddenoise_v3
+[Round 027/110] Phase=stage_1 | Stage=0 | Acc=98.670 | StagePure=99.094 | CPrec=99.094 | CRec=84.938 | NPrec=73.642 | NRec=98.189 | Keep=60.000 | TSim=0.989 | RoundTime=44.95s | TotalTime=1484.67s | Method=feddenoise_v3
+[Round 028/110] Phase=stage_1 | Stage=0 | Acc=98.490 | StagePure=99.094 | CPrec=99.094 | CRec=84.938 | NPrec=73.642 | NRec=98.189 | Keep=60.000 | TSim=0.989 | RoundTime=53.30s | TotalTime=1537.98s | Method=feddenoise_v3
+[Round 029/110] Phase=stage_1 | Stage=0 | Acc=98.650 | StagePure=99.094 | CPrec=99.094 | CRec=84.938 | NPrec=73.642 | NRec=98.189 | Keep=60.000 | TSim=0.989 | RoundTime=44.49s | TotalTime=1582.47s | Method=feddenoise_v3
+[Round 030/110] Phase=stage_1 | Stage=0 | Acc=98.660 | StagePure=99.094 | CPrec=99.094 | CRec=84.938 | NPrec=73.642 | NRec=98.189 | Keep=60.000 | TSim=0.989 | RoundTime=46.87s | TotalTime=1629.35s | Method=feddenoise_v3
+[Round 031/110] Phase=stage_1 | Stage=0 | Acc=98.630 | StagePure=99.094 | CPrec=99.094 | CRec=84.938 | NPrec=73.642 | NRec=98.189 | Keep=60.000 | TSim=0.989 | RoundTime=51.31s | TotalTime=1680.67s | Method=feddenoise_v3
+[Round 032/110] Phase=stage_1 | Stage=0 | Acc=98.650 | StagePure=99.094 | CPrec=99.094 | CRec=84.938 | NPrec=73.642 | NRec=98.189 | Keep=60.000 | TSim=0.989 | RoundTime=46.01s | TotalTime=1726.69s | Method=feddenoise_v3
+[Round 033/110] Phase=stage_1 | Stage=0 | Acc=98.610 | StagePure=99.094 | CPrec=99.094 | CRec=84.938 | NPrec=73.642 | NRec=98.189 | Keep=60.000 | TSim=0.989 | RoundTime=51.09s | TotalTime=1777.79s | Method=feddenoise_v3
+[Round 034/110] Phase=stage_1 | Stage=0 | Acc=98.730 | StagePure=99.094 | CPrec=99.094 | CRec=84.938 | NPrec=73.642 | NRec=98.189 | Keep=60.000 | TSim=0.989 | RoundTime=50.75s | TotalTime=1828.54s | Method=feddenoise_v3
+[Round 035/110] Phase=stage_1 | Stage=0 | Acc=98.740 | StagePure=99.094 | CPrec=99.094 | CRec=84.938 | NPrec=73.642 | NRec=98.189 | Keep=60.000 | TSim=0.989 | RoundTime=118.43s | TotalTime=1946.97s | Method=feddenoise_v3
+[Round 036/110] Phase=stage_2 | Stage=1 | Acc=98.930 | StagePure=99.981 | CPrec=99.981 | CRec=85.698 | NPrec=74.971 | NRec=99.961 | Keep=60.000 | TSim=0.990 | RoundTime=44.14s | TotalTime=1991.12s | Method=feddenoise_v3
