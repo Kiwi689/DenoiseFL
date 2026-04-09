@@ -1,0 +1,97 @@
+[Launch] model=fedcda | dataset=fl_svhn | clients=10 | rounds=100 | local_epoch=5 | batch_size=64 | noise_mode=uniform | noise_value=0.5
+Using downloaded and verified file: /mnt/workspace/shiyl/CodeScout/test/kiwi/DenoiseFL/data/train_32x32.mat
+Using downloaded and verified file: /mnt/workspace/shiyl/CodeScout/test/kiwi/DenoiseFL/data/test_32x32.mat
+mean: 7325.7
+std: 0.45825756949558405
+Data statistics: {0: {0: 472, 1: 1578, 2: 1463, 3: 830, 4: 949, 5: 383, 6: 448, 7: 395, 8: 381, 9: 427}, 1: {0: 413, 1: 415, 2: 690, 3: 2064, 4: 436, 5: 540, 6: 671, 7: 571, 8: 1110, 9: 416}, 2: {0: 429, 1: 392, 2: 463, 3: 452, 4: 401, 5: 973, 6: 525, 7: 749, 8: 654, 9: 2288}, 3: {0: 439, 1: 799, 2: 433, 3: 446, 4: 572, 5: 2252, 6: 452, 7: 1114, 8: 414, 9: 405}, 4: {0: 2104, 1: 405, 2: 1178, 3: 1174, 4: 438, 5: 400, 6: 402, 7: 392, 8: 384, 9: 449}, 5: {0: 426, 1: 851, 2: 642, 3: 429, 4: 1029, 5: 875, 6: 1876, 7: 386, 8: 427, 9: 385}, 6: {0: 406, 1: 1957, 2: 534, 3: 784, 4: 1576, 5: 418, 6: 391, 7: 434, 8: 420, 9: 406}, 7: {0: 424, 1: 2838, 2: 1176, 3: 416, 4: 414, 5: 449, 6: 417, 7: 372, 8: 419, 9: 400}, 8: {0: 733, 1: 453, 2: 1803, 3: 411, 4: 498, 5: 483, 6: 484, 7: 1596, 8: 472, 9: 392}, 9: {0: 419, 1: 494, 2: 400, 3: 746, 4: 1070, 5: 411, 6: 956, 7: 506, 8: 1723, 9: 600}}
+========================================================================================================================
+Training started at: 2026-04-09 14:08:07
+Result directory: results/fl_svhn/fedcda/pm-dir_a-0.5_nm-uni_nr-0.5_nt-symmetric_hs-3_bn-3_wr-30_L-1.0
+Result txt file : results/fl_svhn/fedcda/pm-dir_a-0.5_nm-uni_nr-0.5_nt-symmetric_hs-3_bn-3_wr-30_L-1.0/fedcda_fl_svhn_20260409-140807-434834_pid4103065.txt
+Result log file : results/fl_svhn/fedcda/pm-dir_a-0.5_nm-uni_nr-0.5_nt-symmetric_hs-3_bn-3_wr-30_L-1.0/fedcda_fl_svhn_20260409-140807-434834_pid4103065.log
+------------------------------------------------------------------------------------------------------------------------
+Model: fedcda
+Dataset: fl_svhn
+Structure: homogeneity
+Participants: 10
+Online ratio: 1.0
+Communication epochs: 100
+Local epoch: 5
+Local batch size: 64
+Local lr: 0.01
+Partition mode: dirichlet
+Dirichlet alpha: 0.5
+Noise mode: uniform
+Noise rate: 0.5
+Noise type: symmetric
+Noise max: 0.3
+Averaging: weight
+Seed: 0
+FedCDA history size: 3
+FedCDA batch num: 3
+FedCDA warmup round: 30
+FedCDA L: 1.0
+========================================================================================================================
+[Round 001/100] Phase=standard | Stage=warmup | Acc=9.690 | RoundTime=187.41s | TotalTime=187.41s | Method=fedcda
+[Round 002/100] Phase=standard | Stage=warmup | Acc=41.420 | RoundTime=188.02s | TotalTime=375.44s | Method=fedcda
+[Round 003/100] Phase=standard | Stage=warmup | Acc=51.320 | RoundTime=187.05s | TotalTime=562.51s | Method=fedcda
+[Round 004/100] Phase=standard | Stage=warmup | Acc=75.480 | RoundTime=187.65s | TotalTime=750.17s | Method=fedcda
+[Round 005/100] Phase=standard | Stage=warmup | Acc=67.340 | RoundTime=187.36s | TotalTime=937.53s | Method=fedcda
+[Round 006/100] Phase=standard | Stage=warmup | Acc=44.560 | RoundTime=185.52s | TotalTime=1123.06s | Method=fedcda
+[Round 007/100] Phase=standard | Stage=warmup | Acc=40.990 | RoundTime=187.70s | TotalTime=1310.77s | Method=fedcda
+[Round 008/100] Phase=standard | Stage=warmup | Acc=49.040 | RoundTime=187.45s | TotalTime=1498.22s | Method=fedcda
+[Round 009/100] Phase=standard | Stage=warmup | Acc=46.490 | RoundTime=187.91s | TotalTime=1686.14s | Method=fedcda
+[Round 010/100] Phase=standard | Stage=warmup | Acc=29.840 | RoundTime=185.64s | TotalTime=1871.78s | Method=fedcda
+[Round 011/100] Phase=standard | Stage=warmup | Acc=40.830 | RoundTime=186.86s | TotalTime=2058.65s | Method=fedcda
+[Round 012/100] Phase=standard | Stage=warmup | Acc=40.590 | RoundTime=186.68s | TotalTime=2245.34s | Method=fedcda
+[Round 013/100] Phase=standard | Stage=warmup | Acc=41.590 | RoundTime=187.30s | TotalTime=2432.65s | Method=fedcda
+[Round 014/100] Phase=standard | Stage=warmup | Acc=46.390 | RoundTime=186.66s | TotalTime=2619.32s | Method=fedcda
+[Round 015/100] Phase=standard | Stage=warmup | Acc=41.260 | RoundTime=187.84s | TotalTime=2807.17s | Method=fedcda
+[Round 016/100] Phase=standard | Stage=warmup | Acc=44.370 | RoundTime=186.30s | TotalTime=2993.47s | Method=fedcda
+[Round 017/100] Phase=standard | Stage=warmup | Acc=43.250 | RoundTime=186.36s | TotalTime=3179.83s | Method=fedcda
+[Round 018/100] Phase=standard | Stage=warmup | Acc=40.670 | RoundTime=186.77s | TotalTime=3366.61s | Method=fedcda
+[Round 019/100] Phase=standard | Stage=warmup | Acc=40.690 | RoundTime=187.99s | TotalTime=3554.61s | Method=fedcda
+[Round 020/100] Phase=standard | Stage=warmup | Acc=40.120 | RoundTime=186.82s | TotalTime=3741.45s | Method=fedcda
+[Round 021/100] Phase=standard | Stage=warmup | Acc=37.020 | RoundTime=185.04s | TotalTime=3926.51s | Method=fedcda
+[Round 022/100] Phase=standard | Stage=warmup | Acc=40.460 | RoundTime=186.83s | TotalTime=4113.35s | Method=fedcda
+[Round 023/100] Phase=standard | Stage=warmup | Acc=38.080 | RoundTime=185.47s | TotalTime=4298.83s | Method=fedcda
+[Round 024/100] Phase=standard | Stage=warmup | Acc=40.580 | RoundTime=186.99s | TotalTime=4485.83s | Method=fedcda
+[Round 025/100] Phase=standard | Stage=warmup | Acc=42.490 | RoundTime=186.02s | TotalTime=4671.85s | Method=fedcda
+[Round 026/100] Phase=standard | Stage=warmup | Acc=44.930 | RoundTime=184.49s | TotalTime=4856.35s | Method=fedcda
+[Round 027/100] Phase=standard | Stage=warmup | Acc=43.510 | RoundTime=187.49s | TotalTime=5043.85s | Method=fedcda
+[Round 028/100] Phase=standard | Stage=warmup | Acc=46.350 | RoundTime=187.27s | TotalTime=5231.13s | Method=fedcda
+[Round 029/100] Phase=standard | Stage=warmup | Acc=41.030 | RoundTime=187.19s | TotalTime=5418.32s | Method=fedcda
+[Round 030/100] Phase=standard | Stage=warmup | Acc=43.870 | RoundTime=187.14s | TotalTime=5605.47s | Method=fedcda
+[Round 031/100] Phase=standard | Stage=warmup | Acc=44.600 | RoundTime=194.84s | TotalTime=5800.33s | Method=fedcda
+[Round 032/100] Phase=standard | Stage=warmup | Acc=38.840 | RoundTime=192.57s | TotalTime=5992.91s | Method=fedcda
+[Round 033/100] Phase=standard | Stage=warmup | Acc=38.810 | RoundTime=193.56s | TotalTime=6186.48s | Method=fedcda
+[Round 034/100] Phase=standard | Stage=warmup | Acc=38.030 | RoundTime=193.08s | TotalTime=6379.57s | Method=fedcda
+[Round 035/100] Phase=standard | Stage=warmup | Acc=38.920 | RoundTime=191.84s | TotalTime=6571.42s | Method=fedcda
+[Round 036/100] Phase=standard | Stage=warmup | Acc=40.210 | RoundTime=192.53s | TotalTime=6763.96s | Method=fedcda
+[Round 037/100] Phase=standard | Stage=warmup | Acc=38.000 | RoundTime=192.48s | TotalTime=6956.44s | Method=fedcda
+[Round 038/100] Phase=standard | Stage=warmup | Acc=40.140 | RoundTime=191.45s | TotalTime=7147.90s | Method=fedcda
+[Round 039/100] Phase=standard | Stage=warmup | Acc=38.590 | RoundTime=191.83s | TotalTime=7339.74s | Method=fedcda
+[Round 040/100] Phase=standard | Stage=warmup | Acc=40.630 | RoundTime=192.12s | TotalTime=7531.86s | Method=fedcda
+[Round 041/100] Phase=standard | Stage=warmup | Acc=39.460 | RoundTime=192.09s | TotalTime=7723.96s | Method=fedcda
+[Round 042/100] Phase=standard | Stage=warmup | Acc=39.960 | RoundTime=191.44s | TotalTime=7915.41s | Method=fedcda
+[Round 043/100] Phase=standard | Stage=warmup | Acc=40.280 | RoundTime=190.98s | TotalTime=8106.39s | Method=fedcda
+[Round 044/100] Phase=standard | Stage=warmup | Acc=43.960 | RoundTime=191.90s | TotalTime=8298.31s | Method=fedcda
+[Round 045/100] Phase=standard | Stage=warmup | Acc=38.920 | RoundTime=191.80s | TotalTime=8490.12s | Method=fedcda
+[Round 046/100] Phase=standard | Stage=warmup | Acc=38.500 | RoundTime=192.37s | TotalTime=8682.49s | Method=fedcda
+[Round 047/100] Phase=standard | Stage=warmup | Acc=38.600 | RoundTime=193.04s | TotalTime=8875.54s | Method=fedcda
+[Round 048/100] Phase=standard | Stage=warmup | Acc=36.610 | RoundTime=191.77s | TotalTime=9067.32s | Method=fedcda
+[Round 049/100] Phase=standard | Stage=warmup | Acc=37.350 | RoundTime=192.49s | TotalTime=9259.82s | Method=fedcda
+[Round 050/100] Phase=standard | Stage=warmup | Acc=37.930 | RoundTime=191.31s | TotalTime=9451.14s | Method=fedcda
+[Round 051/100] Phase=standard | Stage=warmup | Acc=43.700 | RoundTime=190.65s | TotalTime=9641.79s | Method=fedcda
+[Round 052/100] Phase=standard | Stage=warmup | Acc=40.430 | RoundTime=191.95s | TotalTime=9833.75s | Method=fedcda
+[Round 053/100] Phase=standard | Stage=warmup | Acc=40.530 | RoundTime=192.01s | TotalTime=10025.76s | Method=fedcda
+[Round 054/100] Phase=standard | Stage=warmup | Acc=40.600 | RoundTime=192.36s | TotalTime=10218.13s | Method=fedcda
+[Round 055/100] Phase=standard | Stage=warmup | Acc=39.520 | RoundTime=193.48s | TotalTime=10411.62s | Method=fedcda
+[Round 056/100] Phase=standard | Stage=warmup | Acc=40.670 | RoundTime=191.91s | TotalTime=10603.54s | Method=fedcda
+[Round 057/100] Phase=standard | Stage=warmup | Acc=40.260 | RoundTime=192.79s | TotalTime=10796.34s | Method=fedcda
+[Round 058/100] Phase=standard | Stage=warmup | Acc=39.950 | RoundTime=191.42s | TotalTime=10987.77s | Method=fedcda
+[Round 059/100] Phase=standard | Stage=warmup | Acc=40.480 | RoundTime=191.73s | TotalTime=11179.50s | Method=fedcda
+[Round 060/100] Phase=standard | Stage=warmup | Acc=39.860 | RoundTime=191.31s | TotalTime=11370.82s | Method=fedcda
+[Round 061/100] Phase=standard | Stage=warmup | Acc=39.470 | RoundTime=190.83s | TotalTime=11561.66s | Method=fedcda
+[Round 062/100] Phase=standard | Stage=warmup | Acc=39.140 | RoundTime=191.28s | TotalTime=11752.94s | Method=fedcda
+[Round 063/100] Phase=standard | Stage=warmup | Acc=42.710 | RoundTime=193.34s | TotalTime=11946.29s | Method=fedcda
