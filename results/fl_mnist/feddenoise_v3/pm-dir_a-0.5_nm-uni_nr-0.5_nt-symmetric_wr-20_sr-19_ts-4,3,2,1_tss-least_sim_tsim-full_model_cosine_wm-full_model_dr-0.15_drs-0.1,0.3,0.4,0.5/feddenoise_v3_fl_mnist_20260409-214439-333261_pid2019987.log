@@ -1,0 +1,44 @@
+========================================================================================================================
+Training started at: 2026-04-09 21:44:39
+Result directory: results/fl_mnist/feddenoise_v3/pm-dir_a-0.5_nm-uni_nr-0.5_nt-symmetric_wr-20_sr-19_ts-4,3,2,1_tss-least_sim_tsim-full_model_cosine_wm-full_model_dr-0.15_drs-0.1,0.3,0.4,0.5
+Result txt file : results/fl_mnist/feddenoise_v3/pm-dir_a-0.5_nm-uni_nr-0.5_nt-symmetric_wr-20_sr-19_ts-4,3,2,1_tss-least_sim_tsim-full_model_cosine_wm-full_model_dr-0.15_drs-0.1,0.3,0.4,0.5/feddenoise_v3_fl_mnist_20260409-214439-333261_pid2019987.txt
+Result log file : results/fl_mnist/feddenoise_v3/pm-dir_a-0.5_nm-uni_nr-0.5_nt-symmetric_wr-20_sr-19_ts-4,3,2,1_tss-least_sim_tsim-full_model_cosine_wm-full_model_dr-0.15_drs-0.1,0.3,0.4,0.5/feddenoise_v3_fl_mnist_20260409-214439-333261_pid2019987.log
+------------------------------------------------------------------------------------------------------------------------
+Model: feddenoise_v3
+Dataset: fl_mnist
+Structure: homogeneity
+Participants: 10
+Online ratio: 1.0
+Communication epochs: 96
+Local epoch: 5
+Local batch size: 64
+Local lr: 0.01
+Partition mode: dirichlet
+Dirichlet alpha: 0.5
+Noise mode: uniform
+Noise rate: 0.5
+Noise type: symmetric
+Noise max: 0.3
+Averaging: weight
+Seed: 0
+Warmup round: 20
+Stage round: 19
+Teacher schedule: 4,3,2,1
+Teacher select strategy: least_sim
+Teacher similarity: full_model_cosine
+Teacher score mode: teacher_mean
+Warmup mode: full_model
+Drop rate: 0.15
+Drop rate schedule: 0.1,0.3,0.4,0.5
+Exclude self teacher: True
+========================================================================================================================
+[Round 001/096] Phase=warmup | Stage=warmup | Acc=11.350 | RoundTime=192.38s | TotalTime=192.38s | Method=feddenoise_v3
+[Round 002/096] Phase=warmup | Stage=warmup | Acc=83.020 | RoundTime=192.70s | TotalTime=385.09s | Method=feddenoise_v3
+[Round 003/096] Phase=warmup | Stage=warmup | Acc=96.560 | RoundTime=186.74s | TotalTime=571.83s | Method=feddenoise_v3
+[Round 004/096] Phase=warmup | Stage=warmup | Acc=97.840 | RoundTime=191.92s | TotalTime=763.76s | Method=feddenoise_v3
+[Round 005/096] Phase=warmup | Stage=warmup | Acc=98.210 | RoundTime=192.55s | TotalTime=956.32s | Method=feddenoise_v3
+[Round 006/096] Phase=warmup | Stage=warmup | Acc=98.030 | RoundTime=192.52s | TotalTime=1148.85s | Method=feddenoise_v3
+[Round 007/096] Phase=warmup | Stage=warmup | Acc=97.910 | RoundTime=190.91s | TotalTime=1339.77s | Method=feddenoise_v3
+[Round 008/096] Phase=warmup | Stage=warmup | Acc=97.000 | RoundTime=192.04s | TotalTime=1531.82s | Method=feddenoise_v3
+[Round 009/096] Phase=warmup | Stage=warmup | Acc=95.090 | RoundTime=187.86s | TotalTime=1719.69s | Method=feddenoise_v3
+[Round 010/096] Phase=warmup | Stage=warmup | Acc=92.620 | RoundTime=193.51s | TotalTime=1913.20s | Method=feddenoise_v3

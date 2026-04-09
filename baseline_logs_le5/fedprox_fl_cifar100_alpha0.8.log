@@ -1,0 +1,93 @@
+[Launch] model=fedprox | dataset=fl_cifar100 | clients=10 | rounds=100 | local_epoch=5 | batch_size=64 | noise_mode=uniform | noise_value=0.5
+Files already downloaded and verified
+Files already downloaded and verified
+mean: 5000.0
+std: 0.0
+Data statistics: {0: {0: 51, 1: 20, 2: 32, 3: 81, 4: 46, 5: 30, 6: 24, 7: 35, 8: 43, 9: 29, 10: 33, 11: 34, 12: 88, 13: 24, 14: 41, 15: 35, 16: 96, 17: 49, 18: 60, 19: 35, 20: 22, 21: 21, 22: 35, 23: 13, 24: 68, 25: 35, 26: 49, 27: 96, 28: 99, 29: 91, 30: 99, 31: 38, 32: 61, 33: 24, 34: 68, 35: 29, 36: 59, 37: 36, 38: 35, 39: 42, 40: 49, 41: 72, 42: 79, 43: 35, 44: 93, 45: 31, 46: 55, 47: 28, 48: 27, 49: 49, 50: 41, 51: 43, 52: 114, 53: 28, 54: 96, 55: 20, 56: 69, 57: 37, 58: 76, 59: 55, 60: 32, 61: 45, 62: 72, 63: 35, 64: 40, 65: 54, 66: 35, 67: 38, 68: 36, 69: 26, 70: 32, 71: 42, 72: 28, 73: 160, 74: 36, 75: 38, 76: 24, 77: 23, 78: 75, 79: 38, 80: 53, 81: 64, 82: 23, 83: 31, 84: 38, 85: 35, 86: 33, 87: 58, 88: 84, 89: 38, 90: 48, 91: 83, 92: 60, 93: 33, 94: 49, 95: 39, 96: 81, 97: 43, 98: 36, 99: 159}, 1: {0: 83, 1: 54, 2: 76, 3: 37, 4: 74, 5: 99, 6: 108, 7: 35, 8: 39, 9: 70, 10: 121, 11: 68, 12: 52, 13: 56, 14: 26, 15: 77, 16: 21, 17: 104, 18: 43, 19: 42, 20: 83, 21: 47, 22: 33, 23: 61, 24: 34, 25: 86, 26: 65, 27: 82, 28: 47, 29: 29, 30: 77, 31: 43, 32: 23, 33: 53, 34: 56, 35: 33, 36: 39, 37: 64, 38: 49, 39: 46, 40: 56, 41: 38, 42: 48, 43: 29, 44: 35, 45: 32, 46: 27, 47: 29, 48: 85, 49: 31, 50: 64, 51: 41, 52: 29, 53: 49, 54: 45, 55: 28, 56: 67, 57: 22, 58: 59, 59: 30, 60: 119, 61: 41, 62: 111, 63: 37, 64: 45, 65: 35, 66: 39, 67: 61, 68: 22, 69: 59, 70: 27, 71: 38, 72: 37, 73: 66, 74: 28, 75: 31, 76: 30, 77: 30, 78: 41, 79: 29, 80: 74, 81: 40, 82: 70, 83: 36, 84: 71, 85: 26, 86: 50, 87: 37, 88: 65, 89: 101, 90: 90, 91: 38, 92: 15, 93: 22, 94: 33, 95: 25, 96: 17, 97: 28, 98: 26, 99: 31}, 2: {0: 61, 1: 114, 2: 31, 3: 43, 4: 63, 5: 40, 6: 44, 7: 48, 8: 38, 9: 26, 10: 49, 11: 73, 12: 33, 13: 51, 14: 87, 15: 122, 16: 85, 17: 18, 18: 123, 19: 51, 20: 34, 21: 97, 22: 28, 23: 70, 24: 32, 25: 48, 26: 29, 27: 34, 28: 20, 29: 49, 30: 20, 31: 60, 32: 59, 33: 28, 34: 45, 35: 120, 36: 29, 37: 35, 38: 35, 39: 40, 40: 26, 41: 53, 42: 24, 43: 50, 44: 27, 45: 31, 46: 210, 47: 38, 48: 42, 49: 22, 50: 31, 51: 114, 52: 32, 53: 32, 54: 25, 55: 73, 56: 29, 57: 39, 58: 43, 59: 112, 60: 56, 61: 27, 62: 33, 63: 66, 64: 74, 65: 37, 66: 25, 67: 45, 68: 53, 69: 53, 70: 72, 71: 71, 72: 22, 73: 27, 74: 29, 75: 19, 76: 104, 77: 28, 78: 78, 79: 148, 80: 100, 81: 81, 82: 35, 83: 50, 84: 32, 85: 30, 86: 33, 87: 26, 88: 25, 89: 30, 90: 92, 91: 28, 92: 29, 93: 23, 94: 26, 95: 20, 96: 27, 97: 33, 98: 21, 99: 27}, 3: {0: 55, 1: 95, 2: 68, 3: 32, 4: 38, 5: 20, 6: 23, 7: 34, 8: 55, 9: 59, 10: 31, 11: 29, 12: 28, 13: 35, 14: 67, 15: 57, 16: 97, 17: 36, 18: 43, 19: 38, 20: 27, 21: 36, 22: 30, 23: 28, 24: 21, 25: 28, 26: 70, 27: 40, 28: 42, 29: 49, 30: 58, 31: 41, 32: 42, 33: 93, 34: 37, 35: 33, 36: 28, 37: 32, 38: 20, 39: 66, 40: 53, 41: 32, 42: 16, 43: 55, 44: 30, 45: 61, 46: 21, 47: 35, 48: 52, 49: 54, 50: 32, 51: 61, 52: 40, 53: 22, 54: 60, 55: 47, 56: 45, 57: 63, 58: 55, 59: 53, 60: 42, 61: 82, 62: 37, 63: 97, 64: 61, 65: 42, 66: 91, 67: 98, 68: 102, 69: 84, 70: 78, 71: 32, 72: 29, 73: 27, 74: 142, 75: 75, 76: 34, 77: 64, 78: 37, 79: 31, 80: 29, 81: 85, 82: 33, 83: 36, 84: 35, 85: 26, 86: 45, 87: 77, 88: 79, 89: 35, 90: 32, 91: 17, 92: 35, 93: 37, 94: 91, 95: 138, 96: 30, 97: 121, 98: 47, 99: 39}, 4: {0: 57, 1: 35, 2: 84, 3: 28, 4: 41, 5: 55, 6: 37, 7: 117, 8: 32, 9: 54, 10: 85, 11: 114, 12: 34, 13: 51, 14: 64, 15: 29, 16: 37, 17: 45, 18: 38, 19: 19, 20: 51, 21: 42, 22: 112, 23: 28, 24: 44, 25: 34, 26: 30, 27: 24, 28: 64, 29: 21, 30: 41, 31: 86, 32: 37, 33: 67, 34: 71, 35: 23, 36: 47, 37: 116, 38: 55, 39: 47, 40: 77, 41: 26, 42: 27, 43: 89, 44: 75, 45: 69, 46: 23, 47: 42, 48: 43, 49: 63, 50: 64, 51: 30, 52: 104, 53: 87, 54: 43, 55: 23, 56: 93, 57: 59, 58: 83, 59: 30, 60: 33, 61: 29, 62: 34, 63: 47, 64: 29, 65: 44, 66: 106, 67: 30, 68: 38, 69: 43, 70: 31, 71: 61, 72: 91, 73: 29, 74: 56, 75: 46, 76: 42, 77: 29, 78: 19, 79: 36, 80: 44, 81: 29, 82: 48, 83: 24, 84: 90, 85: 33, 86: 34, 87: 50, 88: 35, 89: 44, 90: 47, 91: 97, 92: 52, 93: 97, 94: 33, 95: 33, 96: 33, 97: 20, 98: 16, 99: 22}, 5: {0: 42, 1: 30, 2: 48, 3: 14, 4: 31, 5: 26, 6: 41, 7: 70, 8: 22, 9: 47, 10: 46, 11: 27, 12: 89, 13: 111, 14: 30, 15: 69, 16: 46, 17: 20, 18: 30, 19: 126, 20: 92, 21: 90, 22: 41, 23: 43, 24: 93, 25: 54, 26: 87, 27: 84, 28: 42, 29: 38, 30: 54, 31: 39, 32: 52, 33: 32, 34: 33, 35: 32, 36: 92, 37: 28, 38: 29, 39: 69, 40: 40, 41: 82, 42: 126, 43: 38, 44: 36, 45: 105, 46: 21, 47: 29, 48: 84, 49: 35, 50: 44, 51: 47, 52: 33, 53: 58, 54: 30, 55: 61, 56: 34, 57: 43, 58: 20, 59: 31, 60: 35, 61: 84, 62: 41, 63: 42, 64: 26, 65: 31, 66: 28, 67: 39, 68: 33, 69: 31, 70: 99, 71: 71, 72: 25, 73: 46, 74: 30, 75: 52, 76: 30, 77: 62, 78: 31, 79: 20, 80: 29, 81: 31, 82: 22, 83: 70, 84: 110, 85: 26, 86: 81, 87: 27, 88: 38, 89: 61, 90: 57, 91: 26, 92: 36, 93: 44, 94: 66, 95: 33, 96: 148, 97: 51, 98: 81, 99: 21}, 6: {0: 50, 1: 24, 2: 29, 3: 42, 4: 18, 5: 32, 6: 120, 7: 50, 8: 64, 9: 29, 10: 25, 11: 31, 12: 30, 13: 50, 14: 69, 15: 32, 16: 69, 17: 103, 18: 30, 19: 35, 20: 19, 21: 58, 22: 86, 23: 51, 24: 84, 25: 68, 26: 35, 27: 27, 28: 43, 29: 27, 30: 39, 31: 27, 32: 62, 33: 32, 34: 20, 35: 94, 36: 79, 37: 38, 38: 54, 39: 34, 40: 59, 41: 112, 42: 45, 43: 27, 44: 50, 45: 21, 46: 26, 47: 57, 48: 34, 49: 73, 50: 25, 51: 72, 52: 65, 53: 44, 54: 88, 55: 118, 56: 29, 57: 29, 58: 32, 59: 77, 60: 67, 61: 23, 62: 49, 63: 46, 64: 60, 65: 67, 66: 37, 67: 25, 68: 47, 69: 33, 70: 43, 71: 60, 72: 35, 73: 31, 74: 44, 75: 67, 76: 35, 77: 36, 78: 26, 79: 28, 80: 45, 81: 48, 82: 27, 83: 55, 84: 28, 85: 128, 86: 58, 87: 39, 88: 38, 89: 39, 90: 27, 91: 75, 92: 158, 93: 77, 94: 63, 95: 152, 96: 20, 97: 20, 98: 31, 99: 21}, 7: {0: 36, 1: 24, 2: 44, 3: 84, 4: 55, 5: 109, 6: 35, 7: 73, 8: 36, 9: 47, 10: 31, 11: 40, 12: 97, 13: 27, 14: 36, 15: 30, 16: 30, 17: 18, 18: 68, 19: 42, 20: 93, 21: 47, 22: 35, 23: 26, 24: 42, 25: 68, 26: 37, 27: 56, 28: 58, 29: 101, 30: 31, 31: 114, 32: 80, 33: 94, 34: 51, 35: 28, 36: 31, 37: 38, 38: 38, 39: 54, 40: 60, 41: 42, 42: 38, 43: 26, 44: 28, 45: 23, 46: 35, 47: 60, 48: 76, 49: 96, 50: 36, 51: 21, 52: 28, 53: 48, 54: 27, 55: 38, 56: 32, 57: 130, 58: 30, 59: 29, 60: 42, 61: 78, 62: 37, 63: 47, 64: 87, 65: 84, 66: 26, 67: 80, 68: 25, 69: 91, 70: 48, 71: 26, 72: 43, 73: 28, 74: 59, 75: 47, 76: 36, 77: 68, 78: 51, 79: 32, 80: 34, 81: 30, 82: 98, 83: 48, 84: 31, 85: 40, 86: 85, 87: 38, 88: 75, 89: 67, 90: 20, 91: 29, 92: 59, 93: 21, 94: 43, 95: 27, 96: 65, 97: 84, 98: 64, 99: 20}, 8: {0: 62, 1: 42, 2: 26, 3: 44, 4: 43, 5: 34, 6: 31, 7: 31, 8: 57, 9: 35, 10: 34, 11: 27, 12: 42, 13: 49, 14: 56, 15: 24, 16: 29, 17: 41, 18: 45, 19: 67, 20: 44, 21: 36, 22: 36, 23: 133, 24: 27, 25: 39, 26: 66, 27: 28, 28: 53, 29: 58, 30: 29, 31: 36, 32: 47, 33: 42, 34: 55, 35: 50, 36: 43, 37: 104, 38: 122, 39: 42, 40: 34, 41: 33, 42: 35, 43: 94, 44: 60, 45: 56, 46: 35, 47: 81, 48: 33, 49: 36, 50: 80, 51: 44, 52: 27, 53: 38, 54: 36, 55: 44, 56: 74, 57: 49, 58: 53, 59: 31, 60: 40, 61: 34, 62: 68, 63: 48, 64: 24, 65: 36, 66: 72, 67: 40, 68: 70, 69: 48, 70: 28, 71: 41, 72: 47, 73: 41, 74: 58, 75: 48, 76: 47, 77: 43, 78: 60, 79: 77, 80: 81, 81: 27, 82: 26, 83: 45, 84: 44, 85: 110, 86: 51, 87: 110, 88: 27, 89: 34, 90: 40, 91: 33, 92: 21, 93: 35, 94: 69, 95: 35, 96: 68, 97: 72, 98: 108, 99: 112}, 9: {0: 31, 1: 23, 2: 65, 3: 51, 4: 59, 5: 56, 6: 69, 7: 27, 8: 120, 9: 111, 10: 57, 11: 37, 12: 36, 13: 61, 14: 23, 15: 52, 16: 25, 17: 37, 18: 31, 19: 48, 20: 39, 21: 32, 22: 39, 23: 42, 24: 56, 25: 33, 26: 34, 27: 20, 28: 45, 29: 42, 30: 50, 31: 27, 32: 64, 33: 46, 34: 48, 35: 75, 36: 48, 37: 25, 38: 72, 39: 48, 40: 35, 41: 25, 42: 69, 43: 90, 44: 44, 45: 74, 46: 33, 47: 84, 48: 26, 49: 43, 50: 101, 51: 29, 52: 60, 53: 53, 54: 28, 55: 46, 56: 35, 57: 45, 58: 31, 59: 26, 60: 54, 61: 44, 62: 45, 63: 33, 64: 58, 65: 81, 66: 34, 67: 24, 68: 55, 69: 24, 70: 23, 71: 42, 72: 153, 73: 32, 74: 40, 75: 46, 76: 155, 77: 126, 78: 97, 79: 64, 80: 22, 81: 47, 82: 124, 83: 95, 84: 33, 85: 27, 86: 31, 87: 29, 88: 47, 89: 27, 90: 52, 91: 42, 92: 38, 93: 82, 94: 61, 95: 23, 96: 28, 97: 30, 98: 23, 99: 28}}
+========================================================================================================================
+Training started at: 2026-04-09 19:11:22
+Result directory: results/fl_cifar100/fedprox/pm-dir_a-0.8_nm-uni_nr-0.5_nt-symmetric_mu-0.001
+Result txt file : results/fl_cifar100/fedprox/pm-dir_a-0.8_nm-uni_nr-0.5_nt-symmetric_mu-0.001/fedprox_fl_cifar100_20260409-191122-285575_pid1473575.txt
+Result log file : results/fl_cifar100/fedprox/pm-dir_a-0.8_nm-uni_nr-0.5_nt-symmetric_mu-0.001/fedprox_fl_cifar100_20260409-191122-285575_pid1473575.log
+------------------------------------------------------------------------------------------------------------------------
+Model: fedprox
+Dataset: fl_cifar100
+Structure: homogeneity
+Participants: 10
+Online ratio: 1.0
+Communication epochs: 100
+Local epoch: 5
+Local batch size: 64
+Local lr: 0.1
+Partition mode: dirichlet
+Dirichlet alpha: 0.8
+Noise mode: uniform
+Noise rate: 0.5
+Noise type: symmetric
+Noise max: 0.3
+Averaging: weight
+Seed: 0
+FedProx mu: 0.001
+========================================================================================================================
+[Round 001/100] Phase=standard | Stage=warmup | Acc=1.000 | RoundTime=181.01s | TotalTime=181.02s | Method=fedprox
+[Round 002/100] Phase=standard | Stage=warmup | Acc=2.050 | RoundTime=179.37s | TotalTime=360.40s | Method=fedprox
+[Round 003/100] Phase=standard | Stage=warmup | Acc=7.470 | RoundTime=179.58s | TotalTime=539.99s | Method=fedprox
+[Round 004/100] Phase=standard | Stage=warmup | Acc=11.360 | RoundTime=179.08s | TotalTime=719.09s | Method=fedprox
+[Round 005/100] Phase=standard | Stage=warmup | Acc=13.970 | RoundTime=172.88s | TotalTime=891.97s | Method=fedprox
+[Round 006/100] Phase=standard | Stage=warmup | Acc=16.280 | RoundTime=179.53s | TotalTime=1071.52s | Method=fedprox
+[Round 007/100] Phase=standard | Stage=warmup | Acc=17.860 | RoundTime=179.01s | TotalTime=1250.53s | Method=fedprox
+[Round 008/100] Phase=standard | Stage=warmup | Acc=19.850 | RoundTime=179.83s | TotalTime=1430.37s | Method=fedprox
+[Round 009/100] Phase=standard | Stage=warmup | Acc=21.510 | RoundTime=180.33s | TotalTime=1610.70s | Method=fedprox
+[Round 010/100] Phase=standard | Stage=warmup | Acc=22.820 | RoundTime=179.38s | TotalTime=1790.09s | Method=fedprox
+[Round 011/100] Phase=standard | Stage=warmup | Acc=24.180 | RoundTime=179.58s | TotalTime=1969.68s | Method=fedprox
+[Round 012/100] Phase=standard | Stage=warmup | Acc=25.200 | RoundTime=180.20s | TotalTime=2149.88s | Method=fedprox
+[Round 013/100] Phase=standard | Stage=warmup | Acc=26.520 | RoundTime=181.06s | TotalTime=2330.95s | Method=fedprox
+[Round 014/100] Phase=standard | Stage=warmup | Acc=27.260 | RoundTime=179.04s | TotalTime=2510.00s | Method=fedprox
+[Round 015/100] Phase=standard | Stage=warmup | Acc=27.880 | RoundTime=178.66s | TotalTime=2688.67s | Method=fedprox
+[Round 016/100] Phase=standard | Stage=warmup | Acc=29.150 | RoundTime=179.40s | TotalTime=2868.08s | Method=fedprox
+[Round 017/100] Phase=standard | Stage=warmup | Acc=29.590 | RoundTime=177.64s | TotalTime=3045.73s | Method=fedprox
+[Round 018/100] Phase=standard | Stage=warmup | Acc=30.520 | RoundTime=179.36s | TotalTime=3225.10s | Method=fedprox
+[Round 019/100] Phase=standard | Stage=warmup | Acc=30.840 | RoundTime=178.71s | TotalTime=3403.82s | Method=fedprox
+[Round 020/100] Phase=standard | Stage=warmup | Acc=31.520 | RoundTime=180.20s | TotalTime=3584.03s | Method=fedprox
+[Round 021/100] Phase=standard | Stage=warmup | Acc=31.360 | RoundTime=181.23s | TotalTime=3765.26s | Method=fedprox
+[Round 022/100] Phase=standard | Stage=warmup | Acc=31.270 | RoundTime=178.09s | TotalTime=3943.36s | Method=fedprox
+[Round 023/100] Phase=standard | Stage=warmup | Acc=32.010 | RoundTime=182.60s | TotalTime=4125.97s | Method=fedprox
+[Round 024/100] Phase=standard | Stage=warmup | Acc=32.200 | RoundTime=177.80s | TotalTime=4303.78s | Method=fedprox
+[Round 025/100] Phase=standard | Stage=warmup | Acc=31.880 | RoundTime=179.67s | TotalTime=4483.46s | Method=fedprox
+[Round 026/100] Phase=standard | Stage=warmup | Acc=32.130 | RoundTime=179.74s | TotalTime=4663.21s | Method=fedprox
+[Round 027/100] Phase=standard | Stage=warmup | Acc=32.240 | RoundTime=181.38s | TotalTime=4844.60s | Method=fedprox
+[Round 028/100] Phase=standard | Stage=warmup | Acc=32.380 | RoundTime=179.13s | TotalTime=5023.74s | Method=fedprox
+[Round 029/100] Phase=standard | Stage=warmup | Acc=32.290 | RoundTime=178.73s | TotalTime=5202.48s | Method=fedprox
+[Round 030/100] Phase=standard | Stage=warmup | Acc=31.970 | RoundTime=180.30s | TotalTime=5382.79s | Method=fedprox
+[Round 031/100] Phase=standard | Stage=warmup | Acc=31.970 | RoundTime=177.24s | TotalTime=5560.04s | Method=fedprox
+[Round 032/100] Phase=standard | Stage=warmup | Acc=31.880 | RoundTime=180.30s | TotalTime=5740.35s | Method=fedprox
+[Round 033/100] Phase=standard | Stage=warmup | Acc=32.150 | RoundTime=181.39s | TotalTime=5921.75s | Method=fedprox
+[Round 034/100] Phase=standard | Stage=warmup | Acc=32.020 | RoundTime=179.78s | TotalTime=6101.55s | Method=fedprox
+[Round 035/100] Phase=standard | Stage=warmup | Acc=31.890 | RoundTime=180.24s | TotalTime=6281.79s | Method=fedprox
+[Round 036/100] Phase=standard | Stage=warmup | Acc=31.560 | RoundTime=180.32s | TotalTime=6462.12s | Method=fedprox
+[Round 037/100] Phase=standard | Stage=warmup | Acc=31.320 | RoundTime=180.72s | TotalTime=6642.86s | Method=fedprox
+[Round 038/100] Phase=standard | Stage=warmup | Acc=30.840 | RoundTime=182.37s | TotalTime=6825.24s | Method=fedprox
+[Round 039/100] Phase=standard | Stage=warmup | Acc=31.120 | RoundTime=179.65s | TotalTime=7004.90s | Method=fedprox
+[Round 040/100] Phase=standard | Stage=warmup | Acc=31.060 | RoundTime=179.76s | TotalTime=7184.67s | Method=fedprox
+[Round 041/100] Phase=standard | Stage=warmup | Acc=30.640 | RoundTime=181.66s | TotalTime=7366.33s | Method=fedprox
+[Round 042/100] Phase=standard | Stage=warmup | Acc=30.850 | RoundTime=180.43s | TotalTime=7546.77s | Method=fedprox
+[Round 043/100] Phase=standard | Stage=warmup | Acc=30.610 | RoundTime=179.90s | TotalTime=7726.68s | Method=fedprox
+[Round 044/100] Phase=standard | Stage=warmup | Acc=30.890 | RoundTime=183.65s | TotalTime=7910.34s | Method=fedprox
+[Round 045/100] Phase=standard | Stage=warmup | Acc=30.150 | RoundTime=181.25s | TotalTime=8091.60s | Method=fedprox
+[Round 046/100] Phase=standard | Stage=warmup | Acc=30.300 | RoundTime=181.81s | TotalTime=8273.42s | Method=fedprox
+[Round 047/100] Phase=standard | Stage=warmup | Acc=30.380 | RoundTime=182.18s | TotalTime=8455.61s | Method=fedprox
+[Round 048/100] Phase=standard | Stage=warmup | Acc=30.660 | RoundTime=180.66s | TotalTime=8636.28s | Method=fedprox
+[Round 049/100] Phase=standard | Stage=warmup | Acc=30.130 | RoundTime=178.29s | TotalTime=8814.57s | Method=fedprox
+[Round 050/100] Phase=standard | Stage=warmup | Acc=29.750 | RoundTime=183.16s | TotalTime=8997.75s | Method=fedprox
+[Round 051/100] Phase=standard | Stage=warmup | Acc=30.230 | RoundTime=182.65s | TotalTime=9180.40s | Method=fedprox
+[Round 052/100] Phase=standard | Stage=warmup | Acc=29.340 | RoundTime=180.84s | TotalTime=9361.24s | Method=fedprox
+[Round 053/100] Phase=standard | Stage=warmup | Acc=29.730 | RoundTime=178.56s | TotalTime=9539.82s | Method=fedprox
+[Round 054/100] Phase=standard | Stage=warmup | Acc=29.930 | RoundTime=181.21s | TotalTime=9721.04s | Method=fedprox
+[Round 055/100] Phase=standard | Stage=warmup | Acc=29.530 | RoundTime=180.69s | TotalTime=9901.74s | Method=fedprox
+[Round 056/100] Phase=standard | Stage=warmup | Acc=29.270 | RoundTime=180.51s | TotalTime=10082.27s | Method=fedprox
+[Round 057/100] Phase=standard | Stage=warmup | Acc=29.200 | RoundTime=179.65s | TotalTime=10261.93s | Method=fedprox
+[Round 058/100] Phase=standard | Stage=warmup | Acc=29.040 | RoundTime=179.63s | TotalTime=10441.57s | Method=fedprox
+[Round 059/100] Phase=standard | Stage=warmup | Acc=29.350 | RoundTime=182.15s | TotalTime=10623.73s | Method=fedprox
+[Round 060/100] Phase=standard | Stage=warmup | Acc=28.840 | RoundTime=180.83s | TotalTime=10804.57s | Method=fedprox
+[Round 061/100] Phase=standard | Stage=warmup | Acc=28.590 | RoundTime=181.76s | TotalTime=10986.34s | Method=fedprox
+[Round 062/100] Phase=standard | Stage=warmup | Acc=29.030 | RoundTime=180.56s | TotalTime=11166.90s | Method=fedprox
