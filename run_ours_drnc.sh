@@ -15,8 +15,8 @@ mkdir -p "${LOG_DIR}"
 # =========================
 # 通用实验配置
 # =========================
-GPU_ID=5
-MAX_JOBS=3
+GPU_ID=2
+MAX_JOBS=4
 
 PARTI_NUM=10
 ONLINE_RATIO=1.0
@@ -37,7 +37,7 @@ DATASETS=(
 )
 
 # 固定 drop_rate 实验循环
-DROP_RATES=(0.1 0.2 0.3 0.4 0.5 0.6)
+DROP_RATES=(0.55 0.62 0.65 0.7)
 
 # =========================
 # Ours (FedDenoiseV3) 固定配置
