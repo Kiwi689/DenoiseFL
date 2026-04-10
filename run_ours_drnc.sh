@@ -37,7 +37,7 @@ DATASETS=(
 )
 
 # 固定 drop_rate 实验循环
-DROP_RATES=(0.55 0.62 0.65 0.7)
+DROP_RATES=(0.62)
 
 # =========================
 # Ours (FedDenoiseV3) 固定配置
