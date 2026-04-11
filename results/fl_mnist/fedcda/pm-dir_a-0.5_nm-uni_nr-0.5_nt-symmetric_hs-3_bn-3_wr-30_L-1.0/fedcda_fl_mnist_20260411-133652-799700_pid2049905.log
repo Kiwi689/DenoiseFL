@@ -1,0 +1,32 @@
+========================================================================================================================
+Training started at: 2026-04-11 13:36:52
+Result directory: results/fl_mnist/fedcda/pm-dir_a-0.5_nm-uni_nr-0.5_nt-symmetric_hs-3_bn-3_wr-30_L-1.0
+Result txt file : results/fl_mnist/fedcda/pm-dir_a-0.5_nm-uni_nr-0.5_nt-symmetric_hs-3_bn-3_wr-30_L-1.0/fedcda_fl_mnist_20260411-133652-799700_pid2049905.txt
+Result log file : results/fl_mnist/fedcda/pm-dir_a-0.5_nm-uni_nr-0.5_nt-symmetric_hs-3_bn-3_wr-30_L-1.0/fedcda_fl_mnist_20260411-133652-799700_pid2049905.log
+------------------------------------------------------------------------------------------------------------------------
+Model: fedcda
+Dataset: fl_mnist
+Structure: homogeneity
+Participants: 10
+Online ratio: 1.0
+Communication epochs: 100
+Local epoch: 5
+Local batch size: 64
+Local lr: 0.01
+Partition mode: dirichlet
+Dirichlet alpha: 0.5
+Noise mode: uniform
+Noise rate: 0.5
+Noise type: symmetric
+Noise max: 0.3
+Averaging: weight
+Seed: 0
+FedCDA history size: 3
+FedCDA batch num: 3
+FedCDA warmup round: 30
+FedCDA L: 1.0
+========================================================================================================================
+[Round 001/100] Phase=standard | Stage=warmup | Acc=9.740 | RoundTime=189.24s | TotalTime=189.25s | Method=fedcda
+[Round 002/100] Phase=standard | Stage=warmup | Acc=72.330 | RoundTime=186.12s | TotalTime=375.38s | Method=fedcda
+[Round 003/100] Phase=standard | Stage=warmup | Acc=86.960 | RoundTime=185.71s | TotalTime=561.09s | Method=fedcda
+[Round 004/100] Phase=standard | Stage=warmup | Acc=94.150 | RoundTime=185.43s | TotalTime=746.53s | Method=fedcda

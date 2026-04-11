@@ -1,0 +1,38 @@
+========================================================================================================================
+Training started at: 2026-04-11 14:03:46
+Result directory: results/fl_cifar10/fedcda/pm-dir_a-0.3_nm-uni_nr-0.3_nt-symmetric_hs-3_bn-3_wr-2_L-1.0
+Result txt file : results/fl_cifar10/fedcda/pm-dir_a-0.3_nm-uni_nr-0.3_nt-symmetric_hs-3_bn-3_wr-2_L-1.0/fedcda_fl_cifar10_20260411-140346-007561_pid2066323.txt
+Result log file : results/fl_cifar10/fedcda/pm-dir_a-0.3_nm-uni_nr-0.3_nt-symmetric_hs-3_bn-3_wr-2_L-1.0/fedcda_fl_cifar10_20260411-140346-007561_pid2066323.log
+------------------------------------------------------------------------------------------------------------------------
+Model: fedcda
+Dataset: fl_cifar10
+Structure: homogeneity
+Participants: 10
+Online ratio: 1.0
+Communication epochs: 4
+Local epoch: 1
+Local batch size: 64
+Local lr: 0.01
+Partition mode: dirichlet
+Dirichlet alpha: 0.3
+Noise mode: uniform
+Noise rate: 0.3
+Noise type: symmetric
+Noise max: 0.3
+Averaging: weight
+Seed: 0
+FedCDA history size: 3
+FedCDA batch num: 3
+FedCDA warmup round: 2
+FedCDA L: 1.0
+========================================================================================================================
+[Round 001/004] Phase=standard | Stage=warmup | Acc=15.160 | RoundTime=13.67s | TotalTime=13.68s | Method=fedcda
+[Round 002/004] Phase=standard | Stage=warmup | Acc=24.330 | RoundTime=12.26s | TotalTime=25.95s | Method=fedcda
+[Round 003/004] Phase=standard | Stage=warmup | Acc=22.530 | RoundTime=16.59s | TotalTime=42.54s | Method=fedcda
+[Round 004/004] Phase=standard | Stage=warmup | Acc=33.480 | RoundTime=16.24s | TotalTime=58.80s | Method=fedcda
+========================================================================================================================
+Training finished at: 2026-04-11 14:04:44
+Total elapsed time: 58.80s
+Final Acc: 33.480
+Best Acc : 33.480
+========================================================================================================================

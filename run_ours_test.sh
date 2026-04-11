@@ -5,7 +5,7 @@ set -euo pipefail
 # 路径配置
 # =========================
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-LOG_DIR="${PROJECT_DIR}/ours_test_logs"
+LOG_DIR="${PROJECT_DIR}/run_ours_logs"
 mkdir -p "${LOG_DIR}"
 
 # 如果你想自动激活环境，取消下面两行注释，并改成你的环境路径
@@ -15,18 +15,18 @@ mkdir -p "${LOG_DIR}"
 # =========================
 # 通用实验配置
 # =========================
-GPU_ID=2
-MAX_JOBS=2
+GPU_ID=7
+MAX_JOBS=4
 
 PARTI_NUM=10
 ONLINE_RATIO=1.0
 
 PARTITION_MODE="dirichlet"
-ALPHAS=(0.1 0.3)
+ALPHAS=(0.1 0.3 0.5 0.8)
 
 NOISE_MODE="uniform"
 NOISE_RATE=0.5
-NOISE_TYPE="symmetric"
+NOISE_TYPE="asymmetric"
 
 LOCAL_EPOCH=5
 LOCAL_BATCH_SIZE=64
@@ -34,22 +34,25 @@ SEED=0
 
 DATASETS=(
   "fl_cifar10"
+  "fl_cifar100"
+  "fl_mnist"
+  "fl_svhn"
 )
+
+# 固定 drop_rate 实验循环
+DROP_RATES=(0.62)
 
 # =========================
 # Ours (FedDenoiseV3) 固定配置
 # =========================
 WARMUP_ROUND=20
-STAGE_ROUND=39
-TEACHER_SCHEDULE="4,4,3,3,2,2,1,1,1,1,1,1"
+STAGE_ROUND=19
+TEACHER_SCHEDULE="4,3,2,1"
 
 TEACHER_SELECT_STRATEGY="least_sim"
-TEACHER_SIMILARITY="backbone_cosine"
+TEACHER_SIMILARITY="full_model_cosine"
 TEACHER_SCORE_MODE="teacher_mean"
-WARMUP_MODE="backbone_only"
-
-# 如果后面想开阶段化 drop rate，可以取消注释
-DROP_RATE_SCHEDULE="0.1,0.1,0.2,0.2,0.3,0.3,0.4,0.4,0.5,0.5,0.5,0.5"
+WARMUP_MODE="full_model"
 
 # =========================
 # 启动作业
@@ -57,8 +60,9 @@ DROP_RATE_SCHEDULE="0.1,0.1,0.2,0.2,0.3,0.3,0.4,0.4,0.5,0.5,0.5,0.5"
 launch_job() {
     local dataset="$1"
     local alpha="$2"
+    local drop_rate="$3"
 
-    local job_name="feddenoise_v3_${dataset}_alpha${alpha}"
+    local job_name="feddenoise_v3_${dataset}_alpha${alpha}_dr${drop_rate}"
     local log_file="${LOG_DIR}/${job_name}.log"
 
     echo "[Launch] ${job_name}"
@@ -84,21 +88,23 @@ launch_job() {
             --warmup_round "${WARMUP_ROUND}" \
             --stage_round "${STAGE_ROUND}" \
             --teacher_schedule "${TEACHER_SCHEDULE}" \
+            --drop_rate "${drop_rate}" \
             --warmup_mode "${WARMUP_MODE}" \
             --teacher_select_strategy "${TEACHER_SELECT_STRATEGY}" \
             --teacher_similarity "${TEACHER_SIMILARITY}" \
-            --teacher_score_mode "${TEACHER_SCORE_MODE}" \
-            --drop_rate_schedule "${DROP_RATE_SCHEDULE}"
+            --teacher_score_mode "${TEACHER_SCORE_MODE}"
     ) > "${log_file}" 2>&1 &
 }
 
 # =========================
-# 主循环：最多并行 3 个
+# 主循环
 # =========================
 total_jobs=0
 for dataset in "${DATASETS[@]}"; do
     for alpha in "${ALPHAS[@]}"; do
-        total_jobs=$((total_jobs + 1))
+        for drop_rate in "${DROP_RATES[@]}"; do
+            total_jobs=$((total_jobs + 1))
+        done
     done
 done
 
@@ -109,14 +115,16 @@ echo "[Info] Logs: ${LOG_DIR}"
 
 for dataset in "${DATASETS[@]}"; do
     for alpha in "${ALPHAS[@]}"; do
-        launch_job "${dataset}" "${alpha}"
+        for drop_rate in "${DROP_RATES[@]}"; do
+            launch_job "${dataset}" "${alpha}" "${drop_rate}"
 
-        while true; do
-            running_jobs=$(jobs -pr | wc -l | tr -d ' ')
-            if [[ "${running_jobs}" -lt "${MAX_JOBS}" ]]; then
-                break
-            fi
-            sleep 5
+            while true; do
+                running_jobs=$(jobs -pr | wc -l | tr -d ' ')
+                if [[ "${running_jobs}" -lt "${MAX_JOBS}" ]]; then
+                    break
+                fi
+                sleep 5
+            done
         done
     done
 done
