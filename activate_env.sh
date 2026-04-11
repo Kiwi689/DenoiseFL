@@ -15,4 +15,4 @@ EOF
 
 #建议不运行这个脚本 写下面两句 把下面路径改下
 #source "$(conda info --base)/etc/profile.d/conda.sh"
-#conda activate /root/workspace/test/kiwi/envs/denoisefl
+#conda activate /root/workspace/kiwi/envs/denoisefl
