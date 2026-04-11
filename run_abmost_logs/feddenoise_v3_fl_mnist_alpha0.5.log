@@ -1,0 +1,49 @@
+[Launch] model=feddenoise_v3 | dataset=fl_mnist | clients=10 | rounds=96 | local_epoch=5 | batch_size=64 | noise_mode=uniform | noise_value=0.5
+mean: 6000.0
+std: 0.0
+Data statistics: {0: {0: 329, 1: 289, 2: 306, 3: 1661, 4: 1421, 5: 926, 6: 862, 7: 100, 8: 106, 9: 0}, 1: {0: 399, 1: 919, 2: 2187, 3: 2089, 4: 406, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0}, 2: {0: 353, 1: 816, 2: 727, 3: 380, 4: 630, 5: 781, 6: 1304, 7: 1009, 8: 0, 9: 0}, 3: {0: 789, 1: 264, 2: 167, 3: 654, 4: 647, 5: 341, 6: 334, 7: 487, 8: 1052, 9: 1265}, 4: {0: 138, 1: 612, 2: 859, 3: 773, 4: 1442, 5: 1203, 6: 166, 7: 348, 8: 374, 9: 85}, 5: {0: 322, 1: 62, 2: 69, 3: 138, 4: 179, 5: 781, 6: 750, 7: 1533, 8: 1699, 9: 467}, 6: {0: 757, 1: 1551, 2: 929, 3: 232, 4: 366, 5: 428, 6: 437, 7: 663, 8: 486, 9: 151}, 7: {0: 1090, 1: 270, 2: 26, 3: 48, 4: 49, 5: 189, 6: 1185, 7: 964, 8: 664, 9: 1515}, 8: {0: 795, 1: 476, 2: 353, 3: 5, 4: 29, 5: 30, 6: 531, 7: 549, 8: 1229, 9: 2003}, 9: {0: 958, 1: 1120, 2: 645, 3: 59, 4: 845, 5: 879, 6: 136, 7: 462, 8: 395, 9: 501}}
+========================================================================================================================
+Training started at: 2026-04-11 20:51:34
+Result directory: results/fl_mnist/feddenoise_v3/pm-dir_a-0.5_nm-uni_nr-0.5_nt-asymmetric_wr-20_sr-19_ts-4,3,2,1_tss-most_sim_tsim-full_model_cosine_wm-full_model_dr-0.15_drs-0.1,0.3,0.4,0.5
+Result txt file : results/fl_mnist/feddenoise_v3/pm-dir_a-0.5_nm-uni_nr-0.5_nt-asymmetric_wr-20_sr-19_ts-4,3,2,1_tss-most_sim_tsim-full_model_cosine_wm-full_model_dr-0.15_drs-0.1,0.3,0.4,0.5/feddenoise_v3_fl_mnist_20260411-205134-419923_pid3806927.txt
+Result log file : results/fl_mnist/feddenoise_v3/pm-dir_a-0.5_nm-uni_nr-0.5_nt-asymmetric_wr-20_sr-19_ts-4,3,2,1_tss-most_sim_tsim-full_model_cosine_wm-full_model_dr-0.15_drs-0.1,0.3,0.4,0.5/feddenoise_v3_fl_mnist_20260411-205134-419923_pid3806927.log
+------------------------------------------------------------------------------------------------------------------------
+Model: feddenoise_v3
+Dataset: fl_mnist
+Structure: homogeneity
+Participants: 10
+Online ratio: 1.0
+Communication epochs: 96
+Local epoch: 5
+Local batch size: 64
+Local lr: 0.01
+Partition mode: dirichlet
+Dirichlet alpha: 0.5
+Noise mode: uniform
+Noise rate: 0.5
+Noise type: asymmetric
+Noise max: 0.3
+Averaging: weight
+Seed: 0
+Warmup round: 20
+Stage round: 19
+Teacher schedule: 4,3,2,1
+Teacher select strategy: most_sim
+Teacher similarity: full_model_cosine
+Teacher score mode: teacher_mean
+Warmup mode: full_model
+Drop rate: 0.15
+Drop rate schedule: 0.1,0.3,0.4,0.5
+Exclude self teacher: True
+========================================================================================================================
+Backbone: NoiseFLCNN NoiseFLCNN
+[Round 001/096] Phase=warmup | Stage=warmup | Acc=10.250 | RoundTime=141.86s | TotalTime=141.87s | Method=feddenoise_v3
+[Round 002/096] Phase=warmup | Stage=warmup | Acc=44.200 | RoundTime=150.60s | TotalTime=292.48s | Method=feddenoise_v3
+[Round 003/096] Phase=warmup | Stage=warmup | Acc=40.100 | RoundTime=150.04s | TotalTime=442.53s | Method=feddenoise_v3
+[Round 004/096] Phase=warmup | Stage=warmup | Acc=41.300 | RoundTime=151.63s | TotalTime=594.18s | Method=feddenoise_v3
+[Round 005/096] Phase=warmup | Stage=warmup | Acc=48.190 | RoundTime=149.66s | TotalTime=743.84s | Method=feddenoise_v3
+[Round 006/096] Phase=warmup | Stage=warmup | Acc=47.700 | RoundTime=148.71s | TotalTime=892.56s | Method=feddenoise_v3
+[Round 007/096] Phase=warmup | Stage=warmup | Acc=43.480 | RoundTime=150.00s | TotalTime=1042.57s | Method=feddenoise_v3
+[Round 008/096] Phase=warmup | Stage=warmup | Acc=41.480 | RoundTime=149.83s | TotalTime=1192.42s | Method=feddenoise_v3
+[Round 009/096] Phase=warmup | Stage=warmup | Acc=53.020 | RoundTime=149.64s | TotalTime=1342.07s | Method=feddenoise_v3
+[Round 010/096] Phase=warmup | Stage=warmup | Acc=44.750 | RoundTime=150.56s | TotalTime=1492.63s | Method=feddenoise_v3
