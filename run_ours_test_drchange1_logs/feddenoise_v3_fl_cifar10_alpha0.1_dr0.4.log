@@ -89,3 +89,18 @@ Backbone: NoiseFLCNN NoiseFLCNN
 [Round 035/096] Phase=stage_1 | Stage=0 | Acc=34.210 | StagePure=46.683 | CPrec=46.683 | CRec=56.020 | NPrec=45.025 | NRec=36.020 | Keep=60.000 | TSim=0.964 | RoundTime=192.64s | TotalTime=8034.90s | Method=feddenoise_v3
 [Round 036/096] Phase=stage_1 | Stage=0 | Acc=35.140 | StagePure=46.683 | CPrec=46.683 | CRec=56.020 | NPrec=45.025 | NRec=36.020 | Keep=60.000 | TSim=0.964 | RoundTime=193.37s | TotalTime=8228.28s | Method=feddenoise_v3
 [Round 037/096] Phase=stage_1 | Stage=0 | Acc=34.570 | StagePure=46.683 | CPrec=46.683 | CRec=56.020 | NPrec=45.025 | NRec=36.020 | Keep=60.000 | TSim=0.964 | RoundTime=193.48s | TotalTime=8421.76s | Method=feddenoise_v3
+[Round 038/096] Phase=stage_1 | Stage=0 | Acc=34.340 | StagePure=46.683 | CPrec=46.683 | CRec=56.020 | NPrec=45.025 | NRec=36.020 | Keep=60.000 | TSim=0.964 | RoundTime=193.47s | TotalTime=8615.23s | Method=feddenoise_v3
+
+[Teacher Selection] Building clean subsets for stage 2 ...
+[Stage 2] Client 0: teachers=[3, 2, 4], avg_teacher_sim=0.9675, selected=3000
+[Stage 2] Client 1: teachers=[2, 3, 7], avg_teacher_sim=0.9654, selected=3000
+[Stage 2] Client 2: teachers=[3, 6, 8], avg_teacher_sim=0.9584, selected=3000
+[Stage 2] Client 3: teachers=[2, 7, 0], avg_teacher_sim=0.9602, selected=3000
+[Stage 2] Client 4: teachers=[2, 7, 3], avg_teacher_sim=0.9647, selected=3000
+[Stage 2] Client 5: teachers=[2, 3, 7], avg_teacher_sim=0.9649, selected=3000
+[Stage 2] Client 6: teachers=[2, 3, 4], avg_teacher_sim=0.9651, selected=3000
+[Stage 2] Client 7: teachers=[2, 3, 4], avg_teacher_sim=0.9629, selected=3000
+[Stage 2] Client 8: teachers=[2, 3, 7], avg_teacher_sim=0.9649, selected=3000
+[Stage 2] Client 9: teachers=[2, 3, 7], avg_teacher_sim=0.9680, selected=3000
+[Stage 2] Selection summary | clean_precision=43.83 | clean_recall=52.60 | noisy_precision=40.75 | noisy_recall=32.60 | keep_ratio=60.00 | avg_teacher_similarity=0.9642
+[Round 039/096] Phase=stage_1 | Stage=0 | Acc=34.790 | StagePure=46.683 | CPrec=46.683 | CRec=56.020 | NPrec=45.025 | NRec=36.020 | Keep=60.000 | TSim=0.964 | RoundTime=245.43s | TotalTime=8860.66s | Method=feddenoise_v3

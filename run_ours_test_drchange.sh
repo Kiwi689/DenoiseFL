@@ -5,7 +5,9 @@ set -euo pipefail
 # 路径配置
 # =========================
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-LOG_DIR="${PROJECT_DIR}/run_ours_test_drchange1_logs"
+
+LOG_DIR="${PROJECT_DIR}/run_ours_test_drchange_logs"
+
 mkdir -p "${LOG_DIR}"
 
 # 如果你想自动激活环境，取消下面两行注释，并改成你的环境路径

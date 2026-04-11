@@ -1,0 +1,37 @@
+[Launch] model=fedprox | dataset=fl_mnist | clients=10 | rounds=100 | local_epoch=5 | batch_size=64 | noise_mode=uniform | noise_value=0.5
+mean: 6000.0
+std: 0.0
+Data statistics: {0: {0: 1392, 1: 83, 2: 0, 3: 721, 4: 730, 5: 884, 6: 847, 7: 25, 8: 22, 9: 1296}, 1: {0: 280, 1: 584, 2: 310, 3: 2260, 4: 2253, 5: 0, 6: 0, 7: 0, 8: 152, 9: 161}, 2: {0: 212, 1: 489, 2: 688, 3: 374, 4: 1443, 5: 1406, 6: 120, 7: 472, 8: 585, 9: 211}, 3: {0: 2, 1: 264, 2: 2818, 3: 2687, 4: 144, 5: 85, 6: 0, 7: 0, 8: 0, 9: 0}, 4: {0: 0, 1: 2, 2: 2, 3: 5, 4: 8, 5: 271, 6: 2487, 7: 2231, 8: 524, 9: 470}, 5: {0: 0, 1: 244, 2: 254, 3: 0, 4: 0, 5: 1, 6: 0, 7: 2543, 8: 2736, 9: 222}, 6: {0: 1941, 1: 1849, 2: 5, 3: 7, 4: 1054, 5: 1144, 6: 0, 7: 0, 8: 0, 9: 0}, 7: {0: 43, 1: 2178, 2: 2132, 3: 0, 4: 1, 5: 56, 6: 383, 7: 301, 8: 430, 9: 476}, 8: {0: 750, 1: 1, 2: 0, 3: 0, 4: 340, 5: 1788, 6: 1855, 7: 340, 8: 59, 9: 867}, 9: {0: 1333, 1: 590, 2: 143, 3: 0, 4: 0, 5: 1, 6: 4, 7: 163, 8: 1532, 9: 2234}}
+========================================================================================================================
+Training started at: 2026-04-11 20:43:10
+Result directory: results/fl_mnist/fedprox/pm-dir_a-0.1_nm-uni_nr-0.5_nt-asymmetric_mu-0.01
+Result txt file : results/fl_mnist/fedprox/pm-dir_a-0.1_nm-uni_nr-0.5_nt-asymmetric_mu-0.01/fedprox_fl_mnist_20260411-204309-990612_pid3757483.txt
+Result log file : results/fl_mnist/fedprox/pm-dir_a-0.1_nm-uni_nr-0.5_nt-asymmetric_mu-0.01/fedprox_fl_mnist_20260411-204309-990612_pid3757483.log
+------------------------------------------------------------------------------------------------------------------------
+Model: fedprox
+Dataset: fl_mnist
+Structure: homogeneity
+Participants: 10
+Online ratio: 1.0
+Communication epochs: 100
+Local epoch: 5
+Local batch size: 64
+Local lr: 0.01
+Partition mode: dirichlet
+Dirichlet alpha: 0.1
+Noise mode: uniform
+Noise rate: 0.5
+Noise type: asymmetric
+Noise max: 0.3
+Averaging: weight
+Seed: 0
+FedProx mu: 0.01
+========================================================================================================================
+[Round 001/100] Phase=standard | Stage=warmup | Acc=11.350 | RoundTime=225.72s | TotalTime=225.72s | Method=fedprox
+[Round 002/100] Phase=standard | Stage=warmup | Acc=24.120 | RoundTime=230.76s | TotalTime=456.50s | Method=fedprox
+[Round 003/100] Phase=standard | Stage=warmup | Acc=51.250 | RoundTime=229.50s | TotalTime=686.00s | Method=fedprox
+[Round 004/100] Phase=standard | Stage=warmup | Acc=51.120 | RoundTime=228.34s | TotalTime=914.35s | Method=fedprox
+[Round 005/100] Phase=standard | Stage=warmup | Acc=54.070 | RoundTime=229.69s | TotalTime=1144.05s | Method=fedprox
+[Round 006/100] Phase=standard | Stage=warmup | Acc=56.820 | RoundTime=229.16s | TotalTime=1373.22s | Method=fedprox
+[Round 007/100] Phase=standard | Stage=warmup | Acc=51.420 | RoundTime=230.87s | TotalTime=1604.09s | Method=fedprox
+[Round 008/100] Phase=standard | Stage=warmup | Acc=53.860 | RoundTime=229.51s | TotalTime=1833.61s | Method=fedprox
